@@ -236,7 +236,13 @@
               {%- endif -%}
 
             {%- when 'content'-%}
-              <a class="hotspot with-content flex items-center justify-center absolute cursor-pointer"{% if block.settings.link != blank %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true" aria-controls="Hotspot-{{ section.id }}-{{ block.id }}" aria-expanded="false"{% endif %} aria-label="{{ block.settings.heading | escape }}" id="shopify-block-{{ block.id }}" {{ block.shopify_attributes }}>
+              {%- liquid
+                assign hotspot_tag = 'a'
+                if block.settings.link == blank
+                  assign hotspot_tag = 'button'
+                endif
+              -%}
+              <{{ hotspot_tag }} class="hotspot with-content flex items-center justify-center absolute cursor-pointer"{% if block.settings.link != blank %} href="{{ block.settings.link }}"{% else %} type="button" aria-haspopup="dialog" aria-controls="Hotspot-{{ section.id }}-{{ block.id }}" aria-expanded="false"{% endif %} aria-label="{{ block.settings.heading | escape }}" id="shopify-block-{{ block.id }}" {{ block.shopify_attributes }}>
                 {% if block.settings.heading != blank or block.settings.text != blank %}
                   <div class="hotspot__content rovic-hotspot-preview hidden md:flex gap-2 items-center absolute z-1 pointer-events-none{% if block.settings.horizontal < 15 %} with-left{% elsif block.settings.horizontal > 85 %} with-right{% endif %}{% if block.settings.vertical > 70 %} with-bottom{% endif %}">
                     <div class="rte text-sm leading-tight grid gap-2 md:gap-3">
@@ -276,7 +282,7 @@
                     {%- render 'icon', icon: 'caret', class: 'absolute' -%}
                   </div>
                 {% endif %}
-              </a>
+              </{{ hotspot_tag }}>
 {% if block.settings.link == blank %}
   <x-modal
     id="Hotspot-{{ section.id }}-{{ block.id }}"

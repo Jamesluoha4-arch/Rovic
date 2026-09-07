@@ -274,7 +274,13 @@ if (!customElements.get('cart-items')) {
         });
 
         return fetch(theme.routes.cart_change_url, { ...theme.utils.fetchConfig(), ...{ body }, signal: controller.signal })
-          .then((response) => response.json())
+          .then(async (response) => {
+            const state = await response.json();
+            if (!response.ok && !state.errors) {
+              state.errors = state.description || theme.cartStrings.error;
+            }
+            return state;
+          })
           .then((parsedState) => {
             if (this.updateAbortController !== controller) return;
             theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cart: parsedState, target, line, name });
@@ -313,11 +319,11 @@ if (!customElements.get('cart-items')) {
 
       validateQuantity(event) {
         const target = event.target;
-        const inputValue = parseInt(target.value);
+        const inputValue = Number(target.value);
         const index = target.getAttribute('data-index');
         let message = '';
 
-        if (!Number.isInteger(Number(target.value)) || target.value.trim() === '') {
+        if (!Number.isSafeInteger(inputValue) || target.value.trim() === '') {
           message = theme.cartStrings.error;
         }
         else if (inputValue < parseInt(target.getAttribute('data-min'))) {

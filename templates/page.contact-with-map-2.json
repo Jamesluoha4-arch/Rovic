@@ -4,7 +4,7 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
-        "heading_size": "title-xl",
+        "heading_size": "title-xl tracking-heading",
         "heading_alignment": "text-left",
         "heading_tag": "h1",
         "text_size": "text-lg md:text-2xl",

@@ -3351,7 +3351,7 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
   onSummaryClicked(event) {
     event.preventDefault();
 
-    if (!theme.config.isTouch && this.trigger === 'hover' && this.summaryElement.hasAttribute('data-link') && this.summaryElement.getAttribute('data-link').length > 0) {
+    if (event.detail > 0 && !theme.config.isTouch && this.trigger === 'hover' && this.summaryElement.hasAttribute('data-link') && this.summaryElement.getAttribute('data-link').length > 0) {
       window.location.href = this.summaryElement.getAttribute('data-link');
     }
     else {
@@ -3426,6 +3426,7 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
       const targetMenu = event.target.closest('details[open]');
       if (targetMenu) {
         targetMenu.open = false;
+        targetMenu.firstElementChild?.focus();
       }
     }
   }
