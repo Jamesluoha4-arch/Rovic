@@ -1,0 +1,768 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "title-xl tracking-heading",
+        "heading_alignment": "text-left",
+        "heading_tag": "h1",
+        "text_size": "text-base",
+        "padding_top": 72,
+        "padding_bottom": 120,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "image-with-text-overlay": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "ROVIC / WALK THE COURSE",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h1",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>A Lighter Way to Play.</em></p>",
+            "text_font": "body",
+            "text_size": "subtext-lg",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_hh68gF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Rovic push carts are made for golfers who want to walk more freely, carry less, and stay focused on the round ahead.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "text_hh68gF"
+      ],
+      "settings": {
+        "transparent_header": true,
+        "image": "shopify://shop_images/ChatGPT_Image_2026_6_15__20_27_48_3a0f50e0-9e44-47a0-86f6-a15238978313.png",
+        "image_height": "750px",
+        "content_width": "large",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_height_mobile": "auto",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 50,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": true,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "images-with-text": {
+      "type": "images-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHY ROVIC",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "scribble",
+            "highlighted_scribble": "basic-underline",
+            "highlighted_reveal": false
+          }
+        },
+        "subheading_648Epn": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "The walk is part of the round.",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Golf feels better when your equipment moves with you—not against you. Rovic designs push carts around the moments that shape a walking round: leaving the car, setting up on the first tee, moving between shots, and packing down when the day is done.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explore Push Carts",
+            "button_link": "",
+            "button_style": "primary",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subheading_648Epn",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/rovic_rv1s_generated-frame_1672x941_v03.png",
+        "image_ratio": "landscape",
+        "image_width": "medium",
+        "layout": "image_first",
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 100,
+        "divider": false,
+        "full_width": false,
+        "rounded": true,
+        "enable_parallax": false
+      }
+    },
+    "portfolio": {
+      "type": "portfolio",
+      "blocks": {
+        "profile-1": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/aad8099b-d9c8-4bf0-b85c-698709c86760.png",
+            "heading": "Movement That Feels Natural",
+            "text": "<p>Balanced wheel setups and practical handling help the cart follow the rhythm of the course.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#4c5538"
+          }
+        },
+        "profile-2": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/rovic_rv1s_generated-frame_1672x941_v04.png",
+            "heading": "Compact Where It Counts",
+            "text": "<p>A cart should earn its place in the trunk. Rovic folding designs make storage simpler before and after the round.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#886a51"
+          }
+        },
+        "profile-3": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/70af73ae-5a3e-4108-ae31-4d21a7d89d7d.png",
+            "heading": "Details With a Purpose",
+            "text": "<p>From bag support to console storage, every touchpoint is designed for the way golfers actually play.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#2e2d45"
+          }
+        }
+      },
+      "block_order": [
+        "profile-1",
+        "profile-2",
+        "profile-3"
+      ],
+      "settings": {
+        "columns": 3,
+        "carousel_on_desktop": false,
+        "layout": "default",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "portrait",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left justify-start",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "scribble",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "#ccd8b5",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "timeline_NGGmwh": {
+      "type": "timeline",
+      "blocks": {
+        "content_GAqY7J": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/cd65d0e4-9539-463e-bbda-263072902420.png",
+            "subheading": "2020",
+            "heading": "The Beginning",
+            "heading_tag": "h2",
+            "text": "<p>Rovic begins with a simple question: how can a push cart make walking the course feel easier?</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "content_fKEkUk": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/ec292f69-ff9b-4a36-92ed-c5e1148fb00e.png",
+            "subheading": "2021",
+            "heading": "Built for the Walk",
+            "heading_tag": "h2",
+            "text": "<p>The RV Series brings practical control, dependable support and compact folding into the everyday round.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "content_ncbTBA": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/rovic_rv1s_generated-frame_1672x941_v04.png",
+            "subheading": "2023",
+            "heading": "Compact by Design",
+            "heading_tag": "h2",
+            "text": "<p>Storage becomes part of the design process—not an afterthought after the round.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "content_KrFPef": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/01_7c89223c-54cb-462e-a189-44752a511a48.jpg",
+            "subheading": "2024",
+            "heading": "A New Chapter: QFC",
+            "heading_tag": "h2",
+            "text": "<p>A new-generation Rovic push cart designed for stable movement, compact storage and a smoother walk from car park to first tee.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        }
+      },
+      "block_order": [
+        "content_GAqY7J",
+        "content_fKEkUk",
+        "content_ncbTBA",
+        "content_KrFPef"
+      ],
+      "name": "t:sections.timeline.name",
+      "settings": {
+        "show_navigation": true,
+        "layout": "image_first",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "wide",
+        "heading": "BUILT OVER TIME",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "Made for the rounds ahead.",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "#ffffff",
+        "color_background": "#171717",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "featured_collection_cxMCEy": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "collection": "",
+        "products": [
+          "rovic-qfc",
+          "rovic-rv1c-compact",
+          "rovic-rv1s-swivel",
+          "rovic-rv2l-lite",
+          "rovic-rv3j-junior"
+        ],
+        "product_limit": 6,
+        "columns": 5,
+        "carousel_on_desktop": true,
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "One Walk. Different Ways to Play.",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "From compact storage to swivel handling and junior-ready design, find the Rovic that fits your round.",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "scrolling-text": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<em><strong>Free shipping and returns</strong></em>",
+            "text_size": 160,
+            "text_font": "heading",
+            "highlighted_text": "stencil",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text"
+      ],
+      "settings": {
+        "direction": "left",
+        "speed": 20,
+        "grid_horizontal": 70,
+        "enable_twin": false,
+        "enable_parallax": true,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "rounded": false
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "",
+            "author_url": "",
+            "image_ratio": "rounded",
+            "image_height": 30,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 84,
+        "padding_bottom": 120,
+        "divider": false,
+        "rounded": false
+      }
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Add a tagline</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Example <em>heading</em>",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "scribble",
+            "highlighted_scribble": "squiggle-underline",
+            "highlighted_reveal": false
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "heading"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "#fafafa",
+        "gradient_background": "",
+        "color_highlight": "#c5e8b8",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 20,
+        "divider": false,
+        "narrow": true,
+        "rounded": true
+      }
+    },
+    "logo-list": {
+      "type": "logo-list",
+      "blocks": {
+        "logo-1": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-2": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-3": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-4": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-5": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-6": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        },
+        "logo-7": {
+          "type": "logo",
+          "settings": {
+            "height": 60,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo-1",
+        "logo-2",
+        "logo-3",
+        "logo-4",
+        "logo-5",
+        "logo-6",
+        "logo-7"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "grid_horizontal": 120,
+        "direction": "right",
+        "speed": 5,
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "#fafafa",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 120,
+        "divider": false,
+        "full_width": true,
+        "rounded": true
+      }
+    },
+    "image_with_text_overlay_LzgQKR": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_xEFtt7": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "ROVIC",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading_eDim8U": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready to Walk Your Round?",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text_CbgBqL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Find the Rovic that matches your pace, your bag and the way you like to play.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_bUEEFP": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Push Carts",
+            "button_link": "",
+            "button_style": "primary",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true
+          }
+        },
+        "button_CcY44C": {
+          "type": "button",
+          "settings": {
+            "button_label": "Compare Models",
+            "button_link": "",
+            "button_style": "primary",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "subheading_xEFtt7",
+        "heading_eDim8U",
+        "text_CbgBqL",
+        "button_bUEEFP",
+        "button_CcY44C"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/DM_20260710171940_001.webp",
+        "image_height": "650px",
+        "content_width": "small",
+        "content_position": "md:items-center md:justify-center",
+        "text_alignment": "center",
+        "image_height_mobile": "auto",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 70,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": true,
+        "parallax_direction": "vertical"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image-with-text-overlay",
+    "images-with-text",
+    "portfolio",
+    "timeline_NGGmwh",
+    "featured_collection_cxMCEy",
+    "scrolling-text",
+    "testimonials",
+    "rich-text",
+    "logo-list",
+    "image_with_text_overlay_LzgQKR"
+  ]
+}

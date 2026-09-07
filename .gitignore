@@ -1,0 +1,17 @@
+# Local authentication and captured session data
+edge-profile/
+*cookies*.txt
+/*.html
+/verify_cart_*.json
+/verify_add_umbrella_holder_response.json
+.env
+.env.*
+!.env.example
+.shopify/
+**/.shopify/
+*.log
+node_modules/
+
+# OS metadata
+Thumbs.db
+.DS_Store
