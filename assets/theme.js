@@ -6135,6 +6135,7 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
     this.submitButton.setAttribute('aria-disabled', 'true');
     this.submitButton.setAttribute('aria-busy', 'true');
 
+    let addedToCart = false;
     fetch(theme.routes.cart_add_url, config)
       .then((response) => response.json())
       .then(async (parsedState) => {
@@ -6166,6 +6167,7 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
           return;
         }
 
+        addedToCart = true;
         if (Shopify.designMode) {
           if (document.body.classList.contains('template-cart') || theme.settings.cartType === 'page') {
             window.location.href = theme.routes.cart_url;
@@ -6187,7 +6189,13 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
       })
       .catch((error) => {
         console.error(error);
-        this.handleErrorMessage(theme.cartStrings.error);
+        if (addedToCart) {
+          // The item was added; show the cart instead of encouraging a duplicate retry.
+          window.location.href = theme.routes.cart_url;
+        }
+        else {
+          this.handleErrorMessage(theme.cartStrings.error);
+        }
       })
       .finally(() => {
         this.submitButton.removeAttribute('aria-busy');
