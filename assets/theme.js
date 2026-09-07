@@ -3297,6 +3297,8 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
   disconnectedCallback() {
     super.disconnectedCallback();
 
+    clearTimeout(this.contentOpenTimer);
+    this.dropdownAnimation?.cancel();
     if (!this._open) return;
 
     // Removed while open: transition(false) never ran, so undo its global side-effects.
@@ -3359,6 +3361,7 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
 
   async transition(value) {
     this.updateAriaExpanded(value);
+    clearTimeout(this.contentOpenTimer);
 
     if (value) {
       lockDropdownCount.set(DetailsDropdown, lockDropdownCount.get(DetailsDropdown) + 1);
@@ -3369,7 +3372,9 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
       if (theme.config.motionReduced) {
         this.contentElement.setAttribute('open', '');
       } else {
-        setTimeout(() => this.contentElement.setAttribute('open', ''), 100);
+        this.contentOpenTimer = setTimeout(() => {
+          if (this.open && this.isConnected) this.contentElement.setAttribute('open', '');
+        }, 100);
       }
       document.addEventListener('click', this.detectClickOutsideListener);
       document.addEventListener('keyup', this.detectEscKeyboardListener);
@@ -3396,15 +3401,18 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
   }
 
   async transitionIn() {
-    Motion.animate(this.contentElement, { opacity: [0, 1], visibility: 'visible' }, { duration: theme.config.motionReduced ? 0 : 0.6, easing: [.7, 0, .2, 1], delay: theme.config.motionReduced ? 0 : 0.2 });
-    const translateY = this.level === 'top' ? '-105%' : '2rem';
-    return Motion.animate(this.contentElement.firstElementChild, { transform: [`translateY(${translateY})`, 'translateY(0)'] }, { duration: theme.config.motionReduced ? 0 : 0.6, easing: [.7, 0, .2, 1] }).finished;
+    this.dropdownAnimation?.cancel();
+    this.contentElement.style.visibility = 'visible';
+    this.contentElement.firstElementChild.style.transform = 'none';
+    this.dropdownAnimation = Motion.animate(this.contentElement, { opacity: 1 }, { duration: theme.config.motionReduced ? 0 : 0.15 });
+    return this.dropdownAnimation.finished.catch(() => {});
   }
 
   async transitionOut() {
-    Motion.animate(this.contentElement, { opacity: 0, visibility: 'hidden' }, { duration: theme.config.motionReduced ? 0 : 0.3, easing: [.7, 0, .2, 1] });
-    const translateY = this.level === 'top' ? '-105%' : '2rem';
-    return Motion.animate(this.contentElement.firstElementChild, { transform: `translateY(${translateY})` }, { duration: theme.config.motionReduced ? 0 : 0.6, easing: [.7, 0, .2, 1] }).finished;
+    this.dropdownAnimation?.cancel();
+    this.dropdownAnimation = Motion.animate(this.contentElement, { opacity: 0 }, { duration: theme.config.motionReduced ? 0 : 0.15 });
+    await this.dropdownAnimation.finished.catch(() => {});
+    if (!this.open) this.contentElement.style.visibility = 'hidden';
   }
 
   detectClickOutside(event) {
@@ -6179,6 +6187,7 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
       })
       .catch((error) => {
         console.error(error);
+        this.handleErrorMessage(theme.cartStrings.error);
       })
       .finally(() => {
         this.submitButton.removeAttribute('aria-busy');

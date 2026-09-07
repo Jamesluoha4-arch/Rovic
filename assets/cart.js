@@ -262,6 +262,7 @@ if (!customElements.get('cart-items')) {
 
         this.updateAbortController?.abort();
         this.updateAbortController = new AbortController();
+        const controller = this.updateAbortController;
 
         let sectionsToBundle = [];
         document.documentElement.dispatchEvent(new CustomEvent('cart:bundled-sections', { bubbles: true, detail: { sections: sectionsToBundle } }));
@@ -272,13 +273,20 @@ if (!customElements.get('cart-items')) {
           sections: sectionsToBundle
         });
 
-        fetch(theme.routes.cart_change_url, { ...theme.utils.fetchConfig(), ...{ body }, signal: this.updateAbortController.signal })
+        return fetch(theme.routes.cart_change_url, { ...theme.utils.fetchConfig(), ...{ body }, signal: controller.signal })
           .then((response) => response.json())
           .then((parsedState) => {
+            if (this.updateAbortController !== controller) return;
             theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cart: parsedState, target, line, name });
           })
           .catch((error) => {
-            if (error.name !== 'AbortError') console.error(error);
+            if (error.name !== 'AbortError' && this.updateAbortController === controller) {
+              console.error(error);
+              this.onCartError(theme.cartStrings.error, target);
+            }
+          })
+          .finally(() => {
+            if (this.updateAbortController === controller) this.disableLoading(line);
           });
       }
 
@@ -309,7 +317,10 @@ if (!customElements.get('cart-items')) {
         const index = target.getAttribute('data-index');
         let message = '';
 
-        if (inputValue < parseInt(target.getAttribute('data-min'))) {
+        if (!Number.isInteger(Number(target.value)) || target.value.trim() === '') {
+          message = theme.cartStrings.error;
+        }
+        else if (inputValue < parseInt(target.getAttribute('data-min'))) {
           message = theme.quickOrderListStrings.minError.replace('[min]', target.getAttribute('data-min'));
         }
         else if (inputValue > parseInt(target.max)) {

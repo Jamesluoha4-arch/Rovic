@@ -79,7 +79,7 @@
             "share_label": "Share",
             "show_help_desk": true,
             "help_label": "Need help?",
-            "help_page": ""
+            "help_page": "shopify://pages/contact"
           }
         },
         "complementary": {

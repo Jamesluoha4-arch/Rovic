@@ -31,7 +31,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Welcome to our FAQ, we are so happy to have you here and as a client. <br\/>We have tried to answer the most common questions.</p>",
+            "text": "<p>Welcome to our FAQ, we are so happy to have you here and as a client. <br/>We have tried to answer the most common questions.</p>",
             "text_size": "subtext-md",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
@@ -96,8 +96,8 @@
         "question-1": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Where can I find my cart manual?",
+            "text": "<p>Visit <a href=\"/pages/downloads\">Downloads & Product Guides</a> and match your cart model and version before choosing a document.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -105,8 +105,8 @@
         "question-2": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How do I check accessory compatibility?",
+            "text": "<p>Check the accessory description against your cart model and version. If the fit is unclear, <a href=\"/pages/contact\">contact support</a> before ordering.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -114,8 +114,8 @@
         "question-4": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How can I check product availability?",
+            "text": "<p>Select the colour or option on the product page to see its current availability. An unavailable option cannot be added to your cart.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -123,8 +123,8 @@
         "question-5": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "What information should I include in a support request?",
+            "text": "<p>Include your cart model and version, a description of the issue, and your order number if your question concerns an order.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -141,8 +141,8 @@
         "question-6": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How do I get help with an order?",
+            "text": "<p>Use our <a href=\"/pages/contact\">contact form</a> and include your order number. Do not include payment card details.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -150,8 +150,8 @@
         "question-7": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Where can I find my cart manual?",
+            "text": "<p>Visit <a href=\"/pages/downloads\">Downloads & Product Guides</a> and match your cart model and version before choosing a document.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -159,8 +159,8 @@
         "question-8": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How do I check accessory compatibility?",
+            "text": "<p>Check the accessory description against your cart model and version. If the fit is unclear, <a href=\"/pages/contact\">contact support</a> before ordering.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -168,8 +168,8 @@
         "question-9": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How can I check product availability?",
+            "text": "<p>Select the colour or option on the product page to see its current availability. An unavailable option cannot be added to your cart.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -186,8 +186,8 @@
         "question-10": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "What information should I include in a support request?",
+            "text": "<p>Include your cart model and version, a description of the issue, and your order number if your question concerns an order.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -195,8 +195,8 @@
         "question-11": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "How do I get help with an order?",
+            "text": "<p>Use our <a href=\"/pages/contact\">contact form</a> and include your order number. Do not include payment card details.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -204,8 +204,8 @@
         "question-12": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Where can I find my cart manual?",
+            "text": "<p>Visit <a href=\"/pages/downloads\">Downloads & Product Guides</a> and match your cart model and version before choosing a document.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -214,7 +214,7 @@
           "type": "contact",
           "settings": {
             "heading": "Didn’t find your answer?",
-            "text": "<p>Don't hestitate to contact us</p>",
+            "text": "<p>Don't hesitate to contact us</p>",
             "show_phone": false,
             "avatar_height": 60,
             "highlighted_text": "none",
@@ -246,7 +246,7 @@
         "heading_alignment": "text-left md:items-end md:flex-row",
         "heading_tag": "h2",
         "subheading": "",
-        "description": "",
+        "description": "<p>Product guides, compatibility and order support.</p>",
         "button_label": "",
         "button_link": "",
         "button_external": false,

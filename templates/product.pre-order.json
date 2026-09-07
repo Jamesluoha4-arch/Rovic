@@ -80,7 +80,7 @@
             "show_help_desk": true,
             "help_label": "Need help?",
             "help_type": "drawer",
-            "help_page": ""
+            "help_page": "shopify://pages/contact"
           }
         },
         "complementary": {
@@ -99,7 +99,8 @@
             "icon_width": 20,
             "text": "In stock! Ships within 1-2 business days.",
             "text_size": "text-sm"
-          }
+          },
+          "disabled": true
         },
         "text-2": {
           "type": "text",
@@ -108,7 +109,8 @@
             "icon_width": 20,
             "text": "90-day risk-free trial",
             "text_size": "text-sm"
-          }
+          },
+          "disabled": true
         },
         "text-3": {
           "type": "text",
@@ -117,7 +119,8 @@
             "icon_width": 20,
             "text": "2-Year Warranty",
             "text_size": "text-sm"
-          }
+          },
+          "disabled": true
         },
         "text-4": {
           "type": "text",
@@ -126,7 +129,8 @@
             "icon_width": 20,
             "text": "Complimentary shipping & returns",
             "text_size": "text-sm"
-          }
+          },
+          "disabled": true
         },
         "sticky_buy_button": {
           "type": "sticky_buy_button",
@@ -178,7 +182,7 @@
           "settings": {
             "icon": "rocket",
             "heading": "Shipping Information",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>For help with your cart or order, <a href=\"/pages/contact\">contact support</a>. Manuals and parts drawings are available in <a href=\"/pages/downloads\">Downloads & Product Guides</a>.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#b45309",
@@ -193,7 +197,7 @@
           "settings": {
             "icon": "headphone",
             "heading": "Customer Support",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>For help with your cart or order, <a href=\"/pages/contact\">contact support</a>. Manuals and parts drawings are available in <a href=\"/pages/downloads\">Downloads & Product Guides</a>.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#0369a1",
@@ -208,7 +212,7 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "FAQ’s",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>For help with your cart or order, <a href=\"/pages/contact\">contact support</a>. Manuals and parts drawings are available in <a href=\"/pages/downloads\">Downloads & Product Guides</a>.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#be123c",
@@ -223,7 +227,7 @@
           "settings": {
             "icon": "phone",
             "heading": "Contact Us",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>For help with your cart or order, <a href=\"/pages/contact\">contact support</a>. Manuals and parts drawings are available in <a href=\"/pages/downloads\">Downloads & Product Guides</a>.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#4d7c0f",
@@ -242,7 +246,7 @@
       ],
       "settings": {
         "heading": "Need help?",
-        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
+        "description": "<p>Contact us with your cart model, version and order number when available.</p>"
       }
     }
   },

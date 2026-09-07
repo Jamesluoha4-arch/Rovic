@@ -74,7 +74,8 @@
         "rounded": false,
         "enable_parallax": false,
         "parallax_direction": "vertical"
-      }
+      },
+      "disabled": true
     },
     "multicolumn": {
       "type": "multicolumn",
