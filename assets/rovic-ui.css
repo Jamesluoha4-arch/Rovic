@@ -1,0 +1,9 @@
+.header-transparent:not(.header-scrolled) .header shopify-account::part(signed-out-avatar) { color: rgb(var(--color-foreground)); }
+.rovic-nav-active > a,
+.rovic-nav-active > details > summary { background: #171717; color: #fff; border-radius: 999px; }
+.rovic-nav-active .btn-text { color: inherit; }
+slider-element { cursor: grab; }
+slider-element.rovic-dragging { cursor: grabbing; user-select: none; scroll-snap-type: none !important; scroll-behavior: auto !important; }
+.rovic-color-progress { width: 100%; height: 7px; border-radius: 999px; background: #f0f0f0; margin-top: 20px; overflow: hidden; }
+.rovic-color-progress > span { display: block; height: 100%; width: var(--selection-width, 0px); border-radius: inherit; background: #171717; transition: width .2s ease; }
+@media (prefers-reduced-motion: reduce) { .rovic-color-progress > span { transition: none; } }

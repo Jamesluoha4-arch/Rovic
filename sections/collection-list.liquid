@@ -8,19 +8,7 @@
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {%- capture view_all -%}
-      {%- if section.settings.show_view_all and section.blocks.size < collections.size -%}
-        <a class="button button--secondary icon-with-text" href="{{ routes.collections_url }}" is="hover-link">
-          <span class="btn-fill" data-fill></span>
-          <span class="btn-text">
-            {%- liquid
-              render 'icon', icon: 'newspaper'
-              echo 'sections.collection_list.view_all' | t
-            -%}
-          </span>
-        </a>
-      {%- endif -%}
-    {%- endcapture -%}
+    {%- assign view_all = blank -%}
     {%- capture indicators -%}
       {%- if section.settings.carousel_on_desktop -%}
         <div class="indicators hidden lg:flex gap-2d5">

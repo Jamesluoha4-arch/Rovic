@@ -37,7 +37,18 @@
               endunless
             -%}
           </span>
-          <progress-bar class="overflow-hidden rounded-full {{ block.settings.color_scheme }}" data-value="{{ product_variant.inventory_quantity }}" data-max="{{ block.settings.inventory_threshold }}"></progress-bar>
+          {%- liquid
+            assign has_color_option = false
+            for option in product.options_with_values
+              assign option_name = option.name | downcase
+              if option_name == 'color' or option_name == 'colour'
+                assign has_color_option = true
+              endif
+            endfor
+          -%}
+          {%- unless has_color_option -%}
+            <progress-bar class="overflow-hidden rounded-full {{ block.settings.color_scheme }}" data-value="{{ product_variant.inventory_quantity }}" data-max="{{ block.settings.inventory_threshold }}"></progress-bar>
+          {%- endunless -%}
         </div>
       {%- else -%}
         <div class="alert alert--success inline-flex items-center gap-3">

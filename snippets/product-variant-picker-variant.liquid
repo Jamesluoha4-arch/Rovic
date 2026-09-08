@@ -233,6 +233,9 @@
           {{- swatchs_content -}}
         </ul>
       {%- endif -%}
+      {%- if is_color and context == 'product' -%}
+        <div class="rovic-color-progress" aria-hidden="true"><span></span></div>
+      {%- endif -%}
     </fieldset>
   {%- endfor -%}
 

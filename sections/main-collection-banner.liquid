@@ -59,7 +59,7 @@
         </media-element>
         <span class="banner__overlay absolute top-0 left-0 w-full h-full pointer-events-none"></span>
       {%- endif -%}
-    
+
       {%- if section.blocks.size > 0 -%}
         <div class="banner__content overflow-hidden{% if desktop_image != blank %} absolute z-1 top-0 left-0 w-full h-full{% endif %}">
           <div class="page-width w-full h-full flex {{ section.settings.content_position }} {{ section.settings.content_position_mobile }}">
@@ -85,9 +85,7 @@
                             </a>
                           </li>
                           {%- if block.settings.show_collections_link -%}
-                            <li class="flex items-center gap-4 md:gap-6">
-                              <a class="block" href="{{ routes.collections_url }}" is="magnet-link">{{ 'general.breadcrumbs.collections' | t }}</a>
-                            </li>
+
                           {%- endif -%}
                           {%- if block.settings.show_collection_title -%}
                             <li class="flex items-center gap-4 md:gap-6">{{ collection.title }}</li>
@@ -109,7 +107,7 @@
                         {%- endif -%}
                       {%- endunless -%}
                     </h1>
-                    
+
                   {%- when 'description' -%}
                     {%- if collection.description != blank -%}
                       <animate-element data-animate="fade-up" data-animate-delay="{{ delay | times: 250 }}" class="block">
