@@ -5707,7 +5707,13 @@ class ProductInfo extends BaseElement {
         }, 100);
       })
       .catch((error) => {
-        if (error.name !== 'AbortError') console.error(error);
+        if (signal.aborted || error.name === 'AbortError') return;
+        console.error(error);
+        this.pendingRequestUrl = null;
+        this.productForm?.toggleSubmitButton(true, theme.variantStrings.unavailable, true);
+        this.productStickyForm?.toggleSubmitButton(true, theme.variantStrings.unavailable, true);
+        this.productForm?.handleErrorMessage(theme.variantStrings.loadError);
+        this.productStickyForm?.handleErrorMessage(theme.variantStrings.loadError);
       });
   }
 
@@ -5754,8 +5760,11 @@ class ProductInfo extends BaseElement {
       this.updateSourceFromDestination(parsedHTML, 'QuantityRulesCart');
       this.updateSourceFromDestination(parsedHTML, 'VolumeNote');
 
-      this.productForm?.toggleSubmitButton(!variant.available, theme.variantStrings.soldOut);
-      this.productStickyForm?.toggleSubmitButton(!variant.available, theme.variantStrings.soldOut);
+      // The rendered button also accounts for minimum-order inventory rules.
+      const renderedForm = this.productForm && parsedHTML.getElementById(this.productForm.id);
+      const cannotPurchase = !variant.available || !!renderedForm?.querySelector('[name="add"][disabled]');
+      this.productForm?.toggleSubmitButton(cannotPurchase, theme.variantStrings.soldOut);
+      this.productStickyForm?.toggleSubmitButton(cannotPurchase, theme.variantStrings.soldOut);
 
       theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.variantChange, {
         data: {
@@ -6091,6 +6100,10 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
   }
 
   onSubmitHandler(event) {
+    if (this.submitButton?.hasAttribute('disabled') || this.submitButton?.hasAttribute('aria-disabled')) {
+      event.preventDefault();
+      return;
+    }
     const bundles = this.bundles;
     const bundlesLength = bundles.length;
 
@@ -6220,6 +6233,9 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
   }
 
   toggleSubmitButton(disable = true, text, unavailable = false) {
+    this.querySelectorAll('[data-dynamic-checkout]').forEach((checkout) => {
+      checkout.hidden = disable;
+    });
     if (!this.submitButton) return;
 
     this.submitButton.removeAttribute('loading');
@@ -6247,6 +6263,7 @@ class ProductForm extends BaseElementMixin(HTMLFormElement) {
       this.submitButton.removeAttribute('disabled');
       (submitButtonTextChild || submitButtonText).textContent = this.submitButton.hasAttribute('data-pre-order') ? theme.variantStrings.preOrder : theme.variantStrings.addToCart;
     }
+    this.submitButton.setAttribute('aria-label', (submitButtonTextChild || submitButtonText).textContent);
   }
 }
 customElements.define('product-form', ProductForm, { extends: 'form' });

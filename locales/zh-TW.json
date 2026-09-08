@@ -100,6 +100,7 @@
       "voice_search": "語音搜尋",
       "voice_search_unavailable": "此裝置無法使用語音搜尋",
       "unsupported_locale_hint": "請點擊搜尋按鈕以查看結果",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "清除",
       "suggestions": "建議",
       "products": "產品",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "產品型號",
       "sold_out": "售罄",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "不可用",
       "add_to_cart": "加入購物車",
       "add_to_cart_label": "將 {{ title }} 加入購物車",

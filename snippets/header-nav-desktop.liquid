@@ -106,7 +106,7 @@
               {%- endif -%}
             </magnet-element>
           </summary>
-          <div id="DropdownMenu-{{ section.id }}-{{ forloop.index }}-{{ context }}" class="{% if template.name == 'index' %}rovic-dropdown-panel{% else %}dropdown opacity-0 invisible absolute top-0 max-w-full pointer-events-none{% endif %}">
+          <div id="DropdownMenu-{{ section.id }}-{{ forloop.index }}-{{ context }}" class="dropdown rovic-dropdown-panel opacity-0 invisible absolute pointer-events-none">
             <div class="dropdown__container relative">
               {%- render 'corner', dir: 'top', prefix: 'dropdown' -%}
               <ul class="dropdown__nav flex flex-col gap-1d5 xl:gap-2" role="list">

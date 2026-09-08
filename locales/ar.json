@@ -100,6 +100,7 @@
       "voice_search": "البحث الصوتي",
       "voice_search_unavailable": "البحث الصوتي غير متوفر على هذا الجهاز",
       "unsupported_locale_hint": "يُرجى النقر على زر البحث لعرض النتائج",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "واضح",
       "suggestions": "إقتراحات",
       "products": "المنتجات",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "متغيرات المنتج",
       "sold_out": "نفذ",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "غير متاح",
       "add_to_cart": "أضف إلى السلة",
       "add_to_cart_label": "أضف {{ title }} إلى السلة",

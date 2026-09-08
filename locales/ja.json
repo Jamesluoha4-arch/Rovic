@@ -100,6 +100,7 @@
       "voice_search": "音声検索",
       "voice_search_unavailable": "このデバイスでは音声検索を利用できません",
       "unsupported_locale_hint": "検索結果を表示するには、検索ボタンをクリックしてください",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "クリア",
       "suggestions": "注意事項",
       "products": "商品",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "商品バリエーション",
       "sold_out": "売り切れ",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "利用できません",
       "add_to_cart": "カートに追加する",
       "add_to_cart_label": "{{ title }}をカートに追加",

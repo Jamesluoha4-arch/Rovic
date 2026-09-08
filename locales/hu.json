@@ -100,6 +100,7 @@
       "voice_search": "Hangos keresés",
       "voice_search_unavailable": "A hangalapú keresés nem érhető el ezen az eszközön",
       "unsupported_locale_hint": "Az eredmények megtekintéséhez kattintson a keresés gombra",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Világos",
       "suggestions": "Javaslatok",
       "products": "Termékek",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Termékváltozatok",
       "sold_out": "Elfogyott",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Nem elérhető",
       "add_to_cart": "Kosárba",
       "add_to_cart_label": "{{ title }} hozzáadása a kosárhoz",

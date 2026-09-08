@@ -100,6 +100,7 @@
       "voice_search": "Sesli arama",
       "voice_search_unavailable": "Sesli arama bu cihazda kullanılamıyor",
       "unsupported_locale_hint": "Sonuçları görmek için arama düğmesine tıklayın",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Temizlemek",
       "suggestions": "Öneriler",
       "products": "Ürünler",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Ürün Çeşitleri",
       "sold_out": "Ürün Tükendi!",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Kullanım dışı",
       "add_to_cart": "Sepete ekle",
       "add_to_cart_label": "{{ title }} sepete ekle",

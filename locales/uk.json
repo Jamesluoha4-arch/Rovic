@@ -100,6 +100,7 @@
       "voice_search": "Голосовий пошук",
       "voice_search_unavailable": "Голосовий пошук недоступний на цьому пристрої",
       "unsupported_locale_hint": "Натисніть кнопку пошуку, щоб побачити результати",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Очистити",
       "suggestions": "Пропозиції",
       "products": "Продукти",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Варіанти товару",
       "sold_out": "Розпродано",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Недоступний",
       "add_to_cart": "Додати в кошик",
       "add_to_cart_label": "Додати {{ title }} до кошика",

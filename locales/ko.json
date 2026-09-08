@@ -100,6 +100,7 @@
       "voice_search": "음성 검색",
       "voice_search_unavailable": "이 기기에서는 음성 검색을 사용할 수 없습니다",
       "unsupported_locale_hint": "결과를 보려면 검색 버튼을 클릭하세요",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "분명한",
       "suggestions": "제안",
       "products": "제품",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "제품 변형",
       "sold_out": "매진",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "없는",
       "add_to_cart": "장바구니에 추가",
       "add_to_cart_label": "{{ title }}를 장바구니에 추가",

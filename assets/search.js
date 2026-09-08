@@ -173,6 +173,9 @@ if (!customElements.get('predictive-search')) {
       clear(event = null) {
         if (event) event.preventDefault();
 
+        this.renderAbortController?.abort();
+        this.removeAttribute('loading');
+        this.removeAttribute('aria-busy');
         this.input.value = '';
         this.input.focus();
         this.removeAttribute('results');
@@ -236,6 +239,9 @@ if (!customElements.get('predictive-search')) {
       }
 
       renderSectionFromCache(url) {
+        this.renderAbortController?.abort();
+        this.removeAttribute('loading');
+        this.removeAttribute('aria-busy');
         const responseText = this.cachedMap.get(url);
         this.renderSearchResults(responseText);
 
@@ -245,15 +251,20 @@ if (!customElements.get('predictive-search')) {
       renderSectionFromFetch(url) {
         this.renderAbortController?.abort();
         this.renderAbortController = new AbortController();
+        const { signal } = this.renderAbortController;
+        const query = this.getQuery();
 
         this.setAttribute('loading', '');
+        this.setAttribute('aria-busy', 'true');
+        this.removeAttribute('results');
 
-        fetch(url, { signal: this.renderAbortController.signal })
+        return fetch(url, { signal })
           .then((response) => {
             if (!response.ok) throw new Error(`Predictive search ${response.status}`);
             return response.text();
           })
           .then((responseText) => {
+            if (signal.aborted || query !== this.getQuery()) return;
             this.renderSearchResults(responseText);
             this.cachedMap.set(url, responseText);
             if (this.cachedMap.size > 30) {
@@ -264,13 +275,32 @@ if (!customElements.get('predictive-search')) {
             this.setAttribute('results', '');
           })
           .catch((error) => {
+            if (signal.aborted || query !== this.getQuery()) return;
             if (error.message.includes('417')) {
               theme.config.predictiveSearch = false;
               this.removeAttribute('loading');
               this.renderUnsupportedHint();
               return;
             }
-            if (error.name !== 'AbortError') console.error(error);
+            if (error.name !== 'AbortError') {
+              console.error(error);
+              const target = this.querySelector('[id^="PredictiveSearchResults-"]');
+              if (target) {
+                const link = document.createElement('a');
+                const fallback = new URL(theme.routes.search_url, theme.routes.shop_url);
+                fallback.searchParams.set('q', query);
+                link.href = fallback.toString();
+                link.className = 'link text-sm';
+                link.textContent = theme.strings.searchError;
+                target.replaceChildren(link);
+                this.setAttribute('results', '');
+              }
+            }
+          })
+          .finally(() => {
+            if (signal.aborted) return;
+            this.removeAttribute('loading');
+            this.removeAttribute('aria-busy');
           });
       }
 

@@ -100,6 +100,7 @@
       "voice_search": "Äänihaku",
       "voice_search_unavailable": "Äänihaku ei ole käytettävissä tällä laitteella",
       "unsupported_locale_hint": "Napsauta hakupainiketta nähdäksesi tulokset",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Selkeä",
       "suggestions": "ehdotuksia",
       "products": "Tuotteet",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Tuotevariaatiot",
       "sold_out": "Loppuunmyyty",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Ei saatavilla",
       "add_to_cart": "Lisää ostoskoriin",
       "add_to_cart_label": "Lisää {{ title }} ostoskoriin",

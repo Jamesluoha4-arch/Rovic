@@ -116,7 +116,8 @@
         "one": "תוצאה {{ count }} נמצאה עבור המונח \"{{ terms }}\"",
         "other": "{{ count }} תוצאות נמצאו עבור המונח \"{{ terms }}\""
       },
-      "unsupported_locale_hint": "יש ללחוץ על כפתור החיפוש כדי לראות תוצאות"
+      "unsupported_locale_hint": "יש ללחוץ על כפתור החיפוש כדי לראות תוצאות",
+      "suggestions_error": "Suggestions couldn't load. View search results."
     },
     "cart": {
       "title": "עגלה",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "וריאציות מוצר",
       "sold_out": "אזל המלאי",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "לא זמין",
       "add_to_cart": "הוסף להזמנה",
       "add_to_cart_label": "הוסף {{ title }} לעגלה",

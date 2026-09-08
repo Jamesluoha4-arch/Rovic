@@ -100,6 +100,7 @@
       "voice_search": "Hlasové vyhledávání",
       "voice_search_unavailable": "Hlasové vyhledávání není na tomto zařízení k dispozici",
       "unsupported_locale_hint": "Pro zobrazení výsledků klikněte na tlačítko hledání",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Vymazat",
       "suggestions": "Návrhy",
       "products": "Produkty",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Varianty produktu",
       "sold_out": "Vyprodáno",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Nedostupný",
       "add_to_cart": "Přidat do košíku",
       "add_to_cart_label": "Přidat {{ title }} do košíku",

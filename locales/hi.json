@@ -100,6 +100,7 @@
       "voice_search": "ध्वनि खोज",
       "voice_search_unavailable": "वॉइस सर्च इस डिवाइस पर उपलब्ध नहीं है",
       "unsupported_locale_hint": "परिणाम देखने के लिए कृपया खोज बटन पर क्लिक करें",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "स्पष्ट",
       "suggestions": "सुझाव",
       "products": "उत्पादों",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "उत्पाद प्रकार",
       "sold_out": "बिक गया",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "अनुपलब्ध",
       "add_to_cart": "कार्ट में जोड़ें",
       "add_to_cart_label": "{{ title }} को कार्ट में जोड़ें",

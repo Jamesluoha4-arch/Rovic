@@ -100,6 +100,7 @@
       "voice_search": "Гласовна претрага",
       "voice_search_unavailable": "Гласовна претрага није доступна на овом уређају",
       "unsupported_locale_hint": "Кликните на дугме за претрагу да бисте видели резултате",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Јасно",
       "suggestions": "Предлози",
       "products": "Производи",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Варијанте производа",
       "sold_out": "Распродано",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Недоступно",
       "add_to_cart": "Додај у корпу",
       "add_to_cart_label": "Додај {{ title }} у корпу",

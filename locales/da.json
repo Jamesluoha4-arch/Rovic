@@ -100,6 +100,7 @@
       "voice_search": "Stemmesøgning",
       "voice_search_unavailable": "Stemmesøgning er ikke tilgængelig på denne enhed",
       "unsupported_locale_hint": "Klik på søgeknappen for at se resultater",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Ryd",
       "suggestions": "Forslag",
       "products": "Produkter",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Produktvarianter",
       "sold_out": "Udsolgt",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Ikke tilgængelig",
       "add_to_cart": "Tilføj til kurv",
       "add_to_cart_label": "Tilføj {{ title }} til kurv",

@@ -100,6 +100,7 @@
       "voice_search": "Recherche vocale",
       "voice_search_unavailable": "La recherche vocale n’est pas disponible sur cet appareil",
       "unsupported_locale_hint": "Veuillez cliquer sur le bouton de recherche pour voir les résultats",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Effacer",
       "suggestions": "Suggestions",
       "products": "Produits",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Variantes de produits",
       "sold_out": "Épuisé",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Non disponible",
       "add_to_cart": "Ajouter au panier",
       "add_to_cart_label": "Ajouter {{ title }} au panier",

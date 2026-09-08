@@ -100,6 +100,7 @@
       "voice_search": "Tìm kiếm bằng giọng nói",
       "voice_search_unavailable": "Tìm kiếm bằng giọng nói không khả dụng trên thiết bị này",
       "unsupported_locale_hint": "Vui lòng nhấp vào nút tìm kiếm để xem kết quả",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Xóa",
       "suggestions": "Đề xuất",
       "products": "Sản phẩm",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Mẫu mã sản phẩm",
       "sold_out": "Đã bán hết",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Không có sẵn",
       "add_to_cart": "Thêm vào giỏ hàng",
       "add_to_cart_label": "Thêm {{ title }} vào giỏ hàng",

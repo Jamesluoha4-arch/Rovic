@@ -100,6 +100,7 @@
       "voice_search": "Căutare vocală",
       "voice_search_unavailable": "Căutarea vocală nu este disponibilă pe acest dispozitiv",
       "unsupported_locale_hint": "Faceți clic pe butonul de căutare pentru a vedea rezultatele",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Clar",
       "suggestions": "Sugestii",
       "products": "Produse",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Variante de produs",
       "sold_out": "Epuizat",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Indisponibil",
       "add_to_cart": "Adaugă in coş",
       "add_to_cart_label": "Adaugă {{ title }} în coș",

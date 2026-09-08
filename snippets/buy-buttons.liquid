@@ -71,6 +71,14 @@
       endif
     -%}
 
+    {%- capture dynamic_checkout -%}
+      {%- if show_dynamic_checkout -%}
+        <div class="product-form__checkout" data-dynamic-checkout{% unless product.selected_or_first_available_variant.available and quantity_rule_soldout != true %} hidden{% endunless %}>
+          {{- form | payment_button -}}
+        </div>
+      {%- endif -%}
+    {%- endcapture -%}
+
     <div class="product-form__buttons grid gap-4"{% unless product.quantity_price_breaks_configured? and show_quantity_selector %} id="QuantityForm-{{ section_id }}-{{ product_id }}"{% endunless %}>
       <div class="product-form__error-message alert alert--error text-sm font-medium leading-tight" role="alert" hidden></div>
 
@@ -301,7 +309,7 @@
         {%- liquid
           unless product.quantity_price_breaks_configured? != true and show_quantity_selector or show_price
             if show_dynamic_checkout
-              echo form | payment_button
+              echo dynamic_checkout
             endif
           endunless
         -%}
@@ -332,7 +340,7 @@
       {%- liquid
         if product.quantity_price_breaks_configured? != true and show_quantity_selector or show_price
           if show_dynamic_checkout
-            echo form | payment_button
+            echo dynamic_checkout
           endif
         endif
       -%}

@@ -100,6 +100,7 @@
       "voice_search": "Röstsökning",
       "voice_search_unavailable": "Röstsökning är inte tillgänglig på den här enheten",
       "unsupported_locale_hint": "Klicka på sökknappen för att se resultat",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Rensa",
       "suggestions": "Förslag",
       "products": "Produkter",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Produktvarianter",
       "sold_out": "Slut i lager",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Inte tillgänglig",
       "add_to_cart": "Lägg till i kundvagn",
       "add_to_cart_label": "Lägg till {{ title }} i varukorgen",

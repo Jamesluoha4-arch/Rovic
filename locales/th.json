@@ -100,6 +100,7 @@
       "voice_search": "ค้นหาด้วยเสียง",
       "voice_search_unavailable": "การค้นหาด้วยเสียงไม่พร้อมใช้งานบนอุปกรณ์นี้",
       "unsupported_locale_hint": "กรุณาคลิกปุ่มค้นหาเพื่อดูผลลัพธ์",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "ชัดเจน",
       "suggestions": "ข้อเสนอแนะ",
       "products": "สินค้า",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "ตัวเลือกสินค้า",
       "sold_out": "ขายหมดแล้ว",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "ไม่พร้อมใช้งาน",
       "add_to_cart": "เพิ่มลงในรถเข็น",
       "add_to_cart_label": "เพิ่ม {{ title }} ลงในตะกร้า",

@@ -100,6 +100,7 @@
       "voice_search": "Talesøk",
       "voice_search_unavailable": "Talesøk er ikke tilgjengelig på denne enheten",
       "unsupported_locale_hint": "Klikk på søkeknappen for å se resultater",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Fjern",
       "suggestions": "Forslag",
       "products": "Produkter",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Produkt varianter",
       "sold_out": "Utsolgt",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Ikke tilgjengelig",
       "add_to_cart": "Legg i handlekurven",
       "add_to_cart_label": "Legg {{ title }} i handlekurven",

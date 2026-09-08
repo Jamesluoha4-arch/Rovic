@@ -100,6 +100,7 @@
       "voice_search": "Balss meklēšana",
       "voice_search_unavailable": "Balss meklēšana šajā ierīcē nav pieejama",
       "unsupported_locale_hint": "Lai skatītu rezultātus, noklikšķiniet uz meklēšanas pogas",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Skaidrs",
       "suggestions": "Ieteikumi",
       "products": "Produkti",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Preču varianti",
       "sold_out": "Izpārdots",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Nav pieejams",
       "add_to_cart": "Pievienot grozam",
       "add_to_cart_label": "Pievienot {{ title }} grozam",

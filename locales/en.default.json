@@ -116,7 +116,8 @@
         "one": "{{ count }} result found for “{{ terms }}”",
         "other": "{{ count }} results found for “{{ terms }}”"
       },
-      "unsupported_locale_hint": "Please click the search button for results"
+      "unsupported_locale_hint": "Please click the search button for results",
+      "suggestions_error": "Suggestions couldn't load. View search results."
     },
     "cart": {
       "title": "Cart",
@@ -499,6 +500,7 @@
       "product_variants": "Product variants",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "add_to_cart": "Add to cart",
       "add_to_cart_label": "Add {{ title }} to cart",
       "choose_options": "Choose options",

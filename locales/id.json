@@ -100,6 +100,7 @@
       "voice_search": "Pencarian suara",
       "voice_search_unavailable": "Pencarian suara tidak tersedia di perangkat ini",
       "unsupported_locale_hint": "Silakan klik tombol pencarian untuk melihat hasil",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Jernih",
       "suggestions": "Saran",
       "products": "Produk",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Varian produk",
       "sold_out": "Terjual habis",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Tidak tersedia",
       "add_to_cart": "Tambahkan ke keranjang",
       "add_to_cart_label": "Tambahkan {{ title }} ke keranjang",

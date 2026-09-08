@@ -100,6 +100,7 @@
       "voice_search": "Φωνητική αναζήτηση",
       "voice_search_unavailable": "Η φωνητική αναζήτηση δεν είναι διαθέσιμη σε αυτήν τη συσκευή",
       "unsupported_locale_hint": "Κάντε κλικ στο κουμπί αναζήτησης για να δείτε αποτελέσματα",
+      "suggestions_error": "Suggestions couldn't load. View search results.",
       "clear": "Σαφής",
       "suggestions": "Προτάσεις",
       "products": "Προϊόντα",
@@ -498,6 +499,7 @@
     "product": {
       "product_variants": "Παραλλαγές προϊόντων",
       "sold_out": "Εξαντλημένα",
+      "variant_load_error": "We couldn't check this option's availability. Please select an option again or refresh the page.",
       "unavailable": "Δυσεύρετος",
       "add_to_cart": "Προσθήκη στο καλάθι",
       "add_to_cart_label": "Προσθήκη {{ title }} στο καλάθι",

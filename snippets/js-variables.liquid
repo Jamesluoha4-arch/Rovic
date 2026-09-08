@@ -16,6 +16,7 @@
     addToCart: {{ 'products.product.add_to_cart' | t | json }},
     soldOut: {{ 'products.product.sold_out' | t | json }},
     unavailable: {{ 'products.product.unavailable' | t | json }},
+    loadError: {{ 'products.product.variant_load_error' | t | json }},
     addToBundle: {{ 'products.product.add_to_bundle' | t | json }},
     backInStock: {{ 'products.back_in_stock.label' | t | json }}
   };
@@ -87,7 +88,8 @@
     next: {{ 'general.pagination.next' | t | json }},
     previous: {{ 'general.pagination.previous' | t | json }},
     qrImageAlt: {{ 'gift_cards.issued.qr_image_alt' | t | json }},
-    searchUnsupportedLocale: {{ 'general.search.unsupported_locale_hint' | t | json }}
+    searchUnsupportedLocale: {{ 'general.search.unsupported_locale_hint' | t | json }},
+    searchError: {{ 'general.search.suggestions_error' | t | json }}
   };
 
   theme.settings = {
