@@ -26,6 +26,9 @@ if (!customElements.get('mobile-dock')) {
         this.detectForFooter();
         setTimeout(this.setHeight.bind(this));
         this.on(document, 'matchSmall', this.setHeight.bind(this));
+        this.on(document, 'unmatchSmall', this.setHeight.bind(this));
+        const updateHeight = theme.utils.debounce(this.setHeight.bind(this), 100);
+        this.on(window, 'resize', updateHeight);
     
         if (Shopify.designMode) {
           this.on(this.section, 'shopify:section:select', () => {

@@ -5,7 +5,7 @@
   background: var(--gradient-background);
   background-color: rgb(var(--color-background));
   padding-block-start: var(--section-padding-top);
-  padding-block-end: var(--section-padding-bottom);
+  padding-block-end: calc(var(--section-padding-bottom) + env(safe-area-inset-bottom, 0px));
 }
 
 .mobile-dock.section--divider {

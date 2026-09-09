@@ -1,0 +1,60 @@
+/* Match the theme's lg breakpoint so navigation never appears twice. */
+@media (max-width: 1023px) {
+  .header { --header-grid-template: "tools logo icons" / minmax(88px, 1fr) auto minmax(88px, 1fr); min-height: 64px; padding-inline: 16px; }
+  .header .header__navigation { display: none; }
+  .header .header__icons--start { display: flex; justify-content: flex-start; }
+  .header .header__icons--end { justify-content: flex-end; }
+  .header .header__icons--start :is(.search-drawer-button, .search-inline, .menu-toggle-button),
+  .header .header__icons--end .menu-drawer-button { display: none; }
+  .header .header__icons--start .menu-drawer-button { display: flex; }
+  .header .header__buttons { margin-inline: 0; gap: 0; }
+  .header .menu-drawer-button > span:not(.sr-only) { display: none; }
+  .header .header__logo { width: min(128px, calc(100vw - 208px)); max-width: 100%; margin-inline: auto; }
+  .header .header__logo img { width: 100%; max-width: 100%; height: auto; }
+  .header :is(.header__logo, .header__icons) { min-width: 0; }
+  .header__buttons > :is(a, button) { min-width: 44px; min-height: 44px; }
+  #MenuDrawer .drawer__menu-item { min-height: 48px; padding-block: 14px; overflow-wrap: anywhere; }
+  #MenuDrawer .rovic-mobile-active > a,
+  #MenuDrawer .rovic-mobile-active > details > summary,
+  #MenuDrawer a[aria-current="page"] { color: rgb(var(--color-foreground)); background: rgb(var(--color-foreground) / .08); border-radius: 8px; }
+  .product :is(.product__info, .product__gallery-container) { min-width: 0; max-width: 100%; }
+  .product__title .heading { overflow-wrap: anywhere; }
+  .product-form__input { min-inline-size: 0; max-width: 100%; }
+  .product-form__input .swatches--variant { max-width: 100%; }
+  .comparison-table { max-width: 100%; overscroll-behavior-inline: contain; }
+  .drawer__scrollable { overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 639px) {
+  .drawer { height: 100dvh; }
+  .js .drawer .drawer__inner { max-height: calc(100dvh - 16px); }
+  .drawer .drawer__close { display: flex; opacity: 1; pointer-events: auto; min-width: 44px; min-height: 44px; z-index: 2; }
+  .drawer .drawer__header { padding-inline-end: 64px; min-height: 64px; }
+  .drawer .drawer__tabs { flex-wrap: wrap; gap: 12px 20px; }
+  .drawer .drawer__title { font-size: clamp(22px, 6vw, 28px); }
+  .drawer :is(.drawer__footer, .drawer__scrollable) { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  .drawer :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea),
+  .product :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea),
+  .footer input { font-size: 16px; }
+  .product-card__content { padding: 16px; }
+  .product-card__details { gap: 8px; align-items: flex-start; }
+  .product-card__title { font-size: 16px; overflow-wrap: anywhere; }
+  .product-card__details .price { font-size: 14px; white-space: normal; }
+  .footer__newsletter, .footer__left, .footer__accordions { min-width: 0; max-width: 100%; }
+  .footer__newsletter > .h3 { font-size: clamp(26px, 7vw, 34px); overflow-wrap: anywhere; }
+  .footer :is(input, form) { min-width: 0; max-width: 100%; }
+  .rovic-footer-brand { margin-top: 12px; padding-top: 24px; }
+}
+
+/* Compact desktop navigation for landscape tablets and small laptops. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header { padding-inline: 24px; --header-nav-gap: 4px; }
+  .header .header__logo { max-width: 140px; }
+  .header .header__logo img { width: 100%; max-width: 100%; height: auto; }
+  .header .header__menu .menu__item { font-size: 14px; padding-inline: 10px; }
+}
+
+@media (pointer: coarse) {
+  .product-form__input .color-swatch { min-width: 44px; min-height: 44px; }
+  .drawer :is(button, .button), .product .button { min-height: 44px; }
+}
