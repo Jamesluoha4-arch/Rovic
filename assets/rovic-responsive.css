@@ -14,6 +14,17 @@
   .header :is(.header__logo, .header__icons) { min-width: 0; }
   .header__buttons > :is(a, button) { min-width: 44px; min-height: 44px; }
   #MenuDrawer .drawer__menu-item { min-height: 48px; padding-block: 14px; overflow-wrap: anywhere; }
+  #MenuDrawer .drawer__submenu .drawer__menu-item,
+  #MenuDrawer .drawer__submenu .drawer__menu-item .heading {
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+  }
+  #MenuDrawer .drawer__submenu .drawer__menu-item { padding-block: 12px; padding-inline-end: 44px; }
+  #MenuDrawer .drawer__submenu > .drawer__scrollable { padding-block: 4px 12px; }
+  #MenuDrawer .drawer__submenu .drawer__menu-group { padding-inline-start: 16px; }
   #MenuDrawer .rovic-mobile-active > a,
   #MenuDrawer .rovic-mobile-active > details > summary,
   #MenuDrawer a[aria-current="page"] { color: rgb(var(--color-foreground)); background: rgb(var(--color-foreground) / .08); border-radius: 8px; }
@@ -28,7 +39,7 @@
 @media (max-width: 639px) {
   .drawer { height: 100dvh; }
   .js .drawer .drawer__inner { max-height: calc(100dvh - 16px); }
-  .drawer .drawer__close { display: flex; opacity: 1; pointer-events: auto; min-width: 44px; min-height: 44px; z-index: 2; }
+  .js .drawer .drawer__close { display: flex; opacity: 1; visibility: visible; pointer-events: auto; min-width: 44px; min-height: 44px; z-index: 2; }
   .drawer .drawer__header { padding-inline-end: 64px; min-height: 64px; }
   .drawer .drawer__tabs { flex-wrap: wrap; gap: 12px 20px; }
   .drawer .drawer__title { font-size: clamp(22px, 6vw, 28px); }
