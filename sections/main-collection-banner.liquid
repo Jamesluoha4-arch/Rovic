@@ -1,3 +1,4 @@
+{%- assign rovic_collection_title = collection.title | replace: '主页', 'Home' -%}
 {%- liquid
   if section.index == 1
     assign loading = 'eager'
@@ -14,7 +15,7 @@
     assign mobile_image = section.settings.image_mobile | default: desktop_image
   endif
 
-  assign collection_alt = desktop_image.alt | default: collection.title
+  assign collection_alt = desktop_image.alt | default: rovic_collection_title
 -%}
 
 <style>
@@ -88,7 +89,7 @@
 
                           {%- endif -%}
                           {%- if block.settings.show_collection_title -%}
-                            <li class="flex items-center gap-4 md:gap-6">{{ collection.title }}</li>
+                            <li class="flex items-center gap-4 md:gap-6">{{ rovic_collection_title }}</li>
                           {%- endif -%}
                         </ul>
                       </nav>
@@ -96,7 +97,7 @@
 
                   {%- when 'title' -%}
                     <h1 class="banner__title heading leading-none {{ block.settings.title_size }}{% if block.settings.title_size == 'title-lg' or block.settings.title_size == 'title-xl' %} tracking-heading{% endif %}{% unless desktop_image %} relative{% endunless %}" {{ block.shopify_attributes }}>
-                      {%- render 'heading-content', content: collection.title, style: 'none', delay: delay -%}
+                      {%- render 'heading-content', content: rovic_collection_title, style: 'none', delay: delay -%}
                       {%- unless desktop_image -%}
                         {%- if collection.metafields.theme.marquee.value != blank -%}
                           <div class="block absolute bottom-0 w-full pointer-events-none">

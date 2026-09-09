@@ -19,7 +19,9 @@
           <div class="logo-bar inline-flex flex-wrap items-center justify-center{% if section.settings.layout == 'marquee' %} flex-nowrap{% endif %}">
             {%- for block in section.blocks -%}
               <div class="logo__media media media--transparent relative overflow-hidden shrink-0" style="--image-height: {{ block.settings.height }}px;" {{ block.shopify_attributes }}>
-                {%- if block.settings.image != blank -%}
+                {%- if template.name == 'page' and template.suffix == 'about' -%}
+                  <img src="{{ 'rovic-brand-logo.png' | asset_url }}" width="1405" height="982" alt="Rovic" loading="lazy" class="rovic-square-logo" />
+                {%- elsif block.settings.image != blank -%}
                   {%- assign image_width = block.settings.height | times: block.settings.image.aspect_ratio | round -%}
                   {%- assign max_width = block.settings.image.width -%}
                   {%- capture sizes -%}{{ image_width }}px{%- endcapture -%}

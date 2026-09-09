@@ -52,6 +52,10 @@
     assign overlay_content = block.settings.overlay_content
   endif
 
+  if collection_title == '主页'
+    assign collection_title = 'Home'
+  endif
+
   if collection_title == blank
     assign collection_title = 'onboarding.collection_title' | t
   endif
