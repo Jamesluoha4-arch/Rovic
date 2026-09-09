@@ -64,8 +64,8 @@
             <p class="h3 text-xl {{ section.settings.newsletter_heading_size }} leading-none tracking-none font-medium lg:font-heading">{{ section.settings.newsletter_heading | escape }}</p>
             {%- render 'newsletter-form', section_id: section.id, context: 'footer' -%}
             <a href="{{ routes.root_url }}" class="rovic-footer-brand" aria-label="Rovic home">
-              <img src="{{ 'rovic-brand-logo.png' | asset_url }}" width="1405" height="982" alt="Rovic" loading="lazy" />
-              <span>Built for the Walk Between Shots</span>
+              <span class="rovic-footer-logo"><img src="{{ 'rovic-brand-logo.png' | asset_url }}" width="1405" height="982" alt="Rovic" loading="lazy" /></span>
+              <span class="rovic-footer-tagline">Built for the Walk Between Shots</span>
             </a>
 
             {%- if section.settings.newsletter_text != blank -%}
