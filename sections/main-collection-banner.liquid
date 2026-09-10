@@ -36,12 +36,13 @@
   {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' -%}
     #shopify-section-{{ section.id }} .banner {
       height: clamp(260px, 18vw, 340px);
+      padding-block-end: 0;
     }
     #shopify-section-{{ section.id }} .banner__media img {
       object-position: center;
     }
     @media screen and (max-width: 767px) {
-      #shopify-section-{{ section.id }} .banner { height: 200px; }
+      #shopify-section-{{ section.id }} .banner { height: 200px; padding-block-end: 0; }
     }
   {%- endif -%}
 
