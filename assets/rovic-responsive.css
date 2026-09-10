@@ -1,6 +1,6 @@
 /* Match the theme's lg breakpoint so navigation never appears twice. */
 @media (max-width: 1023px) {
-  .header { --header-grid-template: "tools logo icons" / minmax(88px, 1fr) auto minmax(88px, 1fr); min-height: 64px; padding-inline: 16px; }
+  .header { --header-grid-template: "tools logo icons" / minmax(88px, 1fr) auto minmax(88px, 1fr); min-height: 64px; padding-inline: 16px; column-gap: 0; }
   .header .header__navigation { display: none; }
   .header .header__icons--start { display: flex; justify-content: flex-start; }
   .header .header__icons--end { justify-content: flex-end; }
@@ -68,4 +68,6 @@
 @media (pointer: coarse) {
   .product-form__input .color-swatch { min-width: 44px; min-height: 44px; }
   .drawer :is(button, .button), .product .button { min-height: 44px; }
+  .cart-quantity .quantity__input { min-height: 44px; }
+  a[is="cart-remove-button"] { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
 }
