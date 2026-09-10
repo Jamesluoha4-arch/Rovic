@@ -7,6 +7,9 @@
 
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection.js' | asset_url }}" defer="defer"></script>
+{%- if collection.handle == 'accessories' -%}
+  <script src="{{ 'rovic-accessory-filters.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- liquid
   assign filter_count = 0
@@ -229,6 +232,28 @@
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
               {%- for product in collection.products -%}
                 {%- liquid
+                  assign accessory_category = blank
+                  if collection.handle == 'accessories'
+                    assign accessory_title = product.title | downcase
+                    if accessory_title contains 'storage bag' or accessory_title contains 'bag straps'
+                      assign accessory_category = 'bag'
+                    elsif accessory_title contains 'replacement wheel set'
+                      assign accessory_category = 'wheel'
+                    elsif accessory_title contains 'umbrella'
+                      assign accessory_category = 'umbrella'
+                    elsif accessory_title contains 'cover'
+                      assign accessory_category = 'cover'
+                    elsif accessory_title contains 'brush'
+                      assign accessory_category = 'brush'
+                    elsif accessory_title contains 'seat'
+                      assign accessory_category = 'seat'
+                    elsif accessory_title contains 'bottle'
+                      assign accessory_category = 'bottle'
+                    else
+                      continue
+                    endif
+                  endif
+
                   for block in section.blocks
                     if block.type == 'promotion' or block.type == 'promotion_video'
                       if forloop.parentloop.index != block.settings.position
@@ -267,10 +292,18 @@
                   show_save_amount: settings.product_save_amount,
                   save_type: settings.product_save_type,
                   show_icon_list: settings.product_icon_list,
-                  show_on_model: show_on_model
+                  show_on_model: show_on_model,
+                  accessory_category: accessory_category
                 -%}
               {%- endfor -%}
             </motion-list>
+            {%- if collection.handle == 'accessories' -%}
+              <div class="rovic-accessory-empty empty-state items-center justify-center text-center gap-3" hidden>
+                {%- render 'icon', icon: 'empty', size: 'xxxl' -%}
+                <p class="heading leading-none tracking-tight">No products match these filters.</p>
+                <p>Try another category or adjust the filters.</p>
+              </div>
+            {%- endif -%}
             {%- liquid
               if paginate.pages > 1
                 render 'pagination', paginate: paginate, mode: section.settings.pagination

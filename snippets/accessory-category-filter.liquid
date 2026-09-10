@@ -1,0 +1,13 @@
+<fieldset class="rovic-accessory-categories" data-accessory-categories>
+  <legend>Category</legend>
+  <input type="hidden" name="category" value="">
+  <div class="rovic-accessory-categories__list">
+    {%- assign accessory_categories = 'all:All,bag:Bag,wheel:Wheel,umbrella:Umbrella,cover:Cover,brush:Brush,seat:Seat,bottle:Bottle' | split: ',' -%}
+    {%- for item in accessory_categories -%}
+      {%- assign category = item | split: ':' -%}
+      <button type="button" class="rovic-accessory-category" data-accessory-category-button="{{ category.first }}" aria-pressed="false">
+        {{- category.last -}}
+      </button>
+    {%- endfor -%}
+  </div>
+</fieldset>

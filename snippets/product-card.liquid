@@ -29,6 +29,7 @@
   @param {string} [display_mode] - Rating display mode ('count' or value)
   @param {boolean} [show_on_model] - Show on model image
   @param {string} [sizes] - Responsive sizes hint for image srcset (e.g. '(max-width: 639px) 50vw, 33vw')
+  @param {string} [accessory_category] - Optional category key for Accessories collection filtering
 
   @example
   {% render 'product-card',
@@ -62,7 +63,7 @@
       assign sizes = '(max-width: 639px) 50vw, 33vw'
     endunless
   -%}
-  <div class="card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %}{% unless featured_media %} no-media{% endunless %}{% if product.available and show_quick_add and mobile_quick_add %} mobile:with-quick-add{% endif %} flex flex-col leading-none relative">
+  <div class="card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %}{% unless featured_media %} no-media{% endunless %}{% if product.available and show_quick_add and mobile_quick_add %} mobile:with-quick-add{% endif %} flex flex-col leading-none relative"{% if accessory_category != blank %} data-accessory-category="{{ accessory_category }}"{% endif %}>
     {%- if featured_media -%}
       <div class="product-card__media relative h-auto">
         {%- if show_quick_view -%}

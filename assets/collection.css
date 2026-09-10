@@ -31,6 +31,59 @@
 
 /*! facets */
 
+.rovic-accessory-categories {
+  min-width: 0;
+  padding-block: 0 var(--sp-7);
+  margin: 0 0 var(--sp-7);
+  border: 0;
+  border-block-end: 1px solid rgb(var(--color-border));
+}
+
+.rovic-accessory-categories legend {
+  margin-block-end: var(--sp-4);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.rovic-accessory-categories__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.rovic-accessory-category {
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 999px;
+  color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+  font-size: var(--text-sm);
+  line-height: 1.2;
+  transition: color var(--animation-primary), background-color var(--animation-primary), border-color var(--animation-primary);
+}
+
+.rovic-accessory-category[aria-pressed='true'] {
+  color: rgb(var(--color-background));
+  background: rgb(var(--color-foreground));
+  border-color: rgb(var(--color-foreground));
+}
+
+.rovic-accessory-empty:not([hidden]) {
+  display: grid;
+  min-height: 320px;
+}
+
+@media screen and (max-width: 1279px) {
+  .rovic-accessory-categories {
+    padding-block-start: var(--sp-2);
+  }
+
+  .rovic-accessory-category {
+    min-height: 44px;
+  }
+}
+
 .facets__scroll {
   height: fit-content;
 }
