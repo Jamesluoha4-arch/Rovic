@@ -11,6 +11,7 @@
 
 {%- liquid
 assign section_rendering_api = false
+assign accessories_url = routes.collections_url | append: '/accessories'
 if section.index == nil
   assign section_rendering_api = true
 endif
@@ -39,7 +40,25 @@ endif
           {%- for link in main_menu.links -%}
             {%- if link.title == 'QFC New Arrival' -%}{%- continue -%}{%- endif -%}
             {%- if link.url == routes.collections_url and link.title != 'Shop' -%}{%- continue -%}{%- endif -%}
-            <li class="drawer__menu-group{% if link.active or link.child_active %} rovic-mobile-active{% elsif link.title == 'Shop' and collection.handle == 'all' %} rovic-mobile-active{% endif %}">
+            {%- liquid
+              assign mobile_nav_active = false
+              if link.active or link.child_active
+                assign mobile_nav_active = true
+              endif
+              if link.title == 'Shop'
+                assign mobile_nav_active = false
+                if collection.handle == 'all'
+                  assign mobile_nav_active = true
+                endif
+              endif
+              if link.title == 'Push Carts'
+                assign mobile_nav_active = false
+                if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts'
+                  assign mobile_nav_active = true
+                endif
+              endif
+            -%}
+            <li class="drawer__menu-group{% if mobile_nav_active %} rovic-mobile-active{% endif %}">
               {%- liquid
                 assign enable_mega_menu = false
                 assign mega_menu_block = nil
@@ -63,6 +82,11 @@ endif
                 <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
               {%- endif -%}
             </li>
+            {%- if link.title == 'Push Carts' -%}
+              <li class="drawer__menu-group{% if collection.handle == 'accessories' %} rovic-mobile-active{% endif %}">
+                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ accessories_url }}"{% if collection.handle == 'accessories' %} aria-current="page"{% endif %}>Accessories</a>
+              </li>
+            {%- endif -%}
           {%- endfor -%}
         </ul>
       </nav>

@@ -29,6 +29,7 @@
   assign section_rendering_api = false
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
   assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
+  assign accessories_url = routes.collections_url | append: '/accessories'
   if section.index == nil
     assign section_rendering_api = true
   endif
@@ -43,8 +44,17 @@
       if link.child_active or link.active
         assign nav_active = true
       endif
-      if link.title == 'Shop' and collection.handle == 'all'
-        assign nav_active = true
+      if link.title == 'Shop'
+        assign nav_active = false
+        if collection.handle == 'all'
+          assign nav_active = true
+        endif
+      endif
+      if link.title == 'Push Carts'
+        assign nav_active = false
+        if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts'
+          assign nav_active = true
+        endif
       endif
       assign nav_label = link.title
       if link.title == 'Push Carts'
@@ -73,7 +83,7 @@
     {%- elsif enable_mega_menu -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-mega" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top" {{ mega_menu_block.shopify_attributes }}>
-          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
+          <summary{% unless link.title == 'Push Carts' %} data-link="{{ link.url }}"{% endunless %} class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               {%- unless section_rendering_api -%}
                 <api-button class="api-only" data-id="HeaderNavMega-{{ section.id }}-{{ forloop.index }}-{{ context }}" data-section-id="{{ section.id }}"></api-button>
@@ -106,7 +116,7 @@
     {%- elsif link.links != blank -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top">
-          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
+          <summary{% unless link.title == 'Push Carts' %} data-link="{{ link.url }}"{% endunless %} class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               <span class="btn-text" data-text>
                 {%- liquid
@@ -180,6 +190,14 @@
           {%- if section.settings.menu_active == 'block' -%}
             <span class="btn-text btn-duplicate">{{ link.title }}</span>
           {%- endif -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if link.title == 'Push Carts' -%}
+      <li{% if collection.handle == 'accessories' %} class="rovic-nav-active"{% endif %}>
+        <a {% if collection.handle == 'accessories' %}aria-current="page"{% endif %} href="{{ accessories_url }}" class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer" is="magnet-link"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %} aria-label="Accessories">
+          <span class="btn-text" data-text>Accessories</span>
+          {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Accessories</span>{%- endif -%}
         </a>
       </li>
     {%- endif -%}

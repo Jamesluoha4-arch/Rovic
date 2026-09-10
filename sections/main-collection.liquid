@@ -28,6 +28,13 @@
   assign show_on_model = section.settings.show_on_model
   assign filter_type = section.settings.filter_type
   assign buttons_style = section.settings.buttons_style
+
+  if collection.handle == 'all'
+    assign enable_filtering = false
+  endif
+  if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories'
+    assign filter_type = 'sidebar'
+  endif
 -%}
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
