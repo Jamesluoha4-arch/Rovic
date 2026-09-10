@@ -1,5 +1,7 @@
 {%- assign rovic_collection_title = collection.title | replace: '主页', 'Home' -%}
 {%- if collection.handle == 'all' -%}{%- assign rovic_collection_title = 'Shop' -%}{%- endif -%}
+{%- if collection.handle == 'all-push-carts' -%}{%- assign rovic_collection_title = 'Push Carts' -%}{%- endif -%}
+{%- if collection.handle == 'junior-push-carts' -%}{%- assign rovic_collection_title = 'DISC Golf Carts' -%}{%- endif -%}
 {%- liquid
   if section.index == 1
     assign loading = 'eager'
@@ -30,6 +32,18 @@
       {% endif -%}
     {% endif -%}
   }
+
+  {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' -%}
+    #shopify-section-{{ section.id }} .banner {
+      height: clamp(260px, 18vw, 340px);
+    }
+    #shopify-section-{{ section.id }} .banner__media img {
+      object-position: center;
+    }
+    @media screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .banner { height: 200px; }
+    }
+  {%- endif -%}
 
   {%- if mobile_image != blank and section.settings.image_height_mobile == 'adapt' %}
     @media screen and (max-width: 767px) {

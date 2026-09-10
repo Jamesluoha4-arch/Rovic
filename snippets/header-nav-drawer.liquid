@@ -23,6 +23,12 @@
 
 {%- liquid
   assign section_rendering_api = false
+  assign push_carts_url = routes.collections_url | append: '/all-push-carts'
+  assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
+  assign drawer_link_title = link.title
+  if link.title == 'Push Carts'
+    assign drawer_link_title = 'Carts'
+  endif
   if section.index == nil
     assign section_rendering_api = true
   endif
@@ -42,20 +48,23 @@
       {%- unless section_rendering_api -%}
         <api-button class="api-only" data-id="DrawerSubMenu-{{ section.id }}-{{ position }}" data-section-id="{{ section.id }}"></api-button>
       {%- endunless -%}
-      {{- link.title | escape -}}
+      {{- drawer_link_title | escape -}}
     </span>
     {{- chevron_icon -}}
   </summary>
   <div class="drawer__submenu{% unless enable_accordion_menu %} z-1 absolute top-0 left-0{% endunless %} flex flex-col w-full h-full" data-parent>
     {%- unless enable_accordion_menu -%}
-      <button type="button" class="tracking-tight heading text-base shrink-0 flex items-center gap-3 w-full" data-close>{{ link.title | escape }}</button>
+      <button type="button" class="tracking-tight heading text-base shrink-0 flex items-center gap-3 w-full" data-close>{{ drawer_link_title | escape }}</button>
     {%- endunless -%}
     {%- unless section_rendering_api -%}
       <div id="DrawerSubMenu-{{ section.id }}-{{ position }}" class="drawer__scrollable flex flex-col h-full"></div>
     {%- else -%}
       <ul id="DrawerSubMenu-{{ section.id }}-{{ position }}" class="drawer__scrollable flex flex-col h-full">
         {%- if link.title == 'Shop' -%}<li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ routes.collections_url }}"{% if request.page_type == 'list-collections' %} aria-current="page"{% endif %}>Collections</a></li>{%- endif -%}
-        {%- if block.type == 'mega_menu_tab' -%}
+        {%- if link.title == 'Push Carts' -%}
+          <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ push_carts_url }}"{% if collection.handle == 'all-push-carts' %} aria-current="page"{% endif %}>Push Carts</a></li>
+          <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ disc_golf_carts_url }}"{% if collection.handle == 'junior-push-carts' %} aria-current="page"{% endif %}>DISC Golf Carts</a></li>
+        {%- elsif block.type == 'mega_menu_tab' -%}
           {%- for i in (1..5) -%}
             {%- assign tab_target_link = 'tab_target_link_' | append: i -%}
             {%- if block.settings[tab_target_link] != blank -%}

@@ -27,6 +27,8 @@
   endunless
 
   assign section_rendering_api = false
+  assign push_carts_url = routes.collections_url | append: '/all-push-carts'
+  assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
   if section.index == nil
     assign section_rendering_api = true
   endif
@@ -43,6 +45,10 @@
       endif
       if link.title == 'Shop' and collection.handle == 'all'
         assign nav_active = true
+      endif
+      assign nav_label = link.title
+      if link.title == 'Push Carts'
+        assign nav_label = 'Carts'
       endif
       assign enable_mega_menu = false
       assign mega_menu_block = nil
@@ -67,14 +73,14 @@
     {%- elsif enable_mega_menu -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-mega" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top" {{ mega_menu_block.shopify_attributes }}>
-          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ link.title | escape }}">
+          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               {%- unless section_rendering_api -%}
                 <api-button class="api-only" data-id="HeaderNavMega-{{ section.id }}-{{ forloop.index }}-{{ context }}" data-section-id="{{ section.id }}"></api-button>
               {%- endunless -%}
               <span class="btn-text" data-text>
                 {%- liquid
-                  echo link.title
+                  echo nav_label
                   unless section.settings.hover_menu
                     render 'icon', icon: 'chevron-menu'
                   endunless
@@ -83,7 +89,7 @@
               {%- if section.settings.menu_active == 'block' -%}
                 <span class="btn-text btn-duplicate">
                   {%- liquid
-                    echo link.title
+                    echo nav_label
                     unless section.settings.hover_menu
                       render 'icon', icon: 'chevron-menu'
                     endunless
@@ -100,11 +106,11 @@
     {%- elsif link.links != blank -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top">
-          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ link.title | escape }}">
+          <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               <span class="btn-text" data-text>
                 {%- liquid
-                  echo link.title
+                  echo nav_label
                   unless section.settings.hover_menu
                     render 'icon', icon: 'chevron-menu'
                   endunless
@@ -113,7 +119,7 @@
               {%- if section.settings.menu_active == 'block' -%}
                 <span class="btn-text btn-duplicate">
                   {%- liquid
-                    echo link.title
+                    echo nav_label
                     unless section.settings.hover_menu
                       render 'icon', icon: 'chevron-menu'
                     endunless
@@ -126,8 +132,11 @@
             <div class="dropdown__container relative">
               {%- render 'corner', dir: 'top', prefix: 'dropdown' -%}
               <ul class="dropdown__nav flex flex-col gap-1d5 xl:gap-2" role="list">
-                {%- if link.title == 'Shop' -%}<li><p><a href="{{ routes.collections_url }}" class="reversed-link text-sm-base">Collections</a></p></li>{%- endif -%}
-                {%- for childlink in link.links -%}
+                {%- if link.title == 'Push Carts' -%}
+                  <li class="opacity-0"><p><a href="{{ push_carts_url }}" class="reversed-link text-sm-base">Push Carts</a></p></li>
+                  <li class="opacity-0"><p><a href="{{ disc_golf_carts_url }}" class="reversed-link text-sm-base">DISC Golf Carts</a></p></li>
+                {%- else -%}
+                  {%- for childlink in link.links -%}
                   {%- if childlink.url == routes.collections_url -%}{%- continue -%}{%- endif -%}
                   {%- if childlink.links != blank -%}
                     <li class="opacity-0 relative">
@@ -157,7 +166,8 @@
                       </p>
                     </li>
                   {%- endif -%}
-                {%- endfor -%}
+                  {%- endfor -%}
+                {%- endif -%}
               </ul>
             </div>
           </div>
