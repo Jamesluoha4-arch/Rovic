@@ -37,8 +37,9 @@ endif
         <ul class="drawer__scrollable drawer__menu relative w-full h-full" role="list" data-parent>
           {%- assign main_menu = section.settings.menu_mobile | default: section.settings.menu -%}
           {%- for link in main_menu.links -%}
+            {%- if link.title == 'QFC New Arrival' -%}{%- continue -%}{%- endif -%}
             {%- if link.url == routes.collections_url and link.title != 'Shop' -%}{%- continue -%}{%- endif -%}
-            <li class="drawer__menu-group{% if link.active or link.child_active %} rovic-mobile-active{% elsif link.title == 'Shop' and request.page_type == 'list-collections' %} rovic-mobile-active{% endif %}">
+            <li class="drawer__menu-group{% if link.active or link.child_active %} rovic-mobile-active{% elsif link.title == 'Shop' and collection.handle == 'all' %} rovic-mobile-active{% endif %}">
               {%- liquid
                 assign enable_mega_menu = false
                 assign mega_menu_block = nil
@@ -54,7 +55,9 @@ endif
                 endfor
               -%}
 
-              {%- if link.links != blank or enable_mega_menu or link.title == 'Shop' -%}
+              {%- if link.title == 'Shop' -%}
+                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ routes.all_products_collection_url }}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>Shop</a>
+              {%- elsif link.links != blank or enable_mega_menu -%}
                 {%- render 'header-nav-drawer', section: section, link: link, enable_mega_menu: enable_mega_menu, enable_accordion_menu: section.settings.accordion_menu_mobile, block: mega_menu_block, position: forloop.index -%}
               {%- else -%}
                 <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>

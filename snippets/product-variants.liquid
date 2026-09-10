@@ -33,6 +33,10 @@
 
 {%- if contains_product -%}
   {%- liquid
+    assign option_display_name = block.settings.option_name
+    if block.settings.option_name == '颜色' or block.settings.option_name == '顏色' or block.settings.option_name == 'Color'
+      assign option_display_name = 'Colour'
+    endif
     assign is_color = false
     if block.settings.enable_color_swatches
       assign swatch_trigger_list = 'products.general.color_swatch_trigger' | t | downcase | split: ','
@@ -63,14 +67,14 @@
   -%}
   <div class="variant-picker grid gap-5">
     <fieldset class="product-form__input variant-input-wrapper">
-      <legend class="sr-only">{{ block.settings.option_name | escape }}</legend>
+      <legend class="sr-only">{{ option_display_name | escape }}</legend>
       {%- liquid
         assign metafield_parts = block.settings.option_value_metafield | split: '.'
         assign metafield_namespace = metafield_parts | first
         assign metafield_key = metafield_parts | last
       -%}
       <div class="form__label flex items-center justify-between gap-2 w-full">
-        <div class="flex gap-2">{{ block.settings.option_name | escape }}:
+        <div class="flex gap-2">{{ option_display_name | escape }}:
           <span class="font-medium">{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
         </div>
         {%- if is_size -%}

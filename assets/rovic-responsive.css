@@ -1,4 +1,7 @@
 /* Match the theme's lg breakpoint so navigation never appears twice. */
+.topbar.topbar--only { --topbar-grid-template: "announcement" / minmax(0, 1fr); }
+.topbar.topbar--only .announcement-bar { width: 100%; max-width: none; }
+
 @media (max-width: 1023px) {
   .header { --header-grid-template: "tools logo icons" / minmax(88px, 1fr) auto minmax(88px, 1fr); min-height: 64px; padding-inline: 16px; column-gap: 0; }
   .header .header__navigation { display: none; }

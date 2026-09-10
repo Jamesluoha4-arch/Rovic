@@ -23,6 +23,10 @@
 <variant-picker id="VariantPicker-{{ section_id }}-{{ product_id }}{% if context == 'bundle' %}-dropdown{% endif %}" class="variant-picker grid gap-5{% if context == 'bundle' %} overflow-hidden{% endif %} no-js-hidden"{% if enable_dynamic_variants %} data-dynamic-variants{% endif %} {{ shopify_attributes }}>
   {%- for option in product.options_with_values -%}
     {%- liquid
+      assign option_display_name = option.name
+      if option.name == '颜色' or option.name == '顏色' or option.name == 'Color'
+        assign option_display_name = 'Colour'
+      endif
       assign is_size = false
       if size_chart != blank
         assign size_trigger = 'products.general.size_trigger' | t | downcase | strip
@@ -39,7 +43,7 @@
       <div class="form__label flex items-center justify-between gap-2 w-full">
         {%- if show_variant_labels -%}
           <label class="flex gap-2" for="Option-{{ section_id }}-{{ product_id }}-{{ forloop.index0 }}">
-            {{- option.name -}}:
+            {{- option_display_name -}}:
             <span class="font-medium" id="{{ section_id }}-{{ product_id }}-option{{ option.position }}">{{ option.selected_value }}</span>
           </label>
         {%- endif -%}

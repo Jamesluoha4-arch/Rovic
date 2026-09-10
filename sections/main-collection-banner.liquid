@@ -1,4 +1,5 @@
 {%- assign rovic_collection_title = collection.title | replace: '主页', 'Home' -%}
+{%- if collection.handle == 'all' -%}{%- assign rovic_collection_title = 'Shop' -%}{%- endif -%}
 {%- liquid
   if section.index == 1
     assign loading = 'eager'

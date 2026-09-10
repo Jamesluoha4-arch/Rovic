@@ -34,13 +34,14 @@
 
 <ul class="flex flex-wrap{% unless section.settings.hover_menu %} gap-1{% endunless %} list-menu with-{{ section.settings.menu_active }}" role="list">
   {%- for link in main_menu.links limit: limit offset: offset -%}
+    {%- if link.title == 'QFC New Arrival' -%}{%- continue -%}{%- endif -%}
     {%- if link.url == routes.collections_url and link.title != 'Shop' -%}{%- continue -%}{%- endif -%}
     {%- liquid
       assign nav_active = link.current
       if link.child_active or link.active
         assign nav_active = true
       endif
-      if link.title == 'Shop' and request.page_type == 'list-collections'
+      if link.title == 'Shop' and collection.handle == 'all'
         assign nav_active = true
       endif
       assign enable_mega_menu = false
@@ -56,7 +57,14 @@
         endif
       endfor
     -%}
-    {%- if enable_mega_menu -%}
+    {%- if link.title == 'Shop' -%}
+      <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
+        <a {% if nav_active %}aria-current="page"{% endif %} href="{{ routes.all_products_collection_url }}" class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer" is="magnet-link"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %} aria-label="Shop">
+          <span class="btn-text" data-text>Shop</span>
+          {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Shop</span>{%- endif -%}
+        </a>
+      </li>
+    {%- elsif enable_mega_menu -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-mega" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top" {{ mega_menu_block.shopify_attributes }}>
           <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ link.title | escape }}">
@@ -89,7 +97,7 @@
           </div>
         </details>
       </li>
-    {%- elsif link.links != blank or link.title == 'Shop' -%}
+    {%- elsif link.links != blank -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
         <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top">
           <summary data-link="{{ link.url }}" class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ link.title | escape }}">
