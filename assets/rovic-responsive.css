@@ -1,4 +1,7 @@
 /* Match the theme's lg breakpoint so navigation never appears twice. */
+.topbar-section,
+.topbar.topbar--only,
+.topbar.topbar--only .announcement-bar { overflow: hidden; }
 .topbar.topbar--only { --topbar-grid-template: "announcement" / minmax(0, 1fr); padding-inline: 0; }
 .topbar.topbar--only .announcement-bar { width: 100%; max-width: none; }
 
