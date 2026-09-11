@@ -1284,8 +1284,11 @@ class StickyHeader extends CustomHeader {
       });
     }
 
-    // Hide header when scrolling down, show when scrolling up
-    if (scrollTop > (this.headerBounds.bottom + this.firstScrollTop + 100)) {
+    // Headers configured as always sticky must remain visible in both directions.
+    if (this.isAlwaysSticky) {
+      this.headerSection.classList.remove('header-hidden');
+    }
+    else if (scrollTop > (this.headerBounds.bottom + this.firstScrollTop + 100)) {
       if (scrollTop > this.currentScrollTop) {
         // Scrolling down - hide header
         this.headerSection.classList.add('header-hidden');

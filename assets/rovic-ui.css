@@ -16,4 +16,6 @@ slider-element.rovic-dragging { cursor: grabbing; user-select: none; scroll-snap
 .rovic-footer-logo img { position: absolute; display: block; max-width: none; width: 133.55%; height: auto; left: -16.92%; top: -109.84%; filter: invert(1) hue-rotate(180deg) brightness(1.35); mix-blend-mode: screen; }
 .rovic-footer-brand .rovic-footer-tagline { font-size: 12px; letter-spacing: .04em; text-align: center; line-height: 1.5; }
 .rovic-footer-brand:focus-visible { outline: 2px solid #a3d500; outline-offset: 8px; }
+.rovic-footer-menu__group { display: grid; gap: 8px; }
+.rovic-footer-menu__group > ul { padding-inline-start: 16px; border-inline-start: 1px solid rgb(255 255 255 / .2); }
 @media (max-width: 767px) {  .logo__media:has(.rovic-square-logo) { width: 80px; height: 80px; } }

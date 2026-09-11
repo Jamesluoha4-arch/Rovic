@@ -10,15 +10,36 @@
 {%- enddoc -%}
 
 {%- if block.settings.menu != blank -%}
+  {%- assign footer_heading = block.settings.heading -%}
+  {%- if footer_heading == 'Shop' -%}{%- assign footer_heading = 'Menu' -%}{%- endif -%}
   {%- capture block_content -%}
     <div class="details__content">
-      <ul class="flex flex-col gap-3">
-        {%- for link in block.settings.menu.links -%}
-          <li class="inline-flex">
-            <a href="{{ link.url }}" class="block reversed-link text-sm-lg leading-tight">{{ link.title }}</a>
+      {%- if block.settings.heading == 'Shop' -%}
+        {%- assign push_carts_url = routes.collections_url | append: '/all-push-carts' -%}
+        {%- assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts' -%}
+        {%- assign accessories_url = routes.collections_url | append: '/accessories' -%}
+        <ul class="flex flex-col gap-3 rovic-footer-menu">
+          <li class="inline-flex"><a href="{{ routes.all_products_collection_url }}" class="block reversed-link text-sm-lg leading-tight">Shop</a></li>
+          <li class="rovic-footer-menu__group">
+            <span class="text-sm-lg leading-tight">Carts</span>
+            <ul class="flex flex-col gap-2">
+              <li class="inline-flex"><a href="{{ push_carts_url }}" class="block reversed-link text-sm leading-tight">Push Carts</a></li>
+              <li class="inline-flex"><a href="{{ disc_golf_carts_url }}" class="block reversed-link text-sm leading-tight">DISC Golf Carts</a></li>
+            </ul>
           </li>
-        {%- endfor -%}
-      </ul>
+          <li class="inline-flex"><a href="{{ accessories_url }}" class="block reversed-link text-sm-lg leading-tight">Accessories</a></li>
+          <li class="inline-flex"><a href="{{ pages.downloads.url }}" class="block reversed-link text-sm-lg leading-tight">Downloads</a></li>
+          <li class="inline-flex"><a href="{{ pages['about-our-brands'].url }}" class="block reversed-link text-sm-lg leading-tight">About Our Brands</a></li>
+        </ul>
+      {%- else -%}
+        <ul class="flex flex-col gap-3">
+          {%- for link in block.settings.menu.links -%}
+            <li class="inline-flex">
+              <a href="{{ link.url }}" class="block reversed-link text-sm-lg leading-tight">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     </div>
     <style>
       @media (min-width: 1280px) {
@@ -27,14 +48,14 @@
     </style>
   {%- endcapture -%}
   
-  {%- if block.settings.heading == blank -%}
+  {%- if footer_heading == blank -%}
     <div class="footer__item--{{ block.id }} no-details" {{ block.shopify_attributes }}>
       {{- block_content -}}
     </div>
   {%- else -%}
     <details class="footer__item--{{ block.id }} details active" is="footer-details"{% if block.settings.opened %} data-opened{% endif %} {{ block.shopify_attributes }}>
       <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
-        <span class="heading text-base-2xl font-medium lg:font-heading">{{ block.settings.heading | escape }}</span>
+        <span class="heading text-base-2xl font-medium lg:font-heading">{{ footer_heading | escape }}</span>
         {%- render 'icon', icon: 'chevron-up' -%}
       </summary>
       {{- block_content -}}
