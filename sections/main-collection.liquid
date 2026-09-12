@@ -1,6 +1,6 @@
 <style>
   #shopify-section-{{ section.id }} {
-    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-top: {% if collection.handle == 'all' %}24{% else %}{{ section.settings.padding_top }}{% endif %}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 </style>
@@ -42,6 +42,7 @@
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="collection page-width{% if section.settings.full_width %} page-width--full{% endif %} relative{% if enable_filtering %} with-{{ filter_type }}{% endif %}">
+    {%- if collection.handle == 'all' -%}<h1 class="sr-only">Shop</h1>{%- endif -%}
     {%- if description != blank and collection.description != blank -%}
       <div class="rte collection__description" {{ description.shopify_attributes }}>
         {{- collection.description -}}

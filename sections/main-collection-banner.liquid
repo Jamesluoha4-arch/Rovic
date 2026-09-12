@@ -55,6 +55,7 @@
   {% endif -%}
 </style>
 
+{%- unless collection.handle == 'all' -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}"{% if section.settings.transparent_header and desktop_image != blank %} allow-transparent-header{% endif %}>
   <div class="{% unless section.settings.full_width %}page-width {% endunless %}relative">
     <div class="banner relative{% if desktop_image != blank %} media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }}{% endif %}">
@@ -145,6 +146,8 @@
     </div>
   </div>
 </div>
+
+{%- endunless -%}
 
 {% schema %}
 {
