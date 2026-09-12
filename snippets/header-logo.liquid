@@ -20,7 +20,7 @@
 {%- capture logo_content -%}
   {%- if logo != blank -%}
     <a
-      href="{{ routes.root_url }}"
+      href="{{ routes.root_url }}?home=1"
       itemprop="url"
       class="header__logo-link{% if white_logo %} has-white-logo{% endif %} flex items-center relative"
     >
@@ -59,7 +59,7 @@
       {%- endif -%}
     </a>
   {%- else -%}
-    <a href="{{ routes.root_url }}" itemprop="url" class="h3">{{ shop.name }}</a>
+    <a href="{{ routes.root_url }}?home=1" itemprop="url" class="h3">{{ shop.name }}</a>
   {%- endif -%}
 {%- endcapture -%}
 
