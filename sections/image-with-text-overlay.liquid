@@ -16,6 +16,8 @@
   #shopify-section-{{ section.id }} > .section::before,
   #shopify-section-{{ section.id }} .banner,
   #shopify-section-{{ section.id }} .banner__media { border-radius: 0; }
+  #shopify-section-{{ section.id }} + .shopify-section > .section--rounded,
+  #shopify-section-{{ section.id }} + .shopify-section > .section--rounded::before { border-radius: 0; }
   #shopify-section-{{ section.id }} .banner { height: clamp(360px, 42vw, 650px); min-height: 0; padding-bottom: 0; }
   #shopify-section-{{ section.id }} .banner__image { object-position: center 85%; }
   #shopify-section-{{ section.id }} picture { transform: none !important; }
