@@ -13,10 +13,11 @@
 <style>
   {% if page.handle == 'about-our-brands' and section.id contains '__image-with-text-overlay' %}
   #shopify-section-{{ section.id }} > .section,
+  #shopify-section-{{ section.id }} > .section::before,
   #shopify-section-{{ section.id }} .banner,
   #shopify-section-{{ section.id }} .banner__media { border-radius: 0; }
   #shopify-section-{{ section.id }} .banner { height: clamp(360px, 42vw, 650px); min-height: 0; padding-bottom: 0; }
-  #shopify-section-{{ section.id }} .banner__image { object-position: center 20%; }
+  #shopify-section-{{ section.id }} .banner__image { object-position: center 85%; }
   #shopify-section-{{ section.id }} picture { transform: none !important; }
   {% endif %}
   #shopify-section-{{ section.id }} {
