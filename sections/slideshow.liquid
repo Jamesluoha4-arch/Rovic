@@ -54,6 +54,9 @@
   #shopify-section-{{ section.id }} .banner__overlay { border-radius: 0; }
   #shopify-section-{{ section.id }} .banner__media :is(video, img) { object-fit: contain; object-position: center; }
   #shopify-section-{{ section.id }} .banner__media animate-element { transform: none !important; }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .slideshow-word .banner__box { margin-bottom: clamp(16px, 1.7vw, 32px); }
+  }
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} slideshow-element + .page-width { position: relative; padding-inline: 0; }
     #shopify-section-{{ section.id }} .slideshow-content { position: relative; padding: 20px; background: #171717; }
