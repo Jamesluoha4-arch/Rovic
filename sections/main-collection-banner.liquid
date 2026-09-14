@@ -2,6 +2,10 @@
 {%- if collection.handle == 'all' -%}{%- assign rovic_collection_title = 'Shop' -%}{%- endif -%}
 {%- if collection.handle == 'all-push-carts' -%}{%- assign rovic_collection_title = 'Push Carts' -%}{%- endif -%}
 {%- if collection.handle == 'junior-push-carts' -%}{%- assign rovic_collection_title = 'DISC Golf Carts' -%}{%- endif -%}
+{%- assign rovic_square_collection_banner = false -%}
+{%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' -%}
+  {%- assign rovic_square_collection_banner = true -%}
+{%- endif -%}
 {%- liquid
   if section.index == 1
     assign loading = 'eager'
@@ -34,6 +38,20 @@
   }
 
   {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' -%}
+    #shopify-section-{{ section.id }} > .section,
+    #shopify-section-{{ section.id }} > .section::before,
+    #shopify-section-{{ section.id }} .banner,
+    #shopify-section-{{ section.id }} .banner__media,
+    #shopify-section-{{ section.id }} .banner__overlay,
+    #shopify-section-{{ section.id }} .banner__content,
+    #shopify-section-{{ section.id }} picture,
+    #shopify-section-{{ section.id }} .banner__media img {
+      border-radius: 0 !important;
+      border-start-start-radius: 0 !important;
+      border-start-end-radius: 0 !important;
+      border-end-start-radius: 0 !important;
+      border-end-end-radius: 0 !important;
+    }
     #shopify-section-{{ section.id }} .banner {
       height: clamp(260px, 18vw, 340px);
       padding-block-end: 0;
@@ -56,7 +74,7 @@
 </style>
 
 {%- unless collection.handle == 'all' -%}
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}"{% if section.settings.transparent_header and desktop_image != blank %} allow-transparent-header{% endif %}>
+<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded and rovic_square_collection_banner == false %} section--rounded relative{% endif %}"{% if section.settings.transparent_header and desktop_image != blank %} allow-transparent-header{% endif %}>
   <div class="{% unless section.settings.full_width %}page-width {% endunless %}relative">
     <div class="banner relative{% if desktop_image != blank %} media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }}{% endif %}">
       {%- if desktop_image != blank -%}

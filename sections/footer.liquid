@@ -4,6 +4,14 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- render 'section-variables', section: section -%}
   }
+  .footer-group .section--next-rounded,
+  .footer-group .section--next-rounded::before,
+  .footer-group .section--next-rounded > .section,
+  .footer-group .section--next-rounded > .section::before,
+  .footer-group .section--next-rounded :is(.banner__map, .banner__media, .banner__overlay, .video-hero) {
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
+  }
 </style>
 
 {%- liquid
