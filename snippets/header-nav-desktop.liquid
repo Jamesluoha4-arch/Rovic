@@ -82,7 +82,7 @@
       </li>
     {%- elsif enable_mega_menu -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
-        <details is="details-mega" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top" {{ mega_menu_block.shopify_attributes }}>
+        <details is="details-mega" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top"{% if link.title == 'Push Carts' %} data-keep-open-on-click{% endif %} {{ mega_menu_block.shopify_attributes }}>
           <summary{% unless link.title == 'Push Carts' %} data-link="{{ link.url }}"{% endunless %} class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               {%- unless section_rendering_api -%}
@@ -115,7 +115,7 @@
       </li>
     {%- elsif link.links != blank -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
-        <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top">
+        <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top"{% if link.title == 'Push Carts' %} data-keep-open-on-click{% endif %}>
           <summary{% unless link.title == 'Push Carts' %} data-link="{{ link.url }}"{% endunless %} class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="{{ nav_label | escape }}">
             <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
               <span class="btn-text" data-text>

@@ -3358,7 +3358,7 @@ class DetailsDropdown extends BaseElementMixin(HTMLDetailsElement) {
       window.location.href = this.summaryElement.getAttribute('data-link');
     }
     else {
-      this.open = !this.open;
+      this.open = this.hasAttribute('data-keep-open-on-click') ? true : !this.open;
     }
   }
 
