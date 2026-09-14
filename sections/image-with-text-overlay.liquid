@@ -1,4 +1,9 @@
 {%- liquid
+  assign rovic_about_hero = false
+  if page.handle == 'about-our-brands' and section.settings.image_height == '750px'
+    assign rovic_about_hero = true
+  endif
+
   if section.index == 1
     assign loading = 'eager'
     assign fetchpriority = 'high'
@@ -11,15 +16,25 @@
 -%}
 
 <style>
-  {% if page.handle == 'about-our-brands' and section.id contains '__image-with-text-overlay' %}
+  {% if rovic_about_hero %}
   #shopify-section-{{ section.id }} > .section,
   #shopify-section-{{ section.id }} > .section::before,
   #shopify-section-{{ section.id }} .banner,
-  #shopify-section-{{ section.id }} .banner__media { border-radius: 0; }
+  #shopify-section-{{ section.id }} .banner__media,
+  #shopify-section-{{ section.id }} .banner__overlay,
+  #shopify-section-{{ section.id }} .banner__content,
+  #shopify-section-{{ section.id }} picture,
+  #shopify-section-{{ section.id }} .banner__image {
+    border-radius: 0 !important;
+    border-start-start-radius: 0 !important;
+    border-start-end-radius: 0 !important;
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
+  }
   #shopify-section-{{ section.id }} + .shopify-section > .section--rounded,
   #shopify-section-{{ section.id }} + .shopify-section > .section--rounded::before { border-radius: 0; }
   #shopify-section-{{ section.id }} .banner { height: clamp(360px, 42vw, 650px); min-height: 0; padding-bottom: 0; }
-  #shopify-section-{{ section.id }} .banner__image { object-position: center 85%; }
+  #shopify-section-{{ section.id }} .banner__image { object-position: center 100%; }
   #shopify-section-{{ section.id }} picture { transform: none !important; }
   {% endif %}
   #shopify-section-{{ section.id }} {
@@ -49,7 +64,7 @@
 
 </style>
 
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}"{% if section.settings.transparent_header %} allow-transparent-header{% endif %}>
+<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded and rovic_about_hero == false %} section--rounded relative{% endif %}"{% if section.settings.transparent_header %} allow-transparent-header{% endif %}>
   <div class="{% unless section.settings.full_width %}page-width {% endunless %}relative">
     <div class="banner media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }} relative">
       <media-element class="banner__media block w-full h-full overflow-hidden"{% if section.settings.enable_parallax %} data-parallax="0.3" data-parallax-dir="{{ section.settings.parallax_direction }}"{% endif %}>
