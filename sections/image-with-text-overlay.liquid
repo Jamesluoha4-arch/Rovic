@@ -35,6 +35,12 @@
   #shopify-section-{{ section.id }} + .shopify-section > .section--rounded::before { border-radius: 0; }
   #shopify-section-{{ section.id }} .banner { height: clamp(360px, 42vw, 650px); min-height: 0; padding-bottom: 0; }
   #shopify-section-{{ section.id }} .banner__image { object-position: center 100%; }
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .banner__image {
+      transform: translateY(-2.5%) scale(1.07);
+      transform-origin: center;
+    }
+  }
   #shopify-section-{{ section.id }} picture { transform: none !important; }
   {% endif %}
   #shopify-section-{{ section.id }} {
