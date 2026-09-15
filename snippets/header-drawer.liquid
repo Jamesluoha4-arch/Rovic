@@ -57,6 +57,12 @@ endif
                   assign mobile_nav_active = true
                 endif
               endif
+              if link.title == 'Downloads'
+                assign mobile_nav_active = false
+                if request.page_type == 'search' or request.page_type == 'policy' or page.handle == 'downloads'
+                  assign mobile_nav_active = true
+                endif
+              endif
             -%}
             <li class="drawer__menu-group{% if mobile_nav_active %} rovic-mobile-active{% endif %}">
               {%- liquid
@@ -76,7 +82,7 @@ endif
 
               {%- if link.title == 'Shop' -%}
                 <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ routes.all_products_collection_url }}"{% if collection.handle == 'all' %} aria-current="page"{% endif %}>Shop</a>
-              {%- elsif link.links != blank or enable_mega_menu -%}
+              {%- elsif link.title == 'Downloads' or link.links != blank or enable_mega_menu -%}
                 {%- render 'header-nav-drawer', section: section, link: link, enable_mega_menu: enable_mega_menu, enable_accordion_menu: section.settings.accordion_menu_mobile, block: mega_menu_block, position: forloop.index -%}
               {%- else -%}
                 <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>

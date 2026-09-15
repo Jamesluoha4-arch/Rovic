@@ -18,4 +18,8 @@ slider-element.rovic-dragging { cursor: grabbing; user-select: none; scroll-snap
 .rovic-footer-brand:focus-visible { outline: 2px solid #a3d500; outline-offset: 8px; }
 .rovic-footer-menu__group { display: grid; gap: 8px; }
 .rovic-footer-menu__group > ul { padding-inline-start: 16px; border-inline-start: 1px solid rgb(255 255 255 / .2); }
+@media (min-width: 768px) {
+  .footer__accordions .rovic-footer-menu-main,
+  .footer__accordions .rovic-footer-about { width: calc(50% - var(--sp-6)) !important; }
+}
 @media (max-width: 767px) {  .logo__media:has(.rovic-square-logo) { width: 80px; height: 80px; } }

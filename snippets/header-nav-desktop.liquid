@@ -30,6 +30,7 @@
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
   assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
   assign accessories_url = routes.collections_url | append: '/accessories'
+  assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
   if section.index == nil
     assign section_rendering_api = true
   endif
@@ -56,9 +57,18 @@
           assign nav_active = true
         endif
       endif
+      if link.title == 'Downloads'
+        assign nav_active = false
+        if request.page_type == 'search' or request.page_type == 'policy' or page.handle == 'downloads'
+          assign nav_active = true
+        endif
+      endif
       assign nav_label = link.title
       if link.title == 'Push Carts'
         assign nav_label = 'Carts'
+      endif
+      if link.title == 'Downloads'
+        assign nav_label = 'Support'
       endif
       assign enable_mega_menu = false
       assign mega_menu_block = nil
@@ -79,6 +89,27 @@
           <span class="btn-text" data-text>Shop</span>
           {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Shop</span>{%- endif -%}
         </a>
+      </li>
+    {%- elsif link.title == 'Downloads' -%}
+      <li{% if nav_active %} class="rovic-nav-active"{% endif %}>
+        <details is="details-dropdown" trigger="{% if section.settings.hover_menu %}hover{% else %}click{% endif %}" level="top">
+          <summary class="z-2 relative{% if section.settings.menu_active == 'block' %} rounded-full{% endif %}" aria-haspopup="true" aria-expanded="false" aria-label="Support">
+            <magnet-element class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %}>
+              <span class="btn-text" data-text>Support</span>
+              {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Support</span>{%- endif -%}
+            </magnet-element>
+          </summary>
+          <div id="DropdownMenu-{{ section.id }}-{{ forloop.index }}-{{ context }}" class="dropdown rovic-dropdown-panel opacity-0 invisible absolute pointer-events-none">
+            <div class="dropdown__container relative">
+              {%- render 'corner', dir: 'top', prefix: 'dropdown' -%}
+              <ul class="dropdown__nav flex flex-col gap-1d5 xl:gap-2" role="list">
+                <li class="opacity-0"><p><a href="{{ routes.search_url }}" class="reversed-link text-sm-base">Search</a></p></li>
+                <li class="opacity-0"><p><a href="{{ privacy_policy_url }}" class="reversed-link text-sm-base">Privacy Policy</a></p></li>
+                <li class="opacity-0"><p><a href="{{ pages.downloads.url }}" class="reversed-link text-sm-base">Downloads</a></p></li>
+              </ul>
+            </div>
+          </div>
+        </details>
       </li>
     {%- elsif enable_mega_menu -%}
       <li{% if nav_active %} class="rovic-nav-active"{% endif %}>

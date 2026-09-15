@@ -25,9 +25,13 @@
   assign section_rendering_api = false
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
   assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
+  assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
   assign drawer_link_title = link.title
   if link.title == 'Push Carts'
     assign drawer_link_title = 'Carts'
+  endif
+  if link.title == 'Downloads'
+    assign drawer_link_title = 'Support'
   endif
   if section.index == nil
     assign section_rendering_api = true
@@ -61,7 +65,11 @@
     {%- else -%}
       <ul id="DrawerSubMenu-{{ section.id }}-{{ position }}" class="drawer__scrollable flex flex-col h-full">
         {%- if link.title == 'Shop' -%}<li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ routes.collections_url }}"{% if request.page_type == 'list-collections' %} aria-current="page"{% endif %}>Collections</a></li>{%- endif -%}
-        {%- if link.title == 'Push Carts' -%}
+        {%- if link.title == 'Downloads' -%}
+          <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ routes.search_url }}"{% if request.page_type == 'search' %} aria-current="page"{% endif %}>Search</a></li>
+          <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ privacy_policy_url }}"{% if request.page_type == 'policy' %} aria-current="page"{% endif %}>Privacy Policy</a></li>
+          <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ pages.downloads.url }}"{% if page.handle == 'downloads' %} aria-current="page"{% endif %}>Downloads</a></li>
+        {%- elsif link.title == 'Push Carts' -%}
           <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ push_carts_url }}"{% if collection.handle == 'all-push-carts' %} aria-current="page"{% endif %}>Push Carts</a></li>
           <li class="drawer__menu-group"><a class="drawer__menu-item block" href="{{ disc_golf_carts_url }}"{% if collection.handle == 'junior-push-carts' %} aria-current="page"{% endif %}>DISC Golf Carts</a></li>
         {%- elsif block.type == 'mega_menu_tab' -%}

@@ -37,7 +37,9 @@
             for block in section.blocks
               case block.type
                 when 'link_list'
-                  render 'footer-menu', block: block
+                  unless block.settings.heading == 'Support'
+                    render 'footer-menu', block: block
+                  endunless
 
                 when 'text'
                   render 'footer-text', block: block

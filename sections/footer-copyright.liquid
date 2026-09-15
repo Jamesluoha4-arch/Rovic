@@ -23,19 +23,6 @@
         endif
         echo powered_by_link
       -%}
-      {%- if section.settings.show_policy -%}
-        <ul class="flex flex-wrap gap-3 justify-center lg:justify-start">
-          {%- for policy in shop.policies -%}
-            {%- if policy != blank -%}
-              <li>
-                <small>
-                  <a href="{{ policy.url }}" class="block reversed-link">{{ policy.title }}</a>
-                </small>
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
     </div>
 
     {%- liquid

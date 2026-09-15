@@ -91,11 +91,11 @@
   {%- endcapture -%}
 
   {%- if block.settings.heading == blank -%}
-    <div class="footer__item--{{ block.id }} no-details" {{ block.shopify_attributes }}>
+    <div class="footer__item--{{ block.id }} no-details{% if block.settings.heading == 'Rovic' %} rovic-footer-about{% endif %}" {{ block.shopify_attributes }}>
       {{- block_content -}}
     </div>
   {%- else -%}
-    <details class="footer__item--{{ block.id }} details active" is="footer-details"{% if block.settings.opened %} data-opened{% endif %} {{ block.shopify_attributes }}>
+    <details class="footer__item--{{ block.id }} details active{% if block.settings.heading == 'Rovic' %} rovic-footer-about{% endif %}" is="footer-details"{% if block.settings.opened %} data-opened{% endif %} {{ block.shopify_attributes }}>
       <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
         <span class="heading text-base-2xl font-medium lg:font-heading">{{ block.settings.heading | escape }}</span>
         {%- render 'icon', icon: 'chevron-up' -%}
