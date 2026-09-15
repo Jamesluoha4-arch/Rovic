@@ -103,9 +103,9 @@
             <div class="dropdown__container relative">
               {%- render 'corner', dir: 'top', prefix: 'dropdown' -%}
               <ul class="dropdown__nav flex flex-col gap-1d5 xl:gap-2" role="list">
+                <li class="opacity-0"><p><a href="{{ pages.downloads.url }}" class="reversed-link text-sm-base">Downloads</a></p></li>
                 <li class="opacity-0"><p><a href="{{ routes.search_url }}" class="reversed-link text-sm-base">Search</a></p></li>
                 <li class="opacity-0"><p><a href="{{ privacy_policy_url }}" class="reversed-link text-sm-base">Privacy Policy</a></p></li>
-                <li class="opacity-0"><p><a href="{{ pages.downloads.url }}" class="reversed-link text-sm-base">Downloads</a></p></li>
               </ul>
             </div>
           </div>
