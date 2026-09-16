@@ -551,7 +551,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/rovic.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -559,7 +559,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/r5.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -567,7 +567,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/qfc_967a38ef-f3c2-4584-ada8-22998976ec15.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -575,7 +575,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/1s.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -583,7 +583,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/1c.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -591,7 +591,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/2l.png",
-            "height": 60,
+            "height": 120,
             "link": ""
           }
         },
@@ -599,7 +599,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/3j.png",
-            "height": 80,
+            "height": 120,
             "link": ""
           }
         }
@@ -640,7 +640,7 @@
         "color_button_background": "",
         "color_button_gradient": "",
         "padding_top": 60,
-        "padding_bottom": 120,
+        "padding_bottom": 60,
         "divider": false,
         "full_width": true,
         "rounded": true
