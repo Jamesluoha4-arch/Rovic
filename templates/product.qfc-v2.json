@@ -172,10 +172,10 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "media_size": 66,
+        "media_size": 55,
         "gallery_layout": "thumbnail",
         "thumbnail_position": "beside",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_autoplay": true,
