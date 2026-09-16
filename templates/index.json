@@ -64,6 +64,20 @@
         },
         "slide-2": {
           "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2Z2A7676.jpg",
+            "heading": "Compact handling with a responsive swivel front wheel.",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "button_label": "Rovic RV1S",
+            "button_link": "shopify://products/rovic-rv1s-swivel",
+            "button_style": "primary",
+            "button_external": false,
+            "button_icon": false
+          }
+        },
+        "image_Khy8UN": {
+          "type": "image",
           "disabled": true,
           "settings": {
             "image": "shopify://shop_images/1s_c603d107-8d70-4a4f-9345-f000e69bc39f.jpg",
@@ -96,6 +110,7 @@
       "block_order": [
         "slide-3",
         "slide-2",
+        "image_Khy8UN",
         "slide-1"
       ],
       "custom_css": [],
