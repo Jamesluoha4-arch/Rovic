@@ -65,11 +65,11 @@
         "slide-2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2Z2A7676.jpg",
-            "heading": "Compact handling with a responsive swivel front wheel.",
+            "image": "shopify://shop_images/2Z2A7675.jpg",
+            "heading": "The newly upgraded ROVIC R5 golf trolley",
             "heading_size": "title-md",
             "heading_tag": "h2",
-            "button_label": "Rovic RV1S",
+            "button_label": "Rovic RVR5",
             "button_link": "shopify://products/rovic-rv1s-swivel",
             "button_style": "primary",
             "button_external": false,
