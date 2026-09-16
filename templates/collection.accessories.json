@@ -41,7 +41,7 @@
       "settings": {
         "transparent_header": true,
         "show_image": true,
-        "image": "shopify://shop_images/ChatGPT_Image_2026_8_22__20_30_20_3e9f48ee-0e74-401a-8794-8a03a7b893bb.png",
+        "image": "shopify://shop_images/2Z2A7626.jpg",
         "image_height": "adapt",
         "content_position": "md:items-end md:justify-start",
         "text_alignment": "left",
@@ -57,7 +57,7 @@
         "padding_bottom": 0,
         "divider": false,
         "full_width": true,
-        "rounded": true,
+        "rounded": false,
         "enable_parallax": false,
         "parallax_direction": "vertical"
       }
