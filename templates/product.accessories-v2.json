@@ -106,47 +106,47 @@
         },
         "text-1": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "icon": "truck",
             "iwidth": "custom",
             "icon_width": 20,
             "text": "In stock! Ships within 1-2 business days.",
             "text_size": "text-sm"
-          },
-          "disabled": true
+          }
         },
         "text-2": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "icon": "headphone",
             "iwidth": "custom",
             "icon_width": 20,
             "text": "90-day risk-free trial",
             "text_size": "text-sm"
-          },
-          "disabled": true
+          }
         },
         "text-3": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "icon": "award",
             "iwidth": "custom",
             "icon_width": 20,
             "text": "2-Year Warranty",
             "text_size": "text-sm"
-          },
-          "disabled": true
+          }
         },
         "text-4": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "icon": "box",
             "iwidth": "custom",
             "icon_width": 20,
             "text": "Complimentary shipping & returns",
             "text_size": "text-sm"
-          },
-          "disabled": true
+          }
         },
         "sticky_buy_button": {
           "type": "sticky_buy_button",
@@ -173,7 +173,7 @@
       "settings": {
         "enable_sticky_info": true,
         "media_size": 66,
-        "gallery_layout": "scroll",
+        "gallery_layout": "thumbnail",
         "thumbnail_position": "beside",
         "image_ratio": "adapt_first",
         "image_zoom": "lightbox",
@@ -183,7 +183,7 @@
         "mobile_layout": "full_width",
         "image_ratio_mobile": "adapt_first",
         "mobile_thumbnail": false,
-        "padding_top": 0,
+        "padding_top": 72,
         "padding_bottom": 84,
         "divider": false,
         "full_width": true,
@@ -1080,6 +1080,94 @@
         "rounded": false
       }
     },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recently Viewed",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "featured_collections_BRRaka": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_zVNKWt": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-push-carts",
+            "products": [],
+            "title": ""
+          }
+        },
+        "collection_7A4VmH": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "products": [],
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_zVNKWt",
+        "collection_7A4VmH"
+      ],
+      "name": "t:sections.featured-collections.name",
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
     "comparison_table_bgF3jp": {
       "type": "comparison-table",
       "blocks": {
@@ -1448,94 +1536,6 @@
         "divider": false,
         "full_width": false,
         "rounded": true
-      }
-    },
-    "featured_collections_BRRaka": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_zVNKWt": {
-          "type": "collection",
-          "settings": {
-            "collection": "all-push-carts",
-            "products": [],
-            "title": ""
-          }
-        },
-        "collection_7A4VmH": {
-          "type": "collection",
-          "settings": {
-            "collection": "accessories",
-            "products": [],
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_zVNKWt",
-        "collection_7A4VmH"
-      ],
-      "name": "t:sections.featured-collections.name",
-      "settings": {
-        "product_limit": 6,
-        "columns": 4,
-        "carousel_on_desktop": true,
-        "show_view_all": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "",
-        "heading_size": "title-sm",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 32,
-        "padding_bottom": 32,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
-    "recently-viewed": {
-      "type": "recently-viewed",
-      "settings": {
-        "product_limit": 6,
-        "columns": 4,
-        "carousel_on_desktop": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "Recently Viewed",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
       }
     },
     "testimonials_mbMNFc": {
