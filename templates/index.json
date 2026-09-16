@@ -422,9 +422,9 @@
           "settings": {
             "column_size": 2,
             "row_size": 1,
-            "subheading": "",
-            "heading": "",
-            "link": "",
+            "subheading": "Shop the Rovic Golf Umbrella",
+            "heading": "Ready for Changing Skies.",
+            "link": "shopify://products/rovic-golf-umbrella",
             "invert_subheading_heading": false,
             "image": "shopify://shop_images/2Z2A7562.jpg",
             "content_position": "md:items-end md:justify-start",
