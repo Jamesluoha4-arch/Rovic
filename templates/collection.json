@@ -67,7 +67,7 @@
         "collection_m4GHDX": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "all-push-carts",
             "products": [
               "rovic-qfc",
               "rovic-rv1c-compact",
