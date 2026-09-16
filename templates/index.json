@@ -366,9 +366,9 @@
           "settings": {
             "column_size": 5,
             "row_size": 2,
-            "subheading": "",
-            "heading": "",
-            "link": "",
+            "subheading": "Explore Rovic Push Carts",
+            "heading": "A Lighter Way to Play.",
+            "link": "shopify://collections/all-push-carts",
             "invert_subheading_heading": false,
             "image": "shopify://shop_images/2Z2A7785s.jpg",
             "content_position": "md:items-end md:justify-start",
