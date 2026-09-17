@@ -25,6 +25,7 @@
 
 {%- if enable_filtering or enable_sorting -%}
   <form class="facet-form" method="GET" action="{{ request.path }}" is="facet-form" data-section-id="{{ section_id }}" data-history>
+    {%- if template.suffix == 'parts' -%}<input type="hidden" name="view" value="parts">{%- endif -%}
     {%- if request.path contains '/collections/accessories' -%}
       {%- render 'accessory-category-filter' -%}
     {%- endif -%}

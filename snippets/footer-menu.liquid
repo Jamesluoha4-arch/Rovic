@@ -18,6 +18,7 @@
         {%- assign push_carts_url = routes.collections_url | append: '/all-push-carts' -%}
         {%- assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts' -%}
         {%- assign accessories_url = routes.collections_url | append: '/accessories' -%}
+        {%- assign parts_url = accessories_url | append: '?view=parts' -%}
         {%- assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy' -%}
         <ul class="flex flex-col gap-3 rovic-footer-menu">
           <li class="inline-flex"><a href="{{ routes.all_products_collection_url }}" class="block reversed-link text-sm-lg leading-tight">Shop</a></li>
@@ -29,6 +30,7 @@
             </ul>
           </li>
           <li class="inline-flex"><a href="{{ accessories_url }}" class="block reversed-link text-sm-lg leading-tight">Accessories</a></li>
+          <li class="inline-flex"><a href="{{ parts_url }}" class="block reversed-link text-sm-lg leading-tight">Parts</a></li>
           <li class="rovic-footer-menu__group">
             <span class="text-sm-lg leading-tight">Support</span>
             <ul class="flex flex-col gap-2">

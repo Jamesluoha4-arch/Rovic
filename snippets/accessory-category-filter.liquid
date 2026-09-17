@@ -2,7 +2,11 @@
   <legend>Category</legend>
   <input type="hidden" name="category" value="">
   <div class="rovic-accessory-categories__list">
-    {%- assign accessory_categories = 'all:All,bag:Bag,wheel:Wheel,umbrella:Umbrella,cover:Cover,brush:Brush,seat:Seat,bottle:Bottle' | split: ',' -%}
+    {%- if template.suffix == 'parts' -%}
+      {%- assign accessory_categories = 'all:All,bag:Bag,wheel:Wheel,umbrella:Umbrella,seat:Seat' | split: ',' -%}
+    {%- else -%}
+      {%- assign accessory_categories = 'all:All,bag:Bag,umbrella:Umbrella,cover:Cover,brush:Brush,bottle:Bottle' | split: ',' -%}
+    {%- endif -%}
     {%- for item in accessory_categories -%}
       {%- assign category = item | split: ':' -%}
       <button type="button" class="rovic-accessory-category" data-accessory-category-button="{{ category.first }}" aria-pressed="false">

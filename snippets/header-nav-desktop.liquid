@@ -30,6 +30,7 @@
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
   assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
   assign accessories_url = routes.collections_url | append: '/accessories'
+  assign parts_url = accessories_url | append: '?view=parts'
   assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
   if section.index == nil
     assign section_rendering_api = true
@@ -225,10 +226,16 @@
       </li>
     {%- endif -%}
     {%- if link.title == 'Push Carts' -%}
-      <li{% if collection.handle == 'accessories' %} class="rovic-nav-active"{% endif %}>
-        <a {% if collection.handle == 'accessories' %}aria-current="page"{% endif %} href="{{ accessories_url }}" class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer" is="magnet-link"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %} aria-label="Accessories">
+      <li{% if collection.handle == 'accessories' and template.suffix != 'parts' %} class="rovic-nav-active"{% endif %}>
+        <a {% if collection.handle == 'accessories' and template.suffix != 'parts' %}aria-current="page"{% endif %} href="{{ accessories_url }}" class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer" is="magnet-link"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %} aria-label="Accessories">
           <span class="btn-text" data-text>Accessories</span>
           {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Accessories</span>{%- endif -%}
+        </a>
+      </li>
+      <li{% if collection.handle == 'accessories' and template.suffix == 'parts' %} class="rovic-nav-active"{% endif %}>
+        <a {% if collection.handle == 'accessories' and template.suffix == 'parts' %}aria-current="page"{% endif %} href="{{ parts_url }}" class="menu__item text-sm-lg flex items-center font-medium z-2 relative cursor-pointer" is="magnet-link"{% if section.settings.menu_active == 'block' %} data-magnet="0"{% endif %} aria-label="Parts">
+          <span class="btn-text" data-text>Parts</span>
+          {%- if section.settings.menu_active == 'block' -%}<span class="btn-text btn-duplicate">Parts</span>{%- endif -%}
         </a>
       </li>
     {%- endif -%}

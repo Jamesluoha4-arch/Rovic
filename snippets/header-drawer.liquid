@@ -12,6 +12,7 @@
 {%- liquid
 assign section_rendering_api = false
 assign accessories_url = routes.collections_url | append: '/accessories'
+assign parts_url = accessories_url | append: '?view=parts'
 if section.index == nil
   assign section_rendering_api = true
 endif
@@ -89,8 +90,11 @@ endif
               {%- endif -%}
             </li>
             {%- if link.title == 'Push Carts' -%}
-              <li class="drawer__menu-group{% if collection.handle == 'accessories' %} rovic-mobile-active{% endif %}">
-                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ accessories_url }}"{% if collection.handle == 'accessories' %} aria-current="page"{% endif %}>Accessories</a>
+              <li class="drawer__menu-group{% if collection.handle == 'accessories' and template.suffix != 'parts' %} rovic-mobile-active{% endif %}">
+                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ accessories_url }}"{% if collection.handle == 'accessories' and template.suffix != 'parts' %} aria-current="page"{% endif %}>Accessories</a>
+              </li>
+              <li class="drawer__menu-group{% if collection.handle == 'accessories' and template.suffix == 'parts' %} rovic-mobile-active{% endif %}">
+                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ parts_url }}"{% if collection.handle == 'accessories' and template.suffix == 'parts' %} aria-current="page"{% endif %}>Parts</a>
               </li>
             {%- endif -%}
           {%- endfor -%}

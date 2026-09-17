@@ -236,6 +236,19 @@
                   assign accessory_category = blank
                   if collection.handle == 'accessories'
                     assign accessory_title = product.title | downcase
+                    assign is_rovic_part = false
+                    if accessory_title == 'replacement wheel set' or accessory_title == 'replacement bag straps' or accessory_title == 'adjustable umbrella holder' or accessory_title == 'rv2l extended seat' or accessory_title == 'rv1 series extended seat'
+                      assign is_rovic_part = true
+                    endif
+
+                    if template.suffix == 'parts'
+                      unless is_rovic_part
+                        continue
+                      endunless
+                    elsif is_rovic_part
+                      continue
+                    endif
+
                     if accessory_title contains 'storage bag' or accessory_title contains 'bag straps'
                       assign accessory_category = 'bag'
                     elsif accessory_title contains 'replacement wheel set'
@@ -332,7 +345,7 @@
       "width": {{ page_image.width | json }}
     },
   {% endif %}
-  "name": {{ collection.title | json }}
+  "name": {% if collection.handle == 'accessories' and template.suffix == 'parts' %}{{ 'Parts' | json }}{% else %}{{ collection.title | json }}{% endif %}
 }
 </script>
 

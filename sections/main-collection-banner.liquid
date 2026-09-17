@@ -2,6 +2,7 @@
 {%- if collection.handle == 'all' -%}{%- assign rovic_collection_title = 'Shop' -%}{%- endif -%}
 {%- if collection.handle == 'all-push-carts' -%}{%- assign rovic_collection_title = 'Push Carts' -%}{%- endif -%}
 {%- if collection.handle == 'junior-push-carts' -%}{%- assign rovic_collection_title = 'DISC Golf Carts' -%}{%- endif -%}
+{%- if collection.handle == 'accessories' and template.suffix == 'parts' -%}{%- assign rovic_collection_title = 'Parts' -%}{%- endif -%}
 {%- assign rovic_square_collection_banner = false -%}
 {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' -%}
   {%- assign rovic_square_collection_banner = true -%}
