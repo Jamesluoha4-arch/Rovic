@@ -141,6 +141,7 @@
     },
     "collection-list": {
       "type": "collection-list",
+      "disabled": true,
       "blocks": {
         "collection-1": {
           "type": "collection",
@@ -233,6 +234,7 @@
     },
     "featured-collections": {
       "type": "featured-collections",
+      "disabled": true,
       "blocks": {
         "collection-1": {
           "type": "collection",
