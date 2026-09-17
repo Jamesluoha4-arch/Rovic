@@ -35,8 +35,6 @@
 
   // Keep the product option picker in sync when a variant image thumbnail is selected.
   document.addEventListener('click', event => {
-    if (event.defaultPrevented) return;
-
     const thumbnail = event.target.closest('media-gallery .product__thumbnail[data-media-id]');
     if (!thumbnail) return;
 
