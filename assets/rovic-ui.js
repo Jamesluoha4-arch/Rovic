@@ -33,6 +33,70 @@
     event.preventDefault(); event.stopImmediatePropagation();
   }, true);
 
+  // Keep the product option picker in sync when a variant image thumbnail is selected.
+  document.addEventListener('click', event => {
+    if (event.defaultPrevented) return;
+
+    const thumbnail = event.target.closest('media-gallery .product__thumbnail[data-media-id]');
+    if (!thumbnail) return;
+
+    const gallery = thumbnail.closest('media-gallery');
+    const formId = gallery?.getAttribute('form');
+    if (!formId) return;
+
+    const productInfo = Array.from(document.querySelectorAll('product-info')).find(info => info.getAttribute('form') === formId);
+    const picker = productInfo?.querySelector('variant-picker');
+    const variantData = picker?.querySelector('[data-variants]')?.textContent;
+    if (!picker || !variantData) return;
+
+    let variants;
+    try {
+      variants = JSON.parse(variantData);
+    }
+    catch (_error) {
+      return;
+    }
+
+    const mediaId = Number(thumbnail.dataset.mediaId);
+    const matches = variants.filter(variant => Number(variant.featured_media?.id) === mediaId);
+    if (!matches.length) return;
+
+    const containers = Array.from(picker.querySelectorAll('select, fieldset'));
+    const currentValues = containers.map(container => {
+      if (container.tagName === 'SELECT') return container.value;
+      return container.querySelector('input:checked')?.value;
+    });
+    const score = variant => variant.options.reduce((total, value, index) => total + (value === currentValues[index] ? 1 : 0), 0);
+    const variant = matches
+      .slice()
+      .sort((a, b) => Number(b.available) - Number(a.available) || score(b) - score(a))[0];
+    if (!variant) return;
+
+    let changedInput = null;
+    containers.forEach((container, index) => {
+      const value = variant.options[index];
+      if (value == null) return;
+
+      if (container.tagName === 'SELECT') {
+        const changed = container.value !== value;
+        Array.from(container.options).forEach(option => option.toggleAttribute('selected', option.value === value));
+        container.value = value;
+        if (changed && !changedInput) changedInput = container;
+        return;
+      }
+
+      const input = Array.from(container.querySelectorAll('input[type="radio"]')).find(radio => radio.value === value);
+      if (!input) return;
+      const changed = !input.checked;
+      input.checked = true;
+      const selectedLabel = container.querySelector('.form__label .font-medium');
+      if (selectedLabel) selectedLabel.textContent = value;
+      if (changed && !changedInput) changedInput = input;
+    });
+
+    changedInput?.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+
   // Measure the selected thumbnail edge, including gaps, instead of using inventory.
   const update = () => document.querySelectorAll('.rovic-color-progress').forEach(bar => {
     const field = bar.closest('fieldset');

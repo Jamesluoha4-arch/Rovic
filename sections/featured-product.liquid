@@ -123,6 +123,11 @@
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
+    {%- if section.settings.heading != blank -%}
+      <div class="title-wrapper text-left">
+        <h2 class="heading title-md">{{ section.settings.heading | escape }}</h2>
+      </div>
+    {%- endif -%}
     {%- if product != blank -%}
       {%- assign spinning_block = section.blocks | where: 'type', 'spinning_text' | first -%}
       <div class="featured-product product product--{{ section.settings.gallery_layout }}{% if media_count == 0 %} no-media{% endif %} flex flex-col items-start lg:grid gap-5 w-full relative">
@@ -983,6 +988,11 @@
       "type": "product",
       "id": "product",
       "label": "t:sections.global.settings.product.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
     },
     {
       "type": "checkbox",
