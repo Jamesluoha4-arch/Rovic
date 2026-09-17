@@ -26,7 +26,7 @@
   assign description = section.blocks | where: "type", "description" | first
   assign subcollections = section.blocks | where: "type", "subcollections" | first
 
-  assign enable_sorting = section.settings.enable_sorting
+  assign enable_sorting = false
   assign enable_filtering = section.settings.enable_filtering
   assign show_on_model = section.settings.show_on_model
   assign filter_type = section.settings.filter_type

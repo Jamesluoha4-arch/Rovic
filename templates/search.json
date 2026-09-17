@@ -11,7 +11,7 @@
         "filter_collapsed": false,
         "filter_type": "drawer",
         "filter_color_swatches": true,
-        "enable_sorting": true,
+        "enable_sorting": false,
         "show_post_tags": true,
         "show_post_category": true,
         "show_post_date": true,

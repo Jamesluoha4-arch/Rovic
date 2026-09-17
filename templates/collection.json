@@ -188,7 +188,7 @@
         "filter_type": "drawer",
         "filter_collapsed": false,
         "filter_color_swatches": true,
-        "enable_sorting": true,
+        "enable_sorting": false,
         "show_on_model": false,
         "buttons_style": "secondary",
         "padding_top": 0,
