@@ -61,68 +61,6 @@
         "parallax_direction": "vertical"
       }
     },
-    "featured_collections_yMUcTP": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_m4GHDX": {
-          "type": "collection",
-          "settings": {
-            "collection": "all-push-carts",
-            "products": [
-              "rovic-qfc",
-              "rovic-rv1c-compact",
-              "rovic-rv1s-swivel",
-              "rovic-rv2l-lite",
-              "rovic-rv3j-junior"
-            ],
-            "title": "Push Carts"
-          }
-        },
-        "collection_HPMfE9": {
-          "type": "collection",
-          "settings": {
-            "collection": "accessories",
-            "products": [],
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_m4GHDX",
-        "collection_HPMfE9"
-      ],
-      "name": "t:sections.featured-collections.name",
-      "settings": {
-        "product_limit": 4,
-        "columns": 4,
-        "carousel_on_desktop": true,
-        "show_view_all": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "Shop",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
     "main-collection": {
       "type": "main-collection",
       "blocks": {
@@ -321,7 +259,6 @@
   },
   "order": [
     "main-collection-banner",
-    "featured_collections_yMUcTP",
     "main-collection",
     "images-with-text-overlay",
     "recently-viewed"
