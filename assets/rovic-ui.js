@@ -1,4 +1,28 @@
 (() => {
+  // Align desktop dropdowns with the header edge, including sticky-header resizing.
+  const alignDropdowns = () => {
+    document.querySelectorAll('.header__menu details[level="top"]').forEach(details => {
+      if (!details.querySelector(':scope > .rovic-dropdown-panel')) return;
+      const header = details.closest('.header');
+      const gap = header.getBoundingClientRect().bottom - details.getBoundingClientRect().bottom;
+      details.style.setProperty('--rovic-dropdown-gap', `${Math.max(0, gap)}px`);
+    });
+  };
+  const observeHeaders = () => {
+    document.querySelectorAll('.header').forEach(header => headerObserver.observe(header));
+    alignDropdowns();
+  };
+  const headerObserver = new ResizeObserver(alignDropdowns);
+  window.addEventListener('resize', alignDropdowns);
+  document.addEventListener('shopify:section:load', observeHeaders);
+  document.addEventListener('pointerover', event => {
+    if (event.target.closest('.header__menu')) alignDropdowns();
+  });
+  document.addEventListener('focusin', event => {
+    if (event.target.closest('.header__menu')) alignDropdowns();
+  });
+  observeHeaders();
+
   // Native touch scrolling remains intact; mouse drags suppress only the following click.
   let drag;
   let suppressClick = false;
