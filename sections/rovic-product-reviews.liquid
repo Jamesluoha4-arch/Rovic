@@ -1,0 +1,35 @@
+{% capture review_cards %}{% render 'rovic-review-data', product: product %}{% endcapture %}
+{% assign review_cards_clean = review_cards | strip %}
+{% if review_cards_clean != blank %}
+<section class="rv-reviews" id="rv-reviews-{{ section.id }}" aria-labelledby="rv-reviews-heading-{{ section.id }}">
+  <div class="rv-reviews__header">
+    <div><p class="rv-reviews__eyebrow">THE ROVIC WALK</p><h2 id="rv-reviews-heading-{{ section.id }}">A golfer’s <span>point of view.</span></h2></div>
+    <div class="rv-reviews__intro"><p>Explore {{ product.title | escape }} through sample golfer perspectives.</p><p class="rv-reviews__disclosure">Illustrative reviews &amp; ratings. Created as examples, not submitted by customers.</p></div>
+  </div>
+  <div class="rv-reviews__track" role="list" tabindex="0" aria-label="Sample reviews for {{ product.title | escape }}">{{ review_cards }}</div>
+  <div class="rv-reviews__footer"><span>YOUR WALK. YOUR ROVIC.</span><div class="rv-reviews__controls"><button type="button" data-direction="-1" aria-label="Previous sample review">←</button><button type="button" data-direction="1" aria-label="Next sample review">→</button></div></div>
+</section>
+<style>
+.rv-reviews{max-width:1600px;margin:0 auto;padding:72px 40px;color:#20221e}
+.rv-reviews__header{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:32px}
+.rv-reviews__eyebrow{font-size:12px;font-weight:750;letter-spacing:.18em;margin:0 0 16px}
+.rv-reviews h2{font-size:clamp(30px,3.4vw,52px);line-height:1.08;letter-spacing:-.04em;font-weight:750;margin:0}
+.rv-reviews h2 span{display:block;text-decoration:underline;text-decoration-color:#b5ef26;text-decoration-thickness:7px;text-underline-offset:3px;text-decoration-skip-ink:none}
+.rv-reviews__intro{max-width:390px;font-size:15px;line-height:1.6}.rv-reviews__intro p{margin:0}.rv-reviews__intro .rv-reviews__disclosure{margin-top:10px;font-size:12px;color:#62665d}
+.rv-reviews__track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#a5b590 transparent;padding:4px 0 16px}
+.rv-review-card{flex:0 0 calc((100% - 40px)/3);min-width:0;scroll-snap-align:start;background:#f3f4f0;border:1px solid #e7e9e1;border-radius:20px;padding:28px;display:flex;flex-direction:column}
+.rv-review-card__top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px}.rv-review-card__stars{color:#496526;font-size:23px;letter-spacing:2px;white-space:nowrap}.rv-review-card__empty{color:#c9cec0}.rv-review-card__score{font-size:12px;font-weight:650;white-space:nowrap}
+.rv-review-card h3{font-size:20px;line-height:1.3;font-weight:700;margin:0 0 14px;letter-spacing:-.02em}.rv-review-card__body{font-size:16px;line-height:1.7;margin:0 0 32px;flex:1}
+.rv-review-card__author{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:650;margin:0 0 20px;flex-wrap:wrap}.rv-review-card__avatar{display:grid;place-items:center;border-radius:50%;height:30px;width:30px;background:#e2e9d7;color:#42552c;font-size:11px}.rv-review-card__sample{font-size:9px;letter-spacing:.07em;border:1px solid #c6ccbc;border-radius:4px;padding:2px 5px;margin-left:auto}
+.rv-review-card__product{border-top:1px solid #d9ddcf;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:650;font-size:13px}.rv-review-card__product img{width:56px;height:56px;object-fit:contain;border-radius:50%;background:#fff}
+.rv-reviews__footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px}.rv-reviews__footer>span{font-size:10px;font-weight:700;letter-spacing:.16em;color:#636b59}.rv-reviews__controls{display:flex;gap:10px}.rv-reviews__controls button{width:44px;height:44px;border-radius:50%;border:1px solid #d3d9c9;background:#fff;color:#20221e;font-size:22px;cursor:pointer}.rv-reviews__controls button:hover{background:#c1f453}.rv-reviews__controls button:disabled{opacity:.3;cursor:default}.rv-reviews button:focus-visible,.rv-reviews__track:focus-visible{outline:2px solid #52722c;outline-offset:3px}
+@media(max-width:1000px){.rv-review-card{flex-basis:calc((100% - 20px)/2)}.rv-reviews__header{gap:24px}.rv-reviews__intro{max-width:310px}}
+@media(max-width:600px){.rv-reviews{padding:48px 20px}.rv-reviews__header{display:block;margin-bottom:24px}.rv-reviews__intro{max-width:none;margin-top:24px}.rv-review-card{flex-basis:88%;padding:24px}.rv-reviews__track{gap:14px}.rv-review-card__body{font-size:15px}.rv-reviews h2 span{text-decoration-thickness:5px}}
+</style>
+<script>
+(()=>{const root=document.getElementById('rv-reviews-{{ section.id }}');if(!root)return;const track=root.querySelector('.rv-reviews__track');const buttons=[...root.querySelectorAll('button[data-direction]')];const update=()=>{buttons[0].disabled=track.scrollLeft<2;buttons[1].disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;};buttons.forEach(button=>button.addEventListener('click',()=>{const card=track.firstElementChild;track.scrollBy({left:Number(button.dataset.direction)*(card.getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap)),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}));track.addEventListener('scroll',update,{passive:true});new ResizeObserver(update).observe(track);update();})();
+</script>
+{% endif %}
+{% schema %}
+{"name":"Rovic sample reviews","settings":[],"presets":[{"name":"Rovic sample reviews"}],"enabled_on":{"templates":["product"]}}
+{% endschema %}

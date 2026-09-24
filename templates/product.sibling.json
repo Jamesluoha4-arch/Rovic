@@ -896,10 +896,15 @@
         "full_width": false,
         "rounded": false
       }
+    },
+    "rovic_reviews": {
+      "type": "rovic-product-reviews",
+      "settings": {}
     }
   },
   "order": [
     "main-product",
+    "rovic_reviews",
     "help-drawer",
     "video-hero",
     "collage",
