@@ -3,7 +3,7 @@
 {% if review_cards_clean != blank %}
 <section class="rv-reviews" id="rv-reviews-{{ section.id }}" aria-labelledby="rv-reviews-heading-{{ section.id }}">
   <div class="rv-reviews__header">
-    <div><p class="rv-reviews__eyebrow">THE ROVIC WALK</p><h2 id="rv-reviews-heading-{{ section.id }}">A golfer’s <span>point of view.</span></h2><p class="rv-reviews__disclosure">Demo reviews — fictional examples.</p></div>
+    <div><p class="rv-reviews__eyebrow">THE ROVIC WALK</p><h2 id="rv-reviews-heading-{{ section.id }}">A golfer’s <span>point of view.</span></h2></div>
   </div>
   <div class="rv-reviews__track" role="list" tabindex="0" aria-label="Sample reviews for {{ product.title | escape }}">{{ review_cards }}</div>
   <div class="rv-reviews__footer"><span>YOUR WALK. YOUR ROVIC.</span><div class="rv-reviews__controls"><button type="button" data-direction="-1" aria-label="Previous sample review">←</button><button type="button" data-direction="1" aria-label="Next sample review">→</button></div></div>
