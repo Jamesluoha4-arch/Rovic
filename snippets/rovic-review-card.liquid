@@ -2,6 +2,6 @@
   <div class="rv-review-card__top"><span class="rv-review-card__stars" aria-label="Sample rating: {{ score }} out of 5">{% for star in (1..5) %}<span{% if star > score %} class="rv-review-card__empty"{% endif %} aria-hidden="true">★</span>{% endfor %}</span><span class="rv-review-card__score">{{ score }}.0 / 5</span></div>
   <h3>{{ title | escape }}</h3>
   <p class="rv-review-card__body">{{ body | escape }}</p>
-  <p class="rv-review-card__author"><span class="rv-review-card__avatar" aria-hidden="true">{{ index | prepend: '0' }}</span>Illustrative review {{ index }}<span class="rv-review-card__sample">SAMPLE</span></p>
+  <p class="rv-review-card__author"><span class="rv-review-card__avatar" aria-hidden="true">{{ author | slice: 0, 2 | upcase | escape }}</span>{{ author | escape }}</p>
   <div class="rv-review-card__product"><span>{{ product.title | escape }}</span>{% if product.featured_image %}{{ product.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', widths: '60,120', sizes: '56px', alt: product.title }}{% endif %}</div>
 </article>
