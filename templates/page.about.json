@@ -365,7 +365,8 @@
         "padding_bottom": 72,
         "divider": false,
         "full_width": false,
-        "rounded": true
+        "rounded": true,
+        "show_arrows": false
       }
     },
     "featured_collection_cxMCEy": {
@@ -693,25 +694,13 @@
             "button_external": false,
             "button_icon": true
           }
-        },
-        "button_CcY44C": {
-          "type": "button",
-          "settings": {
-            "button_label": "Compare Models",
-            "button_link": "shopify://collections/all-push-carts",
-            "button_style": "primary",
-            "button_size": "md",
-            "button_external": false,
-            "button_icon": true
-          }
         }
       },
       "block_order": [
         "subheading_xEFtt7",
         "heading_eDim8U",
         "text_CbgBqL",
-        "button_bUEEFP",
-        "button_CcY44C"
+        "button_bUEEFP"
       ],
       "name": "t:sections.image-with-text-overlay.name",
       "settings": {

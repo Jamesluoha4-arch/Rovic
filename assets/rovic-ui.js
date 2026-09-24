@@ -136,3 +136,12 @@
   new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
   schedule();
 })();
+
+// Hover opens portfolio details; touch and keyboard keep their native click behavior.
+document.addEventListener('pointerover', (event) => {
+  if (event.pointerType !== 'mouse' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const button = event.target.closest('.profile__button[aria-controls]');
+  if (!button || button.contains(event.relatedTarget)) return;
+  const modal = document.getElementById(button.getAttribute('aria-controls'));
+  if (modal && !modal.open && typeof modal.show === 'function') modal.show(button);
+});

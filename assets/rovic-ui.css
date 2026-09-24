@@ -23,3 +23,6 @@ slider-element.rovic-dragging { cursor: grabbing; user-select: none; scroll-snap
   .footer__accordions .rovic-footer-about { width: calc(50% - var(--sp-6)) !important; }
 }
 @media (max-width: 767px) {  .logo__media:has(.rovic-square-logo) { width: 80px; height: 80px; } }
+
+/* Selected collection tabs are active navigation, not unavailable actions. */
+.featured-collections button[role="tab"]:disabled { cursor: pointer; }
