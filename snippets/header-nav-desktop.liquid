@@ -30,7 +30,7 @@
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
   assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
   assign accessories_url = routes.collections_url | append: '/accessories'
-  assign parts_url = accessories_url | append: '?view=parts'
+  assign parts_url = routes.collections_url | append: '/parts'
   assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
   if section.index == nil
     assign section_rendering_api = true
