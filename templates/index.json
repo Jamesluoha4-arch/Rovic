@@ -141,7 +141,6 @@
     },
     "collection-list": {
       "type": "collection-list",
-      "disabled": true,
       "blocks": {
         "collection-1": {
           "type": "collection",
@@ -198,6 +197,7 @@
         "collection-2",
         "collection-3"
       ],
+      "disabled": true,
       "settings": {
         "card_style": "card",
         "image_type": "collection",
@@ -234,7 +234,6 @@
     },
     "featured-collections": {
       "type": "featured-collections",
-      "disabled": true,
       "blocks": {
         "collection-1": {
           "type": "collection",
@@ -275,6 +274,7 @@
         "collection-3",
         "collection-4"
       ],
+      "disabled": true,
       "settings": {
         "product_limit": 12,
         "columns": 4,
@@ -398,7 +398,7 @@
             "row_size": 1,
             "subheading": "Shop the Rovic Golf Umbrella",
             "heading": "Ready for Changing Skies.",
-            "link": "",
+            "link": "shopify://products/rovic-golf-umbrella",
             "invert_subheading_heading": false,
             "image": "shopify://shop_images/2Z2A7562.jpg",
             "content_position": "md:items-end md:justify-start",
@@ -771,7 +771,6 @@
     },
     "image-comparison": {
       "type": "image-comparison",
-      "disabled": true,
       "blocks": {
         "image-1": {
           "type": "image",
@@ -798,6 +797,7 @@
         "image-1",
         "image-2"
       ],
+      "disabled": true,
       "settings": {
         "layout": "horizontal",
         "image_height": "adapt",
