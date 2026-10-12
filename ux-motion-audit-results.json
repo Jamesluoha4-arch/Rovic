@@ -1,0 +1,11 @@
+{
+  "scope": "Node event simulation of actual local source; not browser or live-store test",
+  "normalDragClickSuppressed": true,
+  "cancelledDragThenKeyboardClickSuppressed": false,
+  "cancelledDragThenMouseClickSuppressed": false,
+  "completedDragThenKeyboardClickSuppressed": false,
+  "unrelatedClickSuppressed": false,
+  "reducedMotionHoverAnimationCalls": 1,
+  "reducedMotionHoverDuration": 0,
+  "slideshowModesAndHeroConfig": "passed for GitHub theme"
+}

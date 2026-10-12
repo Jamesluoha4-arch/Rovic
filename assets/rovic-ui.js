@@ -25,9 +25,9 @@
 
   // Native touch scrolling remains intact; mouse drags suppress only the following click.
   let drag;
-  let suppressClick = false;
+  let suppressClick = null;
   document.addEventListener('pointerdown', event => {
-    suppressClick = false;
+    suppressClick = null;
     const slider = event.target.closest('slider-element');
     if (!slider || event.pointerType !== 'mouse' || event.button !== 0 || slider.scrollWidth <= slider.clientWidth + 1 || event.target.closest('button,input,select,textarea')) return;
     drag = { slider, id: event.pointerId, x: event.clientX, scroll: slider.scrollLeft, moved: false };
@@ -41,9 +41,11 @@
     event.preventDefault();
     drag.slider.scrollLeft = drag.scroll - dx;
   }, { passive: false });
-  const finish = () => {
+  const finish = event => {
+    if (drag && event?.pointerId != null && event.pointerId !== drag.id) return;
+    suppressClick = event?.type === 'pointerup' && drag?.moved
+      ? { slider: drag.slider, id: drag.id } : null;
     if (!drag) return;
-    suppressClick = drag.moved;
     drag.slider.classList.remove('rovic-dragging');
     if (drag.slider.hasPointerCapture(drag.id)) drag.slider.releasePointerCapture(drag.id);
     drag = null;
@@ -53,7 +55,11 @@
   window.addEventListener('blur', finish);
   document.addEventListener('click', event => {
     if (!suppressClick) return;
-    suppressClick = false;
+    const completedDrag = suppressClick;
+    suppressClick = null;
+    // Keyboard and assistive activation must never be swallowed by a mouse drag.
+    if (event.detail === 0 || !completedDrag.slider.contains(event.target)) return;
+    if (event.pointerId != null && event.pointerId !== completedDrag.id) return;
     event.preventDefault(); event.stopImmediatePropagation();
   }, true);
 

@@ -564,7 +564,7 @@ console.log(theme.settings.themeName + ' theme (' + theme.settings.themeVersion 
         if (event.pointerType === 'touch') return;
 
         if (this.btnFill) {
-          Motion.animate(this.btnFill, { y: ['76%', '0%'] }, { duration: 0.6 });
+          Motion.animate(this.btnFill, { y: ['76%', '0%'] }, { duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.2 });
         }
       }
 
@@ -572,7 +572,7 @@ console.log(theme.settings.themeName + ' theme (' + theme.settings.themeVersion 
         if (event.pointerType === 'touch') return;
 
         if (this.btnFill) {
-          Motion.animate(this.btnFill, { y: '-76%' }, { duration: 0.6 });
+          Motion.animate(this.btnFill, { y: '-76%' }, { duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.2 });
         }
       }
 
@@ -7573,7 +7573,7 @@ class SlideshowElement extends BaseElement {
         prevNextButtons: false,
         wrapAround: true,
         rightToLeft: theme.config.rtl,
-        autoPlay: this.autoplay ? this.speed : false,
+        autoPlay: this.autoplay && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? this.speed : false,
         adaptiveHeightProperty: this.adaptiveHeightProperty,
         on: {
           ready: function () {
