@@ -616,3 +616,8 @@
   visibility: visible;
   pointer-events: auto;
 }
+
+/* Keep filtered cards out of the grid, including themes with flex utilities. */
+#ProductGridContainer .product-card[data-accessory-category][hidden],
+#ProductGridContainer motion-list[hidden] { display: none !important; }
+.rovic-accessory-category:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }

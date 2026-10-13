@@ -1,9 +1,9 @@
 (() => {
-  const validCategories = new Set(['all', 'bag', 'wheel', 'umbrella', 'cover', 'brush', 'seat', 'bottle']);
+  const validCategories = () => new Set([...document.querySelectorAll('[data-accessory-category-button]')].map(button => button.dataset.accessoryCategoryButton));
 
   const selectedCategory = () => {
     const category = new URL(window.location.href).searchParams.get('category')?.toLowerCase() || 'all';
-    return validCategories.has(category) ? category : 'all';
+    return validCategories().has(category) ? category : 'all';
   };
 
   const syncControls = (category) => {
@@ -22,13 +22,61 @@
     document.querySelectorAll('results-count').forEach((result) => { result.textContent = count; });
   };
 
-  const applyCategory = () => {
+  const pendingGrids = new WeakMap();
+  const loadPartsPages = (grid) => {
+    if (pendingGrids.has(grid)) return pendingGrids.get(grid);
+    const task = (async () => {
+      const pages = Number(grid.dataset.pages);
+      const current = Number(grid.dataset.page);
+      const batches = [];
+      for (let page = 1; page <= pages; page += 1) {
+        if (page === current) { batches.push([...grid.children]); continue; }
+        const url = new URL(window.location.href);
+        url.searchParams.set('section_id', grid.dataset.sectionId);
+        url.searchParams.set('page', page);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Unable to load Parts');
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const nextGrid = doc.querySelector('[data-parts-grid]');
+        if (!nextGrid) throw new Error('Missing Parts grid');
+        batches.push([...nextGrid.children]);
+      }
+      if (!grid.isConnected) return;
+      if (pages > 1) grid.replaceChildren(...batches.flat());
+      grid.closest('#ProductGridContainer').querySelectorAll('.pagination, infinite-scroll').forEach(el => { el.hidden = true; });
+    })();
+    pendingGrids.set(grid, task);
+    task.catch(() => pendingGrids.delete(grid));
+    return task;
+  };
+
+  let revision = 0;
+  const applyCategory = async () => {
+    const run = ++revision;
+    const partsGrid = document.querySelector('[data-parts-grid]');
+    if (partsGrid) {
+      partsGrid.setAttribute('aria-busy', 'true');
+      try { await loadPartsPages(partsGrid); }
+      catch (error) {
+        let message = document.querySelector('[data-parts-error]');
+        if (!message) {
+          message = document.createElement('p');
+          message.dataset.partsError = '';
+          message.setAttribute('role', 'alert');
+          partsGrid.before(message);
+        }
+        message.textContent = 'Unable to load all parts. Please select a category to try again.';
+        return;
+      } finally { partsGrid.removeAttribute('aria-busy'); }
+      if (run !== revision || !partsGrid.isConnected) return;
+      document.querySelector('[data-parts-error]')?.remove();
+    }
     const category = selectedCategory();
     const cards = [...document.querySelectorAll('#ProductGridContainer .product-card[data-accessory-category]')];
     let count = 0;
 
     cards.forEach((card) => {
-      const visible = category === 'all' || card.dataset.accessoryCategory === category;
+      const visible = category === 'all' || card.dataset.accessoryCategory.split(/\s+/).includes(category);
       card.hidden = !visible;
       if (visible) count += 1;
     });
@@ -52,7 +100,7 @@
     url.searchParams.delete('page');
     history.pushState({}, '', url);
     applyCategory();
-    document.getElementById('ProductGridContainer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('ProductGridContainer')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
 
   document.addEventListener('collection:reloaded', applyCategory);

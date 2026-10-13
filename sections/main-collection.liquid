@@ -7,11 +7,15 @@
 
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection.js' | asset_url }}" defer="defer"></script>
-{%- if collection.handle == 'accessories' -%}
+{%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
   <script src="{{ 'rovic-accessory-filters.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {%- liquid
+  assign products_per_page = section.settings.products_per_page
+  if collection.handle == 'parts'
+    assign products_per_page = 250
+  endif
   assign filter_count = 0
   for filter in collection.filters
     if filter.type == 'price_range'
@@ -35,7 +39,7 @@
   if collection.handle == 'all'
     assign enable_filtering = false
   endif
-  if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories'
+  if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' or collection.handle == 'parts'
     assign filter_type = 'sidebar'
   endif
 -%}
@@ -49,7 +53,7 @@
       </div>
     {%- endif -%}
 
-    {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- paginate collection.products by products_per_page -%}
       {%- if collection.all_products_count > 0 -%}
         {%- render 'facets-sticky',
           results: collection,
@@ -229,11 +233,24 @@
           {%- endif -%}
 
           {%- if collection.all_products_count > 0 -%}
-            <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
+            <motion-list {% if collection.handle == 'parts' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
               {%- for product in collection.products -%}
                 {%- liquid
                   assign accessory_category = blank
+                  if collection.handle == 'parts'
+                    assign accessory_category = 'other'
+                    assign model_prefix = product.title | downcase | split: ' ' | first
+                    if model_prefix contains 'rv1s'
+                      assign accessory_category = accessory_category | append: ' rv1s'
+                    endif
+                    if model_prefix contains 'rv1c'
+                      assign accessory_category = accessory_category | append: ' rv1c'
+                    endif
+                    if model_prefix contains 'rv1d'
+                      assign accessory_category = accessory_category | append: ' rv1d'
+                    endif
+                  endif
                   if collection.handle == 'accessories'
                     assign accessory_title = product.title | downcase
                     assign is_rovic_part = false
@@ -311,7 +328,7 @@
                 -%}
               {%- endfor -%}
             </motion-list>
-            {%- if collection.handle == 'accessories' -%}
+            {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
               <div class="rovic-accessory-empty empty-state items-center justify-center text-center gap-3" hidden>
                 {%- render 'icon', icon: 'empty', size: 'xxxl' -%}
                 <p class="heading leading-none tracking-tight">No products match these filters.</p>
