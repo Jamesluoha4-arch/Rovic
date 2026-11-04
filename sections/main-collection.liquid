@@ -44,6 +44,9 @@
   endif
 -%}
 
+{%- if collection.handle == 'all' -%}
+{%- render 'rovic-shop-products', section: section -%}
+{%- else -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="collection page-width{% if section.settings.full_width %} page-width--full{% endif %} relative{% if enable_filtering %} with-{{ filter_type }}{% endif %}">
     {%- if collection.handle == 'all' -%}<h1 class="sr-only">Shop</h1>{%- endif -%}
@@ -365,6 +368,8 @@
   "name": {% if collection.handle == 'accessories' and template.suffix == 'parts' %}{{ 'Parts' | json }}{% else %}{{ collection.title | json }}{% endif %}
 }
 </script>
+
+{%- endif -%}
 
 {% schema %}
 {

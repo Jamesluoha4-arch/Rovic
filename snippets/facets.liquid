@@ -62,6 +62,14 @@
 
     {%- if enable_filtering -%}
       {%- for filter in results.filters -%}
+        {%- assign wheel_label = filter.label | downcase | strip -%}
+        {%- if wheel_label == 'wheel setup' or filter.param_name contains 'custom.wheel_setup' -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- if wheel_label == 'front wheel' or filter.param_name contains 'custom.front_wheel' -%}
+          {%- render 'rovic-wheel-filter', filter: filter, context: context -%}
+          {%- continue -%}
+        {%- endif -%}
         {%- assign filter_id = context | append: '-' | append: filter.param_name -%}
         {%- if filter.type == 'boolean' or filter.param_name == 'filter.v.availability' -%}
           <div class="details" data-filter data-index="{{ filter_id }}">

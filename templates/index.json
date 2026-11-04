@@ -394,69 +394,13 @@
         "image_mTQ33W": {
           "type": "image",
           "settings": {
-            "column_size": 3,
-            "row_size": 1,
+            "column_size": 5,
+            "row_size": 2,
             "subheading": "Shop the Rovic Golf Umbrella",
             "heading": "Ready for Changing Skies.",
-            "link": "shopify://products/rovic-golf-umbrella",
-            "invert_subheading_heading": false,
-            "image": "shopify://shop_images/2Z2A7562.jpg",
-            "content_position": "md:items-end md:justify-start",
-            "text_alignment": "left",
-            "content_position_mobile": "items-end justify-start",
-            "text_alignment_mobile": "left",
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle",
-            "color_text": "#ffffff",
-            "color_highlight": "",
-            "gradient_highlight": "",
-            "color_overlay": "#171717",
-            "overlay_opacity": 10,
-            "color_text_hover": "",
-            "color_highlight_hover": "",
-            "gradient_highlight_hover": "",
-            "color_overlay_hover": "",
-            "overlay_opacity_hover": 10
-          }
-        },
-        "image_LRzire": {
-          "type": "image",
-          "settings": {
-            "column_size": 2,
-            "row_size": 1,
-            "subheading": "Shop Rovic Accessories",
-            "heading": "<strong>Everything in Its Place.</strong>",
             "link": "shopify://collections/accessories",
             "invert_subheading_heading": false,
-            "image": "shopify://shop_images/2Z2A7584_s.jpg",
-            "content_position": "md:items-end md:justify-start",
-            "text_alignment": "left",
-            "content_position_mobile": "items-end justify-start",
-            "text_alignment_mobile": "left",
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle",
-            "color_text": "#ffffff",
-            "color_highlight": "",
-            "gradient_highlight": "",
-            "color_overlay": "#171717",
-            "overlay_opacity": 10,
-            "color_text_hover": "",
-            "color_highlight_hover": "",
-            "gradient_highlight_hover": "",
-            "color_overlay_hover": "",
-            "overlay_opacity_hover": 10
-          }
-        },
-        "image_8q9qmy": {
-          "type": "image",
-          "settings": {
-            "column_size": 5,
-            "row_size": 1,
-            "subheading": "Shop for Rovic assembled seats",
-            "heading": "Restore your energy anytime, anywhere.",
-            "link": "shopify://products/rv1-series-extended-seat",
-            "invert_subheading_heading": false,
-            "image": "shopify://shop_images/2Z2A7809s.jpg",
+            "image": "shopify://shop_images/2Z2A7562.jpg",
             "content_position": "md:items-end md:justify-start",
             "text_alignment": "left",
             "content_position_mobile": "items-end justify-start",
@@ -478,9 +422,7 @@
       },
       "block_order": [
         "image_cYhmc8",
-        "image_mTQ33W",
-        "image_LRzire",
-        "image_8q9qmy"
+        "image_mTQ33W"
       ],
       "name": "t:sections.collage-grid.name",
       "settings": {
@@ -1433,69 +1375,6 @@
         "parallax_direction": "vertical"
       }
     },
-    "shop-the-look": {
-      "type": "shop-the-look",
-      "blocks": {
-        "product-2": {
-          "type": "product",
-          "settings": {
-            "product": "rovic-qfc",
-            "color_text": "#ffffff",
-            "vertical": 74,
-            "horizontal": 29,
-            "vertical_mobile": 75,
-            "horizontal_mobile": 65
-          }
-        },
-        "product-3": {
-          "type": "product",
-          "settings": {
-            "product": "rovic-rv1c-compact",
-            "color_text": "#ffffff",
-            "vertical": 50,
-            "horizontal": 78,
-            "vertical_mobile": 50,
-            "horizontal_mobile": 50
-          }
-        }
-      },
-      "block_order": [
-        "product-2",
-        "product-3"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/ChatGPT_Image_2026_6_15__20_01_45.png",
-        "show_content_aside": true,
-        "heading": "Set Up for the Round",
-        "heading_size": "title-sm",
-        "heading_alignment": "text-center md:items-center",
-        "heading_tag": "h2",
-        "subheading": "Explore the Rovic QFC and RV1C Compact.",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "scribble",
-        "highlighted_scribble": "squiggle-underline",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "color_overlay": "#171717",
-        "overlay_opacity": 30,
-        "padding_top": 100,
-        "padding_bottom": 100,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
     "testimonials-banner": {
       "type": "testimonials-banner",
       "blocks": {
@@ -1794,6 +1673,158 @@
         "full_width": false,
         "rounded": false
       }
+    },
+    "rovic-brand-heading": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built for the Walk <em>Between Shots</em>",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "scribble",
+            "highlighted_scribble": "squiggle-underline",
+            "highlighted_reveal": false
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "#fafafa",
+        "gradient_background": "",
+        "color_highlight": "#c5e8b8",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 80,
+        "padding_bottom": 20,
+        "divider": false,
+        "narrow": true,
+        "rounded": true
+      }
+    },
+    "rovic-brand-logos": {
+      "type": "logo-list",
+      "blocks": {
+        "logo-1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/rovic.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo-2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/r5.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo-3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/qfc_967a38ef-f3c2-4584-ada8-22998976ec15.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo-4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/1s.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo-5": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/1c.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo-6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/2l.png",
+            "height": 120,
+            "link": ""
+          }
+        },
+        "logo_bHCtnp": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/3j.png",
+            "height": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo-1",
+        "logo-2",
+        "logo-3",
+        "logo-4",
+        "logo-5",
+        "logo-6",
+        "logo_bHCtnp"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "grid_horizontal": 120,
+        "direction": "right",
+        "speed": 5,
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "#fafafa",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "divider": false,
+        "full_width": true,
+        "rounded": true
+      }
     }
   },
   "order": [
@@ -1811,9 +1842,10 @@
     "rich-text-2",
     "product-bundle",
     "scrolling-text-1",
+    "rovic-brand-heading",
+    "rovic-brand-logos",
     "shop-the-feed",
     "countdown-timer",
-    "shop-the-look",
     "testimonials-banner",
     "video_with_text_overlay_fyACUg",
     "scrolling-text-2",
