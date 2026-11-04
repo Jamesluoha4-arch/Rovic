@@ -43,7 +43,13 @@
               <div class="flex flex-col md:grid{% unless section.settings.layout == 'image_first' %} md:grid-row-reverse{% endunless %} grid-cols-2 overflow-hidden">
                 {%- if block.type == 'content' -%}
                   <picture class="media media--{{ section.settings.image_ratio }} mobile:media--{{ section.settings.image_ratio_mobile }} block relative overflow-hidden">
-                    {%- if block.settings.image != blank -%}
+                    {%- if block.settings.image.src contains 'rovic_rv1s_generated-frame_1672x941_v04' -%}
+<img src="{{ 'rovic-timeline-2Z2A9011.jpg' | asset_url }}" width="6720" height="4480" alt="Loading a folded Rovic push cart into a car" loading="lazy">
+{%- elsif block.settings.image.src contains 'cd65d0e4-9539-463e-bbda-263072902420' -%}
+<img src="{{ 'rovic-folding-2Z2A8503.jpg' | asset_url }}" width="6720" height="4480" alt="Golfer folding a Rovic QFC push cart on the course" loading="lazy" style="object-position: center;">
+{%- elsif block.settings.image.src contains 'ec292f69-ff9b-4a36-92ed-c5e1148fb00e' -%}
+<img src="{{ 'rovic-walking-2Z2A8540.jpg' | asset_url }}" width="6720" height="4480" alt="Golfer walking with a Rovic QFC push cart" loading="lazy" style="object-position: 43% center;">
+{%- elsif block.settings.image != blank -%}
                       {%- assign sizes = '(max-width: 767px) 100vw, 74vw' -%}
                       {%- if block.settings.image_mobile -%}
                         <source

@@ -27,7 +27,13 @@
 {%- for block in section.blocks limit: limit offset: offset -%}
   <div class="profile card relative" id="shopify-block-{{ block.id }}" {{ block.shopify_attributes }}>
     <picture class="media media--{{ section.settings.image_ratio }} mobile:media--{{ section.settings.image_ratio_mobile }} block relative overflow-hidden">
-      {%- if block.settings.image != blank -%}
+      {%- if block.settings.image.src contains 'aad8099b-d9c8-4bf0-b85c-698709c86760' -%}
+<img src="{{ 'rovic-movement-2Z2A8689.jpg' | asset_url }}" width="6720" height="4480" alt="Golfer walking with a Rovic push cart" loading="lazy" style="object-position: 60% center;">
+{%- elsif block.settings.image.src contains 'rovic_rv1s_generated-frame_1672x941_v04' -%}
+<img src="{{ 'rovic-compact-2Z2A9006.jpg' | asset_url }}" width="6720" height="4480" alt="Loading a folded Rovic push cart into a car" loading="lazy" style="object-position: 50% center;">
+{%- elsif block.settings.image.src contains '70af73ae-5a3e-4108-ae31-4d21a7d89d7d' -%}
+<img src="{{ 'rovic-details-2Z2A8984.jpg' | asset_url }}" width="6720" height="4480" alt="Water bottle holder and storage details on a Rovic push cart" loading="lazy" style="object-position: 38% center;">
+{%- elsif block.settings.image != blank -%}
         {%- assign sizes = '(max-width: 767px) 100vw, 74vw' -%}
         {%- if block.settings.image_mobile -%}
           <source

@@ -24,7 +24,11 @@
               {%- if section.settings.image_2 == blank and section.settings.enable_parallax %} data-parallax="0.3" data-parallax-dir="vertical"{% endif -%}
             >
               <picture class="media media--{{ section.settings.image_ratio }} block relative overflow-hidden">
-                {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', widths: '300,400,500,600,700,800,900,1000,1200,1400,1600', sizes: '(max-width: 1023px) 100vw, 74vw', is: 'lazy-image' -}}
+                {%- if section.settings.image.src contains 'rovic_rv1s_generated-frame_1672x941_v03' -%}
+<img src="{{ 'rovic-course-2Z2A8607.jpg' | asset_url }}" width="6720" height="4480" alt="Rovic push cart on the green with a golfer putting" loading="lazy" style="object-position: center;">
+{%- else -%}
+{{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', widths: '300,400,500,600,700,800,900,1000,1200,1400,1600', sizes: '(max-width: 1023px) 100vw, 74vw', is: 'lazy-image' -}}
+{%- endif -%}
               </picture>
             </media-element>
           {%- endif -%}
