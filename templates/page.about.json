@@ -340,6 +340,7 @@
       ],
       "name": "t:sections.timeline.name",
       "settings": {
+        "show_arrows": false,
         "show_navigation": true,
         "layout": "image_first",
         "image_ratio": "portrait",
@@ -365,8 +366,7 @@
         "padding_bottom": 72,
         "divider": false,
         "full_width": false,
-        "rounded": true,
-        "show_arrows": false
+        "rounded": true
       }
     },
     "featured_collection_cxMCEy": {
