@@ -5,6 +5,7 @@
   }
 </style>
 
+<span hidden data-rovic-product-count="{{ collection.products_count }}"></span>
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection.js' | asset_url }}" defer="defer"></script>
 {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
@@ -113,7 +114,7 @@
                 context: 'page'
               -%}
             {%- else -%}
-              <p id="ProductCount" data-rovic-product-count="{{ collection.products_count }}" class="grow text-base lg:text-lg" role="status">
+              <p id="ProductCount" class="grow text-base lg:text-lg" role="status">
                 {%- liquid
                   if collection.results_count
                     echo 'general.search.results_with_count' | t: terms: collection.terms, count: collection.results_count
