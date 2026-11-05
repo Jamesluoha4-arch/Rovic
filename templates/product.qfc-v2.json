@@ -238,7 +238,7 @@
       ],
       "name": "t:sections.video-with-text.name",
       "settings": {
-        "video": "shopify://files/videos/11月5日.mp4",
+        "video": "shopify://files/videos/1-1.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "enable_video_autoplay": true,
@@ -248,6 +248,7 @@
         "layout": "video_first",
         "text_alignment": "left",
         "content_position": "align-self-center",
+        "video_url_mobile": "",
         "image_height_mobile": "auto",
         "text_alignment_mobile": "left",
         "color_text": "",
