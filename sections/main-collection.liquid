@@ -113,7 +113,7 @@
                 context: 'page'
               -%}
             {%- else -%}
-              <p id="ProductCount" class="grow text-base lg:text-lg" role="status">
+              <p id="ProductCount" data-rovic-product-count="{{ collection.products_count }}" class="grow text-base lg:text-lg" role="status">
                 {%- liquid
                   if collection.results_count
                     echo 'general.search.results_with_count' | t: terms: collection.terms, count: collection.results_count

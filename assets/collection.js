@@ -12,6 +12,44 @@
     });
     return result.values();
   }
+  const colorCountRequests = new Map();
+  function updateColorCount(inputs, count) {
+    const form = inputs[0].form;
+    if (!form || !count) return;
+    const url = new URL(form.action, location.href);
+    url.search = new URLSearchParams(new FormData(form)).toString();
+    [...url.searchParams.keys()].forEach(name => {
+      if (isColor({ name })) url.searchParams.delete(name);
+    });
+    url.searchParams.delete('page');
+    [...new Set(inputs.map(input => input.value))].sort().forEach(value => url.searchParams.append(inputs[0].name, value));
+    url.searchParams.set('section_id', theme.utils.sectionId(form));
+    const key = url.toString();
+    count.hidden = false;
+    if (count.dataset.colorCountUrl === key) return;
+    count.dataset.colorCountUrl = key;
+    count.textContent = '(…)';
+    if (!colorCountRequests.has(key)) {
+      colorCountRequests.set(key, fetch(key, { credentials: 'same-origin' }).then(response => {
+        if (!response.ok) throw new Error('Color count request failed');
+        return response.text();
+      }).then(html => {
+        const node = new DOMParser().parseFromString(html, 'text/html').querySelector('[data-rovic-product-count]');
+        if (!node) throw new Error('Missing product count');
+        const total = Number(node.dataset.rovicProductCount);
+        if (!Number.isFinite(total)) throw new Error('Invalid product count');
+        return total;
+      }).catch(error => { colorCountRequests.delete(key); throw error; }));
+    }
+    colorCountRequests.get(key).then(total => {
+      if (count.isConnected && count.dataset.colorCountUrl === key) count.textContent = '(' + total + ')';
+    }).catch(() => {
+      if (count.isConnected && count.dataset.colorCountUrl === key) {
+        count.textContent = '(—)';
+        // Retry when the filter context changes, rather than on every DOM mutation.
+      }
+    });
+  }
   function refresh() {
     document.querySelectorAll('ul.swatches').forEach(list => {
       for (const inputs of groups(list)) {
@@ -21,9 +59,9 @@
         first.checked = selected;
         first.disabled = inputs.every(input => input.disabled);
         inputs.slice(1).forEach(input => { input.closest('li').hidden = true; });
-        // Counts overlap when a product has more than one equivalent variant value.
+        // Ask Shopify for the distinct product total for the complete color group.
         const count = first.closest('li').querySelector('label .text-opacity');
-        if (count) count.hidden = true;
+        updateColorCount(inputs, count);
       }
     });
   }
