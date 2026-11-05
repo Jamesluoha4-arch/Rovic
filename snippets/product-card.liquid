@@ -51,6 +51,57 @@
       assign product_url = product.url
     endif
 
+    assign rovic_color_variant = ''
+    assign rovic_filter_results = collection
+    if request.page_type == 'search'
+      assign rovic_filter_results = search
+    endif
+    for color_filter in rovic_filter_results.filters
+      assign color_param = color_filter.param_name | downcase
+      unless color_param contains 'filter.v.option.'
+        continue
+      endunless
+      assign color_option_key = color_param | remove: 'filter.v.option.' | handleize
+      unless color_option_key == 'color' or color_option_key == 'colour' or color_option_key == '颜色' or color_option_key == '顏色'
+        continue
+      endunless
+      for color_option in product.options_with_values
+        assign option_key = color_option.name | downcase | strip
+        if option_key == 'color' or option_key == 'colour' or option_key == '颜色' or option_key == '顏色'
+          assign color_option_index = color_option.position | minus: 1
+          for active_color in color_filter.active_values
+            assign active_color_key = active_color.value | downcase | strip | replace: '  ', ' ' | replace: '  ', ' '
+            for color_variant in product.variants
+              assign variant_color_key = color_variant.options[color_option_index] | downcase | strip | replace: '  ', ' ' | replace: '  ', ' '
+              if variant_color_key == active_color_key and color_variant.featured_media != blank
+                assign rovic_color_variant = color_variant
+                break
+              endif
+            endfor
+            if rovic_color_variant != blank
+              break
+            endif
+          endfor
+        endif
+        if rovic_color_variant != blank
+          break
+        endif
+      endfor
+      if rovic_color_variant != blank
+        break
+      endif
+    endfor
+    if rovic_color_variant != blank
+      assign featured_media = rovic_color_variant.featured_media
+      if product_url contains '?'
+        assign product_url = product_url | append: '&variant=' | append: rovic_color_variant.id
+      else
+        assign product_url = product_url | append: '?variant=' | append: rovic_color_variant.id
+      endif
+      assign show_secondary_image = false
+      assign show_multiple_images = false
+    endif
+
     unless lazy_load == false
       assign loading = 'lazy'
       assign lazyimage = 'lazy-image'

@@ -1,0 +1,34 @@
+{%- liquid
+  assign color_key = value | downcase | strip | replace: '  ', ' ' | replace: '  ', ' ' | replace: '/', ' ' | replace: '-', ' ' | replace: '  ', ' '
+  assign color_one = ''
+  assign color_two = ''
+  case color_key
+    when 'arctic black'
+      assign color_one = '#edf0ed'
+      assign color_two = '#171717'
+    when 'arctic white'
+      assign color_one = '#ffffff'
+      assign color_two = '#d4d9dd'
+    when 'arctic lime'
+      assign color_one = '#f3f4ee'
+      assign color_two = '#8bcb26'
+    when 'blue blue'
+      assign color_one = '#1764c0'
+      assign color_two = '#102c65'
+    when 'charcoal black'
+      assign color_one = '#4b4f52'
+      assign color_two = '#111111'
+    when 'gray black', 'grey black'
+      assign color_one = '#93999d'
+      assign color_two = '#171717'
+    when 'red black'
+      assign color_one = '#d02e32'
+      assign color_two = '#171717'
+    when 'silver black'
+      assign color_one = '#c6cbd0'
+      assign color_two = '#171717'
+  endcase
+-%}
+{%- if color_one != blank -%}
+  --swatch-background: {{ color_one }}; --swatch-background-image: linear-gradient(135deg, {{ color_one }} 0%, {{ color_one }} 50%, {{ color_two }} 50%, {{ color_two }} 100%);
+{%- endif -%}
