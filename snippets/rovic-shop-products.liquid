@@ -2,10 +2,10 @@
 {%- assign shop_groups = 'all-push-carts,accessories' | split: ',' -%}
 {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
 {%- assign seen_ids = '|' -%}
+<motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative" style="margin-bottom:var(--grid-gap,24px)">
 {%- for handle in shop_groups -%}
   {%- assign shop_collection = collections[handle] -%}
   {%- paginate shop_collection.products by 250 -%}
-  <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative" style="margin-bottom:var(--grid-gap,24px)">
   {%- for product in shop_collection.products -%}
     {%- liquid
       assign is_part = false
@@ -54,8 +54,8 @@
                   show_on_model: show_on_model
                 -%}
   {%- endfor -%}
-  </motion-list>
   {%- if paginate.pages > 1 -%}{%- render 'pagination', paginate: paginate, mode: 'default' -%}{%- endif -%}
   {%- endpaginate -%}
 {%- endfor -%}
+</motion-list>
 </div></div>

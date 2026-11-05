@@ -531,7 +531,7 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "#c5e8b8",
         "gradient_highlight": "",
@@ -542,7 +542,7 @@
         "padding_bottom": 20,
         "divider": false,
         "narrow": true,
-        "rounded": true
+        "rounded": false
       }
     },
     "logo-list": {
@@ -633,7 +633,7 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
@@ -644,7 +644,7 @@
         "padding_bottom": 60,
         "divider": false,
         "full_width": true,
-        "rounded": true
+        "rounded": false
       }
     },
     "image_with_text_overlay_LzgQKR": {

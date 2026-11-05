@@ -1,3 +1,22 @@
+{%- liquid
+  assign rovic_banner_asset = blank
+  assign rovic_banner_focus = 'center'
+  if section.settings.show_image
+    if collection.handle == 'parts' or template.suffix == 'parts' or template.suffix == 'parts-v2'
+      assign rovic_banner_asset = 'rovic-banner-parts.jpg'
+      assign rovic_banner_focus = '65% center'
+    elsif collection.handle == 'accessories'
+      assign rovic_banner_asset = 'rovic-banner-accessories.jpg'
+      assign rovic_banner_focus = '55% center'
+    elsif collection.handle == 'all-push-carts'
+      assign rovic_banner_asset = 'rovic-banner-push-carts.jpg'
+      assign rovic_banner_focus = '76% center'
+    elsif collection.handle == 'junior-push-carts' or collection.handle == 'disc-golf' or collection.handle == 'disc-golf-carts'
+      assign rovic_banner_asset = 'rovic-banner-disc-golf.jpg'
+      assign rovic_banner_focus = '73% center'
+    endif
+  endif
+-%}
 {%- assign rovic_collection_title = collection.title | replace: '主页', 'Home' -%}
 {%- if collection.handle == 'all' -%}{%- assign rovic_collection_title = 'Shop' -%}{%- endif -%}
 {%- if collection.handle == 'all-push-carts' -%}{%- assign rovic_collection_title = 'Push Carts' -%}{%- endif -%}
@@ -30,9 +49,9 @@
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
-    {%- if desktop_image != blank %}
+    {%- if desktop_image != blank or rovic_banner_asset != blank %}
       {%- render 'section-variables', section: section -%}
-      {%- if section.settings.image_height == 'adapt' %}
+      {%- if section.settings.image_height == 'adapt' and desktop_image != blank %}
         --ratio-percent: {{ 1 | divided_by: desktop_image.aspect_ratio | times: 100 }}%;
       {% endif -%}
     {% endif -%}
@@ -72,16 +91,22 @@
       }
     }
   {% endif -%}
+{% if rovic_banner_asset != blank %}
+  #shopify-section-{{ section.id }} .rovic-banner-photo { object-fit: cover; object-position: {{ rovic_banner_focus }}; }
+  {% endif %}
 </style>
 
 {%- unless collection.handle == 'all' -%}
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded and rovic_square_collection_banner == false %} section--rounded relative{% endif %}"{% if section.settings.transparent_header and desktop_image != blank %} allow-transparent-header{% endif %}>
+<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded and rovic_square_collection_banner == false %} section--rounded relative{% endif %}"{% if section.settings.transparent_header %} allow-transparent-header{% endif %}>
   <div class="{% unless section.settings.full_width %}page-width {% endunless %}relative">
-    <div class="banner relative{% if desktop_image != blank %} media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }}{% endif %}">
-      {%- if desktop_image != blank -%}
+    <div class="banner relative{% if desktop_image != blank or rovic_banner_asset != blank %} media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }}{% endif %}">
+      {%- if desktop_image != blank or rovic_banner_asset != blank -%}
         <media-element class="banner__media block w-full h-full overflow-hidden"{% if section.settings.enable_parallax %} data-parallax="0.3" data-parallax-dir="{{ section.settings.parallax_direction }}"{% endif %}>
           {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
           <picture class="media media--height block w-full h-full relative overflow-hidden" is="animate-picture" data-animate="zoom-out">
+            {%- if rovic_banner_asset != blank -%}
+              {%- render 'rovic-page-banner-image', image_asset: rovic_banner_asset, image_alt: rovic_collection_title, loading: loading, fetchpriority: fetchpriority -%}
+            {%- else -%}
             {%- if mobile_image -%}
               <source
                 media="(max-width: 767px)"
@@ -92,13 +117,14 @@
             {%- endif -%}
 
             {{- desktop_image | image_url: width: desktop_image.width | image_tag: loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', is: lazyimage, alt: collection_alt -}}
+            {%- endif -%}
           </picture>
         </media-element>
         <span class="banner__overlay absolute top-0 left-0 w-full h-full pointer-events-none"></span>
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
-        <div class="banner__content overflow-hidden{% if desktop_image != blank %} absolute z-1 top-0 left-0 w-full h-full{% endif %}">
+        <div class="banner__content overflow-hidden{% if desktop_image != blank or rovic_banner_asset != blank %} absolute z-1 top-0 left-0 w-full h-full{% endif %}">
           <div class="page-width w-full h-full flex {{ section.settings.content_position }} {{ section.settings.content_position_mobile }}">
             <div class="banner__box md:text-{{ section.settings.text_alignment }} text-{{ section.settings.text_alignment_mobile }}">
               {%- assign delay = 0 -%}

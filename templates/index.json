@@ -1674,56 +1674,6 @@
         "rounded": false
       }
     },
-    "rovic-brand-heading": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Built for the Walk <em>Between Shots</em>",
-            "heading_size": "title-md",
-            "heading_tag": "h2",
-            "highlighted_text": "scribble",
-            "highlighted_scribble": "squiggle-underline",
-            "highlighted_reveal": false
-          }
-        }
-      },
-      "block_order": [
-        "heading"
-      ],
-      "settings": {
-        "text_alignment": "center",
-        "text_alignment_mobile": "center",
-        "heading": "",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_width": "small",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "#fafafa",
-        "gradient_background": "",
-        "color_highlight": "#c5e8b8",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 80,
-        "padding_bottom": 20,
-        "divider": false,
-        "narrow": true,
-        "rounded": true
-      }
-    },
     "rovic-brand-logos": {
       "type": "logo-list",
       "blocks": {
@@ -1812,18 +1762,18 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 60,
+        "padding_top": 24,
         "padding_bottom": 60,
         "divider": false,
         "full_width": true,
-        "rounded": true
+        "rounded": false
       }
     }
   },
@@ -1842,7 +1792,6 @@
     "rich-text-2",
     "product-bundle",
     "scrolling-text-1",
-    "rovic-brand-heading",
     "rovic-brand-logos",
     "shop-the-feed",
     "countdown-timer",
