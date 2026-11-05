@@ -60,10 +60,15 @@
     if (!(input instanceof HTMLInputElement) || !isColor(input)) return;
     const list = input.closest('ul.swatches');
     if (!list) return;
-    for (const peers of groups(list)) {
-      if (!peers.includes(input)) continue;
-      peers.forEach(peer => { peer.checked = input.checked; if (input.checked) peer.disabled = false; });
-    }
+    const selected = input.checked;
+    const selectedColor = normalize(input.value);
+    // Apply one logical color before the facet form serializes its inputs.
+    // Equivalent raw values remain checked together for Shopify's OR query.
+    document.querySelectorAll('input[type="checkbox"]').forEach(peer => {
+      if (!isColor(peer)) return;
+      peer.checked = selected && normalize(peer.value) === selectedColor;
+      if (peer.checked) peer.disabled = false;
+    });
   }, true);
   new MutationObserver(() => { refresh(); mergeActiveChips(); }).observe(document.documentElement, { childList: true, subtree: true });
   refresh();
