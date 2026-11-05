@@ -1,3 +1,75 @@
+// Group equivalent color values while preserving Shopify's exact query values.
+(() => {
+  const normalize = value => value.normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
+  const isColor = input => /^filter\.v\.option\.(color|colour|颜色|顏色)$/i.test(input.name);
+  function groups(list) {
+    const result = new Map();
+    list.querySelectorAll('input[type="checkbox"]').forEach(input => {
+      if (!isColor(input)) return;
+      const key = input.name + ':' + normalize(input.value);
+      if (!result.has(key)) result.set(key, []);
+      result.get(key).push(input);
+    });
+    return result.values();
+  }
+  function refresh() {
+    document.querySelectorAll('ul.swatches').forEach(list => {
+      for (const inputs of groups(list)) {
+        if (inputs.length < 2) continue;
+        const first = inputs[0];
+        const selected = inputs.some(input => input.checked);
+        first.checked = selected;
+        first.disabled = inputs.every(input => input.disabled);
+        inputs.slice(1).forEach(input => { input.closest('li').hidden = true; });
+        // Counts overlap when a product has more than one equivalent variant value.
+        const count = first.closest('li').querySelector('label .text-opacity');
+        if (count) count.hidden = true;
+      }
+    });
+  }
+  // A merged active chip must also clear every equivalent raw value.
+  function mergeActiveChips() {
+    const active = new Map();
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
+      if (!isColor(input)) return;
+      if (!active.has(input.name)) active.set(input.name, new Set());
+      active.get(input.name).add(input.value);
+    });
+    document.querySelectorAll('.active-facets').forEach(container => {
+      const seen = new Set();
+      container.querySelectorAll('.removable-facet').forEach(chip => {
+        const link = chip.querySelector('a[is="facet-remove"]');
+        if (!link) return;
+        const url = new URL(link.href);
+        for (const [name, values] of active) {
+          const removed = [...values].filter(value => !url.searchParams.getAll(name).includes(value));
+          if (!removed.length || !removed.every(value => normalize(value) === normalize(removed[0]))) continue;
+          const key = name + ':' + normalize(removed[0]);
+          chip.hidden = seen.has(key);
+          seen.add(key);
+          const keep = url.searchParams.getAll(name).filter(value => normalize(value) !== normalize(removed[0]));
+          url.searchParams.delete(name);
+          keep.forEach(value => url.searchParams.append(name, value));
+          if (link.href !== url.href) link.href = url.href;
+        }
+      });
+    });
+  }
+  document.addEventListener('change', event => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement) || !isColor(input)) return;
+    const list = input.closest('ul.swatches');
+    if (!list) return;
+    for (const peers of groups(list)) {
+      if (!peers.includes(input)) continue;
+      peers.forEach(peer => { peer.checked = input.checked; if (input.checked) peer.disabled = false; });
+    }
+  }, true);
+  new MutationObserver(() => { refresh(); mergeActiveChips(); }).observe(document.documentElement, { childList: true, subtree: true });
+  refresh();
+  mergeActiveChips();
+})();
+
 if (!customElements.get('facet-form')) {
   customElements.define(
     'facet-form',
