@@ -93,10 +93,9 @@
     endfor
     if rovic_color_variant != blank
       assign featured_media = rovic_color_variant.featured_media
-      if product_url contains '?'
-        assign product_url = product_url | append: '&variant=' | append: rovic_color_variant.id
-      else
-        assign product_url = product_url | append: '?variant=' | append: rovic_color_variant.id
+      assign product_url = rovic_color_variant.url | within: collection
+      if settings.product_disable_collection_portion
+        assign product_url = rovic_color_variant.url
       endif
       assign show_secondary_image = false
       assign show_multiple_images = false
