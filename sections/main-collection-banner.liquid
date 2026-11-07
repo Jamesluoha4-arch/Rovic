@@ -23,7 +23,7 @@
 {%- if collection.handle == 'junior-push-carts' -%}{%- assign rovic_collection_title = 'DISC Golf Carts' -%}{%- endif -%}
 {%- if collection.handle == 'accessories' and template.suffix == 'parts' -%}{%- assign rovic_collection_title = 'Parts' -%}{%- endif -%}
 {%- assign rovic_square_collection_banner = false -%}
-{%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' -%}
+{%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' or collection.handle == 'parts' or template.suffix == 'parts' or template.suffix == 'parts-v2' -%}
   {%- assign rovic_square_collection_banner = true -%}
 {%- endif -%}
 {%- liquid
@@ -57,7 +57,7 @@
     {% endif -%}
   }
 
-  {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' -%}
+  {%- if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts' or collection.handle == 'accessories' or collection.handle == 'parts' or template.suffix == 'parts' or template.suffix == 'parts-v2' -%}
     #shopify-section-{{ section.id }} > .section,
     #shopify-section-{{ section.id }} > .section::before,
     #shopify-section-{{ section.id }} .banner,
