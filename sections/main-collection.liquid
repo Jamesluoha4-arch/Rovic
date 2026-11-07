@@ -3,7 +3,7 @@
     --section-padding-top: {% if collection.handle == 'all' %}24{% else %}{{ section.settings.padding_top }}{% endif %}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-  #shopify-section-{{ section.id }} .rovic-cart-demo { min-width: 0; min-height: 0; border-radius: var(--card-radius, 16px); }
+  #shopify-section-{{ section.id }} .rovic-cart-demo { min-width: 0; min-height: 0; border-radius: 0; }
   #shopify-section-{{ section.id }} .rovic-cart-demo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   @media (max-width: 639px) { #shopify-section-{{ section.id }} .rovic-cart-demo { aspect-ratio: 1200 / 1650; } }
 </style>
@@ -242,6 +242,16 @@
           {%- if collection.all_products_count > 0 -%}
             <motion-list {% if collection.handle == 'parts' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
+              {%- assign rovic_deferred_compact_card = '' -%}
+              {%- assign rovic_show_demo = false -%}
+              {%- if collection.handle == 'all-push-carts' and filter_count == 0 and paginate.current_page == paginate.pages -%}
+                {%- assign rovic_show_demo = true -%}
+              {%- endif -%}
+              {%- capture rovic_demo_card -%}
+                <div class="card rovic-cart-demo relative overflow-hidden" aria-label="Rovic push cart folding demonstration">
+                  <img src="{{ 'rovic-push-carts-demo.gif' | asset_url }}" width="1200" height="1650" alt="A golfer unfolds a Rovic push cart on the course" loading="lazy" decoding="async" />
+                </div>
+              {%- endcapture -%}
               {%- for product in collection.products -%}
                 {%- liquid
                   assign accessory_category = blank
@@ -307,6 +317,7 @@
                     assign lazy_load = true
                   endif
                 -%}
+                {%- capture rovic_current_product_card -%}
                 {%- render 'product-card',
                   product: product,
                   product_id: product.id,
@@ -333,11 +344,20 @@
                   show_on_model: show_on_model,
                   accessory_category: accessory_category
                 -%}
+                {%- endcapture -%}
+                {%- if rovic_show_demo and product.handle == 'rovic-rv1c-compact' -%}
+                  {{- rovic_demo_card -}}
+                  {%- assign rovic_deferred_compact_card = rovic_current_product_card -%}
+                {%- else -%}
+                  {{- rovic_current_product_card -}}
+                {%- endif -%}
               {%- endfor -%}
-              {%- if collection.handle == 'all-push-carts' and filter_count == 0 and paginate.current_page == paginate.pages -%}
-                <div class="card rovic-cart-demo relative overflow-hidden" aria-label="Rovic push cart folding demonstration">
-                  <img src="{{ 'rovic-push-carts-demo.gif' | asset_url }}" width="1200" height="1650" alt="A golfer unfolds a Rovic push cart on the course" loading="lazy" decoding="async" />
-                </div>
+              {%- if rovic_show_demo -%}
+                {%- if rovic_deferred_compact_card != blank -%}
+                  {{- rovic_deferred_compact_card -}}
+                {%- else -%}
+                  {{- rovic_demo_card -}}
+                {%- endif -%}
               {%- endif -%}
             </motion-list>
             {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
