@@ -1,9 +1,11 @@
-{% comment %}Keep the existing hero bounds; place the supplied artwork above the page copy.{% endcomment %}
-#shopify-section-{{ section.id }} .banner { background: #111b10; }
-#shopify-section-{{ section.id }} .banner__media { height: clamp(140px, 19.14vw, 392px); max-height: 52%; }
-#shopify-section-{{ section.id }} .rovic-banner-photo { object-fit: cover; object-position: 52% center; transform: none; }
+{% comment %}Show the complete artwork, followed immediately by the copy in normal flow.{% endcomment %}
+#shopify-section-{{ section.id }} .banner { display: block; height: auto; min-height: 0; padding: 0; background: #111b10; }
+#shopify-section-{{ section.id }} .banner__media { position: relative; inset: auto; display: block; width: 100%; height: auto; max-height: none; margin: 0; padding: 0; }
+#shopify-section-{{ section.id }} picture { display: block; height: auto; padding: 0; margin: 0; aspect-ratio: auto; line-height: 0; }
+#shopify-section-{{ section.id }} .rovic-banner-photo { position: relative; inset: auto; display: block; width: 100%; height: auto; max-height: none; margin: 0; object-fit: contain; object-position: center; transform: none; }
 #shopify-section-{{ section.id }} .banner__overlay { display: none; }
-#shopify-section-{{ section.id }} .banner__content > .page-width { align-items: flex-end; padding-block: 20px; }
+#shopify-section-{{ section.id }} .banner__content { position: relative; inset: auto; width: 100%; height: auto; margin: 0; border: 0; background: #111b10; }
+#shopify-section-{{ section.id }} .banner__content > .page-width { height: auto; align-items: center; padding-block: clamp(32px, 4vw, 64px); }
 #shopify-section-{{ section.id }} .banner__box > * + * { margin-top: 12px; }
 #shopify-section-{{ section.id }} .banner__title { font-size: clamp(26px, 3vw, 48px); }
 #shopify-section-{{ section.id }} .banner__box .rte { font-size: clamp(14px, 1.15vw, 18px); }
