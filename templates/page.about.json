@@ -29,6 +29,7 @@
       "blocks": {
         "heading": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "ROVIC / WALK THE COURSE",
             "heading_size": "title-lg tracking-heading",
@@ -40,6 +41,7 @@
         },
         "text": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p><em>A Lighter Way to Play.</em></p>",
             "text_font": "body",
@@ -55,6 +57,7 @@
         },
         "text_hh68gF": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Rovic push carts are made for golfers who want to walk more freely, carry less, and stay focused on the round ahead.</p>",
             "text_font": "body",
