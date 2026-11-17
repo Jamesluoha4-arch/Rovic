@@ -117,7 +117,6 @@
         "subcollections",
         "promotion-2"
       ],
-      "disabled": true,
       "settings": {
         "products_per_page": 24,
         "columns": 4,
@@ -139,6 +138,7 @@
     },
     "featured_collection_Ezni3L": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.name",
       "settings": {
         "collection": "",
