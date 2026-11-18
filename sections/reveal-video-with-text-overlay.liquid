@@ -11,7 +11,7 @@
       {%- if section.blocks.size > 0 -%}
         <span class="reveal-banner__tracker2nd absolute top-0 h-full"></span>
       {%- endif -%}
-      <div class="reveal-banner__scroller{% if section.settings.enable_parallax %} sticky top-0 overflow-hidden{% endif %}">
+      <div class="rovic-scroll-media reveal-banner__scroller{% if section.settings.enable_parallax %} sticky top-0 overflow-hidden{% endif %}">
         <div class="video-hero banner w-full h-screen{% if section.settings.enable_parallax %} relative{% else %} sticky top-0{% endif %}">
           {%- if section.settings.video_mobile or section.settings.video_url_mobile -%}
             {%- render 'video',

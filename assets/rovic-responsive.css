@@ -95,3 +95,146 @@
   .cart-quantity .quantity__input { min-height: 44px; }
   a[is="cart-remove-button"] { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
 }
+
+/* Keep the navigation and newsletter aligned as the footer narrows. */
+@media (min-width: 768px) {
+  .footer .footer__accordions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: clamp(16px, 3vw, 48px);
+    min-width: 0;
+  }
+
+  .footer .footer__accordions > :is(details, .no-details) {
+    width: auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .footer .footer__accordions:has(> :nth-child(3):last-child) > :has(.footer__contact) {
+    grid-area: 1 / 2 / span 2;
+  }
+
+  .footer .footer__right {
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+  }
+
+  .footer__right > * {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 960px) {
+  .footer:has(.footer__left):has(.footer__right):not(.footer--inverted) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer:has(.footer__right):not(.footer--inverted) .footer__left {
+    border-inline-end: 1px solid rgb(var(--color-foreground) / .115);
+    padding-inline-end: clamp(16px, 2vw, 32px);
+  }
+
+  .footer:has(.footer__left):not(.footer--inverted) .footer__right {
+    border-block-start: 0;
+    margin-block-start: 0;
+    padding-block: 0;
+    padding-inline: clamp(24px, 5vw, 160px);
+  }
+}
+
+/* The scrollport ends at the heading's content edges. */
+.recently-viewed .slider {
+  --slider-padding: 0px;
+  --slider-container: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 1023px) {
+  .recently-viewed .slider--tablet .card-grid {
+    --slider-item-width: 36%;
+  }
+}
+
+@media (max-width: 639px) {
+  .recently-viewed .slider--tablet .mobile\:card-grid--1 {
+    --slider-item-width: 74%;
+  }
+
+  .recently-viewed .slider--tablet .mobile\:card-grid--2 {
+    --slider-item-width: 44%;
+  }
+}
+
+.recently-viewed :is(.slider--desktop, .slider--tablet) {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-foreground) / .45) rgb(var(--color-foreground) / .08);
+}
+
+.recently-viewed :is(.slider--desktop, .slider--tablet)::-webkit-scrollbar {
+  display: initial;
+}
+
+/* Scale the home hero against both the available width and viewport height. */
+.template-index .rovic-slideshow {
+  --page-padding: clamp(20px, 3vw, 48px);
+  --rovic-hero-height: min(860px, max(300px, calc(100svh - var(--header-height))), max(400px, 56vw));
+  max-width: var(--page-width);
+  margin-inline: auto;
+}
+
+.template-index .rovic-slideshow .banner:is(.media--100vh, .mobile\:media--100vh) {
+  height: var(--rovic-hero-height);
+}
+
+@media (max-width: 767px) {
+  .template-index .rovic-slideshow {
+    --rovic-hero-height: min(660px, max(340px, calc(100svh - var(--header-height))), max(400px, 125vw));
+  }
+}
+
+/* Sticky media uses the original scroll distances with a bounded media stage. */
+.rovic-scroll-media {
+  --page-padding: clamp(20px, 3vw, 48px);
+  max-width: var(--page-width);
+  margin-inline: auto;
+}
+
+.rovic-scroll-media .banner:has(video-media) {
+  background-color: #111;
+}
+
+.rovic-scroll-media .banner__media video,
+.rovic-scroll-media video-media.banner__media > img {
+  object-fit: contain;
+}
+
+.rovic-scroll-media .banner__content > .page-width {
+  padding-block: clamp(16px, 4vh, 48px);
+}
+
+/* Keep the selected gallery media within the space below the sticky header. */
+@media (min-width: 1024px) {
+  .template-product .product :is(.product__gallery-container, .product__media-container > div) {
+    min-width: 0;
+  }
+
+  .template-product .product .product__media-container {
+    --rovic-gallery-height: max(240px, calc(100svh - var(--header-height) - var(--topbar-height) - var(--sp-10)));
+  }
+
+  .template-product .product:is(.product--thumbnail, .product--dots) .product__media {
+    max-height: var(--rovic-gallery-height);
+  }
+
+  .template-product .product:is(.product--thumbnail, .product--dots) .product__media > :is(img, video-media, model-media),
+  .template-product .product:is(.product--thumbnail, .product--dots) .product__media video {
+    max-height: var(--rovic-gallery-height);
+    object-fit: contain;
+  }
+
+  .template-product .product .product__thumbnails--beside .product__thumbnails-list {
+    max-height: min(630px, var(--rovic-gallery-height));
+  }
+}

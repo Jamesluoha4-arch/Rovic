@@ -1,0 +1,22 @@
+<aside class="rovic-payment-security" aria-labelledby="PaymentSecurity-{{ section.id }}">
+  <h2 id="PaymentSecurity-{{ section.id }}">Payment &amp; Security</h2>
+  <h3>Payment methods</h3>
+  {%- if shop.enabled_payment_types != empty -%}
+    <ul class="rovic-payment-security__methods" role="list" aria-label="Accepted payment methods">
+      {%- for type in shop.enabled_payment_types -%}
+        <li>{{ type | payment_type_svg_tag: class: 'rovic-payment-security__icon' }}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <p>Your payment is processed securely through Shopify checkout. Available payment methods are confirmed at checkout.</p>
+</aside>
+<style>
+  .rovic-payment-security{margin-top:28px;padding:28px 30px;background:#f4f4f2;border:1px solid #e9eae4;border-radius:16px;color:#292b27;width:100%;box-sizing:border-box}
+  .rovic-payment-security h2{margin:0 0 25px;font-size:clamp(24px,2.2vw,30px);line-height:1.2;font-weight:700;letter-spacing:-.025em}
+  .rovic-payment-security h3{margin:0 0 16px;font-size:18px;line-height:1.4;font-weight:650}
+  .rovic-payment-security__methods{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;list-style:none;margin:0 0 20px;padding:0}
+  .rovic-payment-security__methods li{display:flex;margin:0;padding:0}
+  .rovic-payment-security__icon{display:block;width:48px;height:30px}
+  .rovic-payment-security p{margin:0;font-size:14px;line-height:1.65;font-style:italic;color:#555a50}
+  @media(max-width:600px){.rovic-payment-security{margin-top:24px;padding:24px}.rovic-payment-security h2{margin-bottom:22px}}
+</style>

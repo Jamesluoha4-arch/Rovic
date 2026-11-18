@@ -1,9 +1,33 @@
 (() => {
+  // Align desktop dropdowns with the header edge, including sticky-header resizing.
+  const alignDropdowns = () => {
+    document.querySelectorAll('.header__menu details[level="top"]').forEach(details => {
+      if (!details.querySelector(':scope > .rovic-dropdown-panel')) return;
+      const header = details.closest('.header');
+      const gap = header.getBoundingClientRect().bottom - details.getBoundingClientRect().bottom;
+      details.style.setProperty('--rovic-dropdown-gap', `${Math.max(0, gap)}px`);
+    });
+  };
+  const observeHeaders = () => {
+    document.querySelectorAll('.header').forEach(header => headerObserver.observe(header));
+    alignDropdowns();
+  };
+  const headerObserver = new ResizeObserver(alignDropdowns);
+  window.addEventListener('resize', alignDropdowns);
+  document.addEventListener('shopify:section:load', observeHeaders);
+  document.addEventListener('pointerover', event => {
+    if (event.target.closest('.header__menu')) alignDropdowns();
+  });
+  document.addEventListener('focusin', event => {
+    if (event.target.closest('.header__menu')) alignDropdowns();
+  });
+  observeHeaders();
+
   // Native touch scrolling remains intact; mouse drags suppress only the following click.
   let drag;
-  let suppressClick = false;
+  let suppressClick = null;
   document.addEventListener('pointerdown', event => {
-    suppressClick = false;
+    suppressClick = null;
     const slider = event.target.closest('slider-element');
     if (!slider || event.pointerType !== 'mouse' || event.button !== 0 || slider.scrollWidth <= slider.clientWidth + 1 || event.target.closest('button,input,select,textarea')) return;
     drag = { slider, id: event.pointerId, x: event.clientX, scroll: slider.scrollLeft, moved: false };
@@ -17,9 +41,11 @@
     event.preventDefault();
     drag.slider.scrollLeft = drag.scroll - dx;
   }, { passive: false });
-  const finish = () => {
+  const finish = event => {
+    if (drag && event?.pointerId != null && event.pointerId !== drag.id) return;
+    suppressClick = event?.type === 'pointerup' && drag?.moved
+      ? { slider: drag.slider, id: drag.id } : null;
     if (!drag) return;
-    suppressClick = drag.moved;
     drag.slider.classList.remove('rovic-dragging');
     if (drag.slider.hasPointerCapture(drag.id)) drag.slider.releasePointerCapture(drag.id);
     drag = null;
@@ -29,7 +55,11 @@
   window.addEventListener('blur', finish);
   document.addEventListener('click', event => {
     if (!suppressClick) return;
-    suppressClick = false;
+    const completedDrag = suppressClick;
+    suppressClick = null;
+    // Keyboard and assistive activation must never be swallowed by a mouse drag.
+    if (event.detail === 0 || !completedDrag.slider.contains(event.target)) return;
+    if (event.pointerId != null && event.pointerId !== completedDrag.id) return;
     event.preventDefault(); event.stopImmediatePropagation();
   }, true);
 
@@ -112,3 +142,12 @@
   new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
   schedule();
 })();
+
+// Hover opens portfolio details; touch and keyboard keep their native click behavior.
+document.addEventListener('pointerover', (event) => {
+  if (event.pointerType !== 'mouse' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const button = event.target.closest('.profile__button[aria-controls]');
+  if (!button || button.contains(event.relatedTarget)) return;
+  const modal = document.getElementById(button.getAttribute('aria-controls'));
+  if (modal && !modal.open && typeof modal.show === 'function') modal.show(button);
+});

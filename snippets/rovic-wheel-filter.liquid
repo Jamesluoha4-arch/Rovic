@@ -1,0 +1,35 @@
+{%- assign groups = 'Fixed,Swivel' | split: ',' -%}
+<details class="details" data-filter data-index="{{ context }}-{{ filter.param_name }}" open>
+  <summary class="details__summary flex items-center justify-between gap-2"><span class="text-base-xl font-medium">Wheel Setup</span>{%- render 'icon', icon: 'chevron-down' -%}</summary>
+  <div class="details__content"><ul class="list grid gap-3" role="list">
+  {%- for group in groups -%}
+    {%- liquid
+      assign count = 0
+      assign selected = false
+      assign values = ''
+      for item in filter.values
+        assign label = item.label | downcase | strip
+        assign item_group = 'Fixed'
+        if label contains 'swivel'
+          assign item_group = 'Swivel'
+        endif
+        if item_group == group
+          assign count = count | plus: item.count
+          if item.active
+            assign selected = true
+          endif
+          if values != blank
+            assign values = values | append: ','
+          endif
+          assign values = values | append: item.value
+        endif
+      endfor
+      assign id = context | append: '-wheel-' | append: group
+    -%}
+    <li class="flex items-center gap-3">
+      <input class="checkbox" type="checkbox" id="{{ id }}" name="{{ filter.param_name }}" value="{{ values | escape }}"{% if selected %} checked{% endif %}{% if count == 0 and selected == false %} disabled{% endif %}>
+      <label for="{{ id }}">{{ group }} <span class="text-sm">({{ count }})</span></label>
+    </li>
+  {%- endfor -%}
+  </ul></div>
+</details>

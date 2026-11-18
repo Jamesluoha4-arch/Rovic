@@ -2,7 +2,9 @@
   <legend>Category</legend>
   <input type="hidden" name="category" value="">
   <div class="rovic-accessory-categories__list">
-    {%- if template.suffix == 'parts' -%}
+    {%- if collection.handle == 'parts' -%}
+      {%- assign accessory_categories = 'all:All,rv1s:RV1S,rv1c:RV1C,rv1d:RV1D' | split: ',' -%}
+    {%- elsif template.suffix == 'parts' -%}
       {%- assign accessory_categories = 'all:All,bag:Bag,wheel:Wheel,umbrella:Umbrella,seat:Seat' | split: ',' -%}
     {%- else -%}
       {%- assign accessory_categories = 'all:All,bag:Bag,umbrella:Umbrella,cover:Cover,brush:Brush,bottle:Bottle' | split: ',' -%}

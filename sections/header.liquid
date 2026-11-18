@@ -36,7 +36,7 @@
     }
 
     #shopify-section-{{ section.id }} .rovic-dropdown-panel {
-      inset-block-start: 100%;
+      inset-block-start: calc(100% + var(--rovic-dropdown-gap, 0px));
       inset-inline-start: 0;
       margin: 0;
       padding: 0;
@@ -44,6 +44,15 @@
       width: max-content;
       max-width: min(280px, calc(100vw - 32px));
       z-index: 2;
+    }
+
+    /* Bridge the header's lower padding so hover stays active on the way down. */
+    #shopify-section-{{ section.id }} .rovic-dropdown-panel::before {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      bottom: 100%;
+      height: var(--rovic-dropdown-gap, 0px);
     }
 
     #shopify-section-{{ section.id }} .dropdown__container {

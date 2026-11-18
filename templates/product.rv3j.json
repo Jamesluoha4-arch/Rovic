@@ -780,67 +780,6 @@
         "rounded": false
       }
     },
-    "image_comparison_BzcaaV": {
-      "type": "image-comparison",
-      "blocks": {
-        "image_8JfWB6": {
-          "type": "image",
-          "settings": {
-            "image": "{{ product.metafields.custom.pdp_folded_image.value }}",
-            "subheading": "{{ product.metafields.custom.pdp_folded_eyebrow.value }}",
-            "heading": "{{ product.metafields.custom.pdp_folded_heading.value }}",
-            "content_position": "end",
-            "color_text": "#ffffff"
-          }
-        },
-        "image_zpCLPV": {
-          "type": "image",
-          "settings": {
-            "image": "{{ product.metafields.custom.pdp_open_image.value }}",
-            "subheading": "{{ product.metafields.custom.pdp_open_eyebrow.value }}",
-            "heading": "{{ product.metafields.custom.pdp_open_heading.value }}",
-            "content_position": "end",
-            "color_text": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image_8JfWB6",
-        "image_zpCLPV"
-      ],
-      "name": "t:sections.image-comparison.name",
-      "settings": {
-        "layout": "horizontal",
-        "image_height": "adapt",
-        "image_height_mobile": "adapt",
-        "heading": "<em>Ready for the Course. Compact for the Car.</em>",
-        "heading_size": "title-md",
-        "heading_alignment": "text-center md:items-center",
-        "heading_tag": "h2",
-        "subheading": "Open to Folded",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "half_text",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "#9efa00",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 32,
-        "padding_bottom": 32,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
     "video_with_text_cfW9rJ": {
       "type": "video-with-text",
       "blocks": {
@@ -1587,6 +1526,10 @@
         "rounded": false
       },
       "disabled": true
+    },
+    "rovic_reviews": {
+      "type": "rovic-product-reviews",
+      "settings": {}
     }
   },
   "order": [
@@ -1598,7 +1541,7 @@
     "video-hero",
     "collage",
     "lookbook_G3EVV4",
-    "image_comparison_BzcaaV",
+    "rovic_reviews",
     "video_with_text_cfW9rJ",
     "product-details",
     "comparison_table_bgF3jp",

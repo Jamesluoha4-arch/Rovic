@@ -578,14 +578,36 @@
           "type": "collection",
           "settings": {
             "collection": "accessories",
-            "products": [],
-            "title": ""
+            "products": [
+              "shoe-brush",
+              "rovic-golf-umbrella",
+              "cart-storage-bag",
+              "golf-bag-cover",
+              "sand-bottle",
+              "rv1c-wheel-cover"
+            ],
+            "title": "Accessories"
+          }
+        },
+        "collection_parts": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "products": [
+              "replacement-wheel-set",
+              "replacement-bag-straps",
+              "adjustable-umbrella-holder",
+              "rv2l-extended-seat",
+              "rv1-series-extended-seat"
+            ],
+            "title": "Parts"
           }
         }
       },
       "block_order": [
         "collection_dx97LY",
-        "collection_a36ELh"
+        "collection_a36ELh",
+        "collection_parts"
       ],
       "name": "t:sections.featured-collections.name",
       "settings": {

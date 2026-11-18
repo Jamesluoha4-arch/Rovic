@@ -44,10 +44,10 @@
 <style>
   {% if request.page_type == 'index' %}
   #shopify-section-{{ section.id }} > .section { padding: 0; border-radius: 0; }
-  #shopify-section-{{ section.id }} > .section > .relative { padding-inline: 0; max-width: none; }
+  #shopify-section-{{ section.id }} > .section > .rovic-slideshow { padding-inline: 0; }
   #shopify-section-{{ section.id }} :is(.slideshow, .flickity-viewport, .banner__media, animate-element) { border-radius: 0; }
   #shopify-section-{{ section.id }} .slideshow .banner {
-    height: auto; min-height: 0; padding: 0;
+    height: var(--rovic-hero-height); min-height: 0; padding: 0;
     aspect-ratio: {{ first_block.settings.video.aspect_ratio | default: first_block_image.aspect_ratio | default: 1.777777 }};
     max-width: none; margin-inline: 0; border-radius: 0;
   }
@@ -58,6 +58,7 @@
     #shopify-section-{{ section.id }} .slideshow-word .banner__box { margin-bottom: clamp(16px, 1.7vw, 32px); }
   }
   @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .slideshow .banner { height: auto; max-height: var(--rovic-hero-height); }
     #shopify-section-{{ section.id }} slideshow-element + .page-width { position: relative; padding-inline: 0; }
     #shopify-section-{{ section.id }} .slideshow-content { position: relative; padding: 20px; background: #171717; }
     #shopify-section-{{ section.id }} .slideshow-word .heading { font-size: 24px; }
@@ -89,7 +90,7 @@
 
 {%- if section.blocks.size > 0 -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
-  <div class="{% unless section.settings.full_width %}page-width {% endunless %}relative">
+  <div class="{% unless section.settings.full_width %}page-width {% endunless %}rovic-slideshow relative">
     {%- if section.blocks.size > 1 and section.settings.autoplay -%}
       <button
         type="button"

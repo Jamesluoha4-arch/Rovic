@@ -23,7 +23,7 @@
           endfor
         endcapture
       -%}
-      <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative overflow-hidden md:overflow-visible">
+      <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
         {%- capture indicators -%}
           {%- if section.settings.carousel_on_desktop -%}
             <div class="indicators hidden lg:flex gap-2d5">
