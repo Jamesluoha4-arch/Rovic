@@ -756,7 +756,6 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "popup_image": "shopify://shop_images/P1041778_jx0.jpg",
             "iwidth": "custom",
             "icon_width": 24,
             "heading": "Stable Three-Wheel Base",
@@ -773,7 +772,6 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "popup_image": "shopify://shop_images/P1041778_jx0.jpg",
             "iwidth": "custom",
             "icon_width": 24,
             "heading": "Secure Bag Setup",
