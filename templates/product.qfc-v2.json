@@ -1494,6 +1494,7 @@
         "values_ExCewz",
         "values_DbQxna"
       ],
+      "disabled": true,
       "name": "t:sections.comparison-table.name",
       "settings": {
         "sticky_product_info": true,
