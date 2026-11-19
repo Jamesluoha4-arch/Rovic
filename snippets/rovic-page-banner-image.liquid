@@ -1,0 +1,6 @@
+{%- comment -%}Repository-managed hero photography, with responsive Shopify asset variants.{%- endcomment -%}
+<img src="{{ image_asset | asset_url }}"
+  srcset="{{ image_asset | asset_img_url: '600x' }} 600w, {{ image_asset | asset_img_url: '1000x' }} 1000w, {{ image_asset | asset_img_url: '1600x' }} 1600w, {{ image_asset | asset_url }} 2381w"
+  sizes="100vw" width="2381" height="{{ image_height | default: 343 }}"
+  alt="{{ image_alt | escape }}" class="banner__image rovic-banner-photo"
+  loading="{{ loading | default: 'eager' }}" fetchpriority="{{ fetchpriority | default: 'high' }}" decoding="async">

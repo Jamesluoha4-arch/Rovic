@@ -55,7 +55,11 @@
   {%- case block.type -%}
     {%- when 'image' -%}
       <div class="collage__item with-image banner w-full h-full relative overflow-hidden" style="--column-span: {{ block.settings.column_size | at_most: section.settings.grid_columns }};--row-span: {{ block.settings.row_size }};" id="shopify-block-{{ block.id }}" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
+        {%- if request.page_type == 'index' and section.id contains 'collage_grid_BKYPmm' -%}
+{%- assign photo = 'rovic-home-carts-2Z2A8687.jpg' -%}
+{%- if block.id == 'image_mTQ33W' -%}{%- assign photo = 'rovic-home-accessories-2Z2A8949.jpg' -%}{%- endif -%}
+<picture class="media media--height block w-full h-full relative overflow-hidden"><img src="{{ photo | asset_url }}" width="6720" height="4480" alt="{{ block.settings.subheading | escape }}" loading="lazy" style="object-fit:cover;object-position:center;"></picture>
+{%- elsif block.settings.image != blank -%}
           {%- assign sizes = '(max-width: 767px) 100vw, 74vw' -%}
           <picture class="media media--height block w-full h-full relative overflow-hidden">
             {%- if block.settings.image_mobile -%}

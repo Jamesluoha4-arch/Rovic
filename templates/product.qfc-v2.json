@@ -190,6 +190,86 @@
         "rounded": false
       }
     },
+    "video_with_text_CJnQNF": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_DmDAiR": {
+          "type": "heading",
+          "settings": {
+            "heading": "&nbsp;<strong>ONE HAND.QUICK UNFOLD.</strong>&nbsp;",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text_RkWJjW": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Less setup. More golf.</strong></p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_LrcxPJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "ROVIC QFC",
+            "button_link": "",
+            "button_style": "primary",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_DmDAiR",
+        "text_RkWJjW",
+        "button_LrcxPJ"
+      ],
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "video": "shopify://files/videos/1-1.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "image_height": "adapt",
+        "video_width": "medium",
+        "layout": "video_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "video_url_mobile": "",
+        "image_height_mobile": "auto",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_background_2": "",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
     "rich_text_ppDqq6": {
       "type": "rich-text",
       "blocks": {
@@ -676,7 +756,6 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "popup_image": "shopify://shop_images/P1041778_jx0.jpg",
             "iwidth": "custom",
             "icon_width": 24,
             "heading": "Stable Three-Wheel Base",
@@ -693,7 +772,6 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "popup_image": "shopify://shop_images/P1041778_jx0.jpg",
             "iwidth": "custom",
             "icon_width": 24,
             "heading": "Secure Bag Setup",
@@ -778,6 +856,10 @@
         "full_width": false,
         "rounded": false
       }
+    },
+    "rovic_reviews": {
+      "type": "rovic-product-reviews",
+      "settings": {}
     },
     "video_with_text_cfW9rJ": {
       "type": "video-with-text",
@@ -1410,6 +1492,7 @@
         "values_ExCewz",
         "values_DbQxna"
       ],
+      "disabled": true,
       "name": "t:sections.comparison-table.name",
       "settings": {
         "sticky_product_info": true,
@@ -1745,14 +1828,11 @@
         "divider": false,
         "rounded": false
       }
-    },
-    "rovic_reviews": {
-      "type": "rovic-product-reviews",
-      "settings": {}
     }
   },
   "order": [
     "main-product",
+    "video_with_text_CJnQNF",
     "rich_text_ppDqq6",
     "rich_text_8b8HTH",
     "reveal_image_with_text_overlay_Y9h7tz",

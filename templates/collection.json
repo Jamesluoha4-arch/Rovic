@@ -136,6 +136,54 @@
         "rounded": true
       }
     },
+    "featured_collection_Ezni3L": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "collection": "",
+        "products": [
+          "rovic-qfc",
+          "rovic-rv1c-compact",
+          "rovic-rv1s-swivel",
+          "rovic-rv2l-lite",
+          "rovic-rv3j-junior",
+          "rovic-golf-umbrella",
+          "adjustable-umbrella-holder",
+          "cart-storage-bag",
+          "golf-bag-cover",
+          "rv1-series-extended-seat"
+        ],
+        "product_limit": 12,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
     "images-with-text-overlay": {
       "type": "images-with-text-overlay",
       "blocks": {
@@ -260,6 +308,7 @@
   "order": [
     "main-collection-banner",
     "main-collection",
+    "featured_collection_Ezni3L",
     "images-with-text-overlay",
     "recently-viewed"
   ]

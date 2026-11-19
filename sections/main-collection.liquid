@@ -3,8 +3,15 @@
     --section-padding-top: {% if collection.handle == 'all' %}24{% else %}{{ section.settings.padding_top }}{% endif %}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
+  #shopify-section-{{ section.id }} .rovic-cart-demo { min-width: 0; min-height: 0; border-radius: 0; container-type: inline-size; }
+  #shopify-section-{{ section.id }} .rovic-cart-demo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #shopify-section-{{ section.id }} .rovic-cart-demo::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.42)); pointer-events: none; }
+  #shopify-section-{{ section.id }} .rovic-cart-demo__caption { position: absolute; left: 8%; right: 8%; bottom: 7%; z-index: 1; margin: 0; color: #fff; font-size: clamp(24px, 10cqw, 48px); font-weight: 750; line-height: 1.15; text-align: left; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); }
+  #shopify-section-{{ section.id }} .rovic-cart-demo:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+  @media (max-width: 639px) { #shopify-section-{{ section.id }} .rovic-cart-demo { aspect-ratio: 1200 / 1650; } }
 </style>
 
+<span hidden data-rovic-product-count="{{ collection.products_count }}"></span>
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection.js' | asset_url }}" defer="defer"></script>
 {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
@@ -44,6 +51,9 @@
   endif
 -%}
 
+{%- if collection.handle == 'all' -%}
+{%- render 'rovic-shop-products', section: section -%}
+{%- else -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="collection page-width{% if section.settings.full_width %} page-width--full{% endif %} relative{% if enable_filtering %} with-{{ filter_type }}{% endif %}">
     {%- if collection.handle == 'all' -%}<h1 class="sr-only">Shop</h1>{%- endif -%}
@@ -235,6 +245,16 @@
           {%- if collection.all_products_count > 0 -%}
             <motion-list {% if collection.handle == 'parts' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
+              {%- assign rovic_show_demo = false -%}
+              {%- if collection.handle == 'all-push-carts' and filter_count == 0 and paginate.current_page == paginate.pages -%}
+                {%- assign rovic_show_demo = true -%}
+              {%- endif -%}
+              {%- capture rovic_demo_card -%}
+                <a class="card rovic-cart-demo relative overflow-hidden" href="{{ all_products['rovic-qfc'].url | default: '/products/rovic-qfc' }}" aria-label="View Rovic QFC">
+                  <img src="{{ 'rovic-push-carts-demo.gif' | asset_url }}" width="1200" height="1650" alt="A golfer unfolds a Rovic push cart on the course" loading="lazy" decoding="async" />
+                  <p class="rovic-cart-demo__caption heading">Fold Away<br />With Ease.</p>
+                </a>
+              {%- endcapture -%}
               {%- liquid
                 assign grid_products = collection.products
                 if collection.handle == 'all-push-carts'
@@ -317,6 +337,7 @@
                     assign lazy_load = true
                   endif
                 -%}
+                {%- capture rovic_current_product_card -%}
                 {%- render 'product-card',
                   product: product,
                   product_id: product.id,
@@ -343,7 +364,12 @@
                   show_on_model: show_on_model,
                   accessory_category: accessory_category
                 -%}
+                {%- endcapture -%}
+                {{- rovic_current_product_card -}}
               {%- endfor -%}
+              {%- if rovic_show_demo -%}
+                {{- rovic_demo_card -}}
+              {%- endif -%}
             </motion-list>
             {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
               <div class="rovic-accessory-empty empty-state items-center justify-center text-center gap-3" hidden>
@@ -382,6 +408,8 @@
   "name": {% if collection.handle == 'accessories' and template.suffix == 'parts' %}{{ 'Parts' | json }}{% else %}{{ collection.title | json }}{% endif %}
 }
 </script>
+
+{%- endif -%}
 
 {% schema %}
 {

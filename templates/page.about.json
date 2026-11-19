@@ -29,6 +29,7 @@
       "blocks": {
         "heading": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "ROVIC / WALK THE COURSE",
             "heading_size": "title-lg tracking-heading",
@@ -40,6 +41,7 @@
         },
         "text": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p><em>A Lighter Way to Play.</em></p>",
             "text_font": "body",
@@ -55,6 +57,7 @@
         },
         "text_hh68gF": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Rovic push carts are made for golfers who want to walk more freely, carry less, and stay focused on the round ahead.</p>",
             "text_font": "body",
@@ -173,7 +176,7 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 120,
+        "padding_top": 80,
         "padding_bottom": 100,
         "divider": false,
         "full_width": false,
@@ -340,6 +343,7 @@
       ],
       "name": "t:sections.timeline.name",
       "settings": {
+        "show_arrows": false,
         "show_navigation": true,
         "layout": "image_first",
         "image_ratio": "portrait",
@@ -365,8 +369,7 @@
         "padding_bottom": 72,
         "divider": false,
         "full_width": false,
-        "rounded": true,
-        "show_arrows": false
+        "rounded": true
       }
     },
     "featured_collection_cxMCEy": {
@@ -428,6 +431,7 @@
       "block_order": [
         "text"
       ],
+      "disabled": true,
       "settings": {
         "direction": "left",
         "speed": 20,
@@ -439,8 +443,8 @@
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
+        "padding_top": 32,
+        "padding_bottom": 16,
         "divider": false,
         "rounded": false
       }
@@ -531,18 +535,18 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "#c5e8b8",
         "gradient_highlight": "",
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 80,
-        "padding_bottom": 20,
+        "padding_top": 32,
+        "padding_bottom": 32,
         "divider": false,
         "narrow": true,
-        "rounded": true
+        "rounded": false
       }
     },
     "logo-list": {
@@ -633,18 +637,18 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_top": 16,
+        "padding_bottom": 32,
         "divider": false,
         "full_width": true,
-        "rounded": true
+        "rounded": false
       }
     },
     "image_with_text_overlay_LzgQKR": {

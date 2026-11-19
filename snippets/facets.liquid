@@ -131,7 +131,7 @@
                 </summary>
                 <div class="details__content">
                   {%- if is_color or filter.presentation == 'swatch' -%}
-                    <ul class="swatches swatches--{{ settings.rounded_swatch }} flex items-center flex-wrap gap-4">
+                    <ul class="swatches swatches--{{ settings.rounded_swatch }} {% if is_color %}grid gap-3{% else %}flex items-center flex-wrap gap-4{% endif %}">
                       {%- for filter_value in sorted_values -%}
                         {%- liquid
                           assign filter_value_id = filter_id | append: '-' | append: forloop.index
@@ -141,7 +141,7 @@
                           endif
                         -%}
                         <li>
-                          <magnet-element class="block">
+                          <magnet-element class="{% if is_color %}flex items-center gap-3{% else %}block{% endif %}">
                             {%- capture filter_label -%}{{ filter_value.label }} ({{ filter_value.count }}){%- endcapture -%}
                             {%- liquid
                               if filter.presentation == 'swatch'
@@ -150,6 +150,12 @@
                                 render 'swatch', allow_multiple: true, value: filter_value.label, name: filter_value.param_name, id: filter_value_id, selected: filter_value.active, disabled: is_disabled, tooltip: filter_label, value_label: filter_value.label
                               endif
                             -%}
+                            {%- if is_color -%}
+                              <label for="{{ filter_value_id | escape }}" class="flex items-center justify-between gap-3 grow cursor-pointer text-sm">
+                                <span>{{ filter_value.label | replace: '  ', ' ' | escape }}</span>
+                                <span class="text-opacity">({{ filter_value.count }})</span>
+                              </label>
+                            {%- endif -%}
                           </magnet-element>
                         </li>
                       {%- endfor -%}

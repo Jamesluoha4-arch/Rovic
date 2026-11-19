@@ -592,7 +592,7 @@
         "collection_parts": {
           "type": "collection",
           "settings": {
-            "collection": "accessories",
+            "collection": "parts",
             "products": [
               "replacement-wheel-set",
               "replacement-bag-straps",
@@ -611,7 +611,7 @@
       ],
       "name": "t:sections.featured-collections.name",
       "settings": {
-        "product_limit": 6,
+        "product_limit": 4,
         "columns": 4,
         "carousel_on_desktop": true,
         "show_view_all": false,

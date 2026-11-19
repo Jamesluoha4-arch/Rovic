@@ -790,7 +790,7 @@
         "highlighted_scribble": "circle",
         "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
@@ -801,7 +801,7 @@
         "padding_bottom": 120,
         "divider": false,
         "full_width": true,
-        "rounded": true
+        "rounded": false
       }
     },
     "featured_collection_QRRTze": {
