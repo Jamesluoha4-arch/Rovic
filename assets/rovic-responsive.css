@@ -180,8 +180,9 @@
 .template-index .rovic-slideshow {
   --page-padding: clamp(20px, 3vw, 48px);
   --rovic-hero-height: min(860px, max(300px, calc(100svh - var(--header-height))), max(400px, 56vw));
-  max-width: var(--page-width);
-  margin-inline: auto;
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
 }
 
 .template-index .rovic-slideshow .banner:is(.media--100vh, .mobile\:media--100vh) {
@@ -197,17 +198,18 @@
 /* Sticky media uses the original scroll distances with a bounded media stage. */
 .rovic-scroll-media {
   --page-padding: clamp(20px, 3vw, 48px);
-  max-width: var(--page-width);
-  margin-inline: auto;
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
 }
 
 .rovic-scroll-media .banner:has(video-media) {
-  background-color: #111;
+  background-color: rgb(var(--color-background));
 }
 
 .rovic-scroll-media .banner__media video,
 .rovic-scroll-media video-media.banner__media > img {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .rovic-scroll-media .banner__content > .page-width {
@@ -237,4 +239,19 @@
   .template-product .product .product__thumbnails--beside .product__thumbnails-list {
     max-height: min(630px, var(--rovic-gallery-height));
   }
+}
+
+/* Full-width video stays visible throughout the reveal scroll in both directions. */
+reveal-banner[full-bleed] .reveal-banner__scroller {
+  background: rgb(var(--color-background));
+}
+
+reveal-banner[full-bleed] .banner__media {
+  clip-path: none;
+  border-radius: 0;
+}
+
+.template-index .rovic-slideshow .banner__media :is(video, img) {
+  object-fit: cover;
+  object-position: center;
 }
