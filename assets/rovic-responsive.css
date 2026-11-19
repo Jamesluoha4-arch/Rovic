@@ -241,14 +241,10 @@
   }
 }
 
-/* Full-width video stays visible throughout the reveal scroll in both directions. */
-reveal-banner[full-bleed] .reveal-banner__scroller {
-  background: rgb(var(--color-background));
-}
-
-reveal-banner[full-bleed] .banner__media {
-  clip-path: none;
-  border-radius: 0;
+/* Reveal the video over a white backdrop as it expands to full width. */
+reveal-banner[white-backdrop] .reveal-banner__scroller,
+reveal-banner[white-backdrop] .rovic-scroll-media .banner {
+  background: #fff;
 }
 
 .template-index .rovic-slideshow .banner__media :is(video, img) {

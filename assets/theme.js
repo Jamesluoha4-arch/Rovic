@@ -8000,14 +8000,12 @@ class RevealBanner extends BaseElement {
     if (this.initialized) return;
     this.initialized = true;
 
-    if (!this.hasAttribute('full-bleed')) {
-      const tracker = this.querySelector('.reveal-banner__tracker');
-      const stopMediaReveal = Motion.scroll(
-        Motion.animate(this.querySelectorAll('.banner__media'), { clipPath: ['inset(20% 35% 0% 35% round var(--rounded-block))', 'inset(0% 0%)'] }, { easing: 'linear' }),
-        { target: tracker, offset: Motion.ScrollOffset.Enter }
-      );
-      this.registerCleanup(stopMediaReveal);
-    }
+    const tracker = this.querySelector('.reveal-banner__tracker');
+    const stopMediaReveal = Motion.scroll(
+      Motion.animate(this.querySelectorAll('.banner__media, .banner__overlay'), { clipPath: ['inset(20% 35% 0% 35% round var(--rounded-block))', 'inset(0% 0%)'] }, { easing: 'linear' }),
+      { target: tracker, offset: Motion.ScrollOffset.Enter }
+    );
+    this.registerCleanup(stopMediaReveal);
 
     const tracker2nd = this.querySelector('.reveal-banner__tracker2nd');
     if (tracker2nd) {
