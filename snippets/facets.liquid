@@ -29,13 +29,7 @@
     {%- if request.path contains '/collections/accessories' or results.handle == 'parts' -%}
       {%- render 'accessory-category-filter' -%}
     {%- endif -%}
-    {%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
-      <details class="details active" open data-cart-color-filter>
-        <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer"><span class="text-base-xl font-medium">Colour</span>{%- render 'icon', icon: 'chevron-up' -%}</summary>
-        <div class="details__content" data-cart-color-buttons></div>
-      </details>
-      <input type="hidden" name="cart_color" data-cart-color-param value="">
-    {%- endif -%}
+
     <div class="details" data-filter data-index="{{ context }}-page" hidden>
       <input type="hidden" name="page" value="" />
 
@@ -297,6 +291,13 @@
           {%- endcase -%}
         {%- endif -%}
       {%- endfor -%}
+    {%- endif -%}
+    {%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
+      <details class="details active" open data-cart-color-filter>
+        <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer"><span class="text-base-xl font-medium">Colour</span>{%- render 'icon', icon: 'chevron-up' -%}</summary>
+        <div class="details__content" data-cart-color-buttons></div>
+      </details>
+      <input type="hidden" name="cart_color" data-cart-color-param value="">
     {%- endif -%}
   </form>
 {%- endif -%}
