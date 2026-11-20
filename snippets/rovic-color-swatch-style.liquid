@@ -1,5 +1,5 @@
 {%- liquid
-  assign color_key = value | downcase | strip | replace: '  ', ' ' | replace: '  ', ' ' | replace: '/', ' ' | replace: '-', ' ' | replace: '  ', ' '
+  assign color_key = value | downcase | strip | remove: ')' | replace: '  ', ' ' | replace: '  ', ' ' | replace: '/', ' ' | replace: '-', ' ' | replace: '  ', ' '
   assign color_one = ''
   assign color_two = ''
   case color_key
@@ -24,11 +24,26 @@
     when 'red black'
       assign color_one = '#d02e32'
       assign color_two = '#171717'
+    when 'charcoal lime'
+      assign color_one = '#4b4f52'
+      assign color_two = '#8bcb26'
+    when 'all blue', 'blue'
+      assign color_one = '#1764c0'
+      assign color_two = '#1764c0'
+    when 'all lime', 'lime'
+      assign color_one = '#8bcb26'
+      assign color_two = '#8bcb26'
+    when 'all orange', 'orange'
+      assign color_one = '#f58220'
+      assign color_two = '#f58220'
+    when 'light blue'
+      assign color_one = '#75bde8'
+      assign color_two = '#75bde8'
     when 'silver black'
       assign color_one = '#c6cbd0'
       assign color_two = '#171717'
   endcase
 -%}
 {%- if color_one != blank -%}
-  --swatch-background: {{ color_one }}; --swatch-background-image: linear-gradient(135deg, {{ color_one }} 0%, {{ color_one }} 50%, {{ color_two }} 50%, {{ color_two }} 100%);
+  --swatch-radius: 2px; --swatch-background: {{ color_one }}; --swatch-background-image: linear-gradient(135deg, {{ color_one }} 0%, {{ color_one }} 50%, {{ color_two }} 50%, {{ color_two }} 100%);
 {%- endif -%}

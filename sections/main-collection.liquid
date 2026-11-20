@@ -13,6 +13,10 @@
 
 <span hidden data-rovic-product-count="{{ collection.products_count }}"></span>
 {{ 'collection.css' | asset_url | stylesheet_tag }}
+{%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
+{{ 'rovic-cart-colors.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'rovic-cart-colors.js' | asset_url }}" defer></script>
+{%- endif -%}
 <script src="{{ 'collection.js' | asset_url }}" defer="defer"></script>
 {%- if collection.handle == 'accessories' or collection.handle == 'parts' -%}
   <script src="{{ 'rovic-accessory-filters.js' | asset_url }}" defer="defer"></script>
@@ -20,7 +24,7 @@
 
 {%- liquid
   assign products_per_page = section.settings.products_per_page
-  if collection.handle == 'parts' or collection.handle == 'all-push-carts'
+  if collection.handle == 'parts' or collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts'
     assign products_per_page = 250
   endif
   assign filter_count = 0
@@ -55,7 +59,7 @@
 {%- render 'rovic-shop-products', section: section -%}
 {%- else -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
-  <div class="collection page-width{% if section.settings.full_width %} page-width--full{% endif %} relative{% if enable_filtering %} with-{{ filter_type }}{% endif %}">
+  <div {% if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' %}data-cart-color-collection{% endif %} class="collection page-width{% if section.settings.full_width %} page-width--full{% endif %} relative{% if enable_filtering %} with-{{ filter_type }}{% endif %}">
     {%- if collection.handle == 'all' -%}<h1 class="sr-only">Shop</h1>{%- endif -%}
     {%- if description != blank and collection.description != blank -%}
       <div class="rte collection__description" {{ description.shopify_attributes }}>

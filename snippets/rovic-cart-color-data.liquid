@@ -1,0 +1,14 @@
+[
+{%- assign first_color = true -%}
+{%- for color_option in product.options_with_values -%}
+  {%- assign color_name = color_option.name | downcase | strip -%}
+  {%- if color_name == 'color' or color_name == 'colour' or color_name == '颜色' or color_name == '顏色' -%}
+    {%- for color_value in color_option.values -%}
+      {%- capture color_style -%}{%- render 'rovic-color-swatch-style', value: color_value -%}{%- endcapture -%}
+      {%- unless first_color -%},{%- endunless -%}
+      {"value":{{ color_value | append: '' | json }},"style":{{ color_style | strip | json }}}
+      {%- assign first_color = false -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+]

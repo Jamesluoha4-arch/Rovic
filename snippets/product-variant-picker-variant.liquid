@@ -31,6 +31,9 @@
         assign option_display_name = 'Colour'
       endif
       assign is_color = false
+      if option.name == '颜色' or option.name == '顏色'
+        assign is_color = true
+      endif
       assign swatch_trigger_list = 'products.general.color_swatch_trigger' | t | downcase | split: ','
       assign downcased_option = option.name | downcase | strip
       for trigger in swatch_trigger_list
@@ -187,11 +190,12 @@
                     endif
                   endif
                 -%}
+                {%- capture rovic_swatch_style -%}{%- render 'rovic-color-swatch-style', value: value -%}{%- endcapture -%}
                 <label
                   for="{{ section_id }}-{{ product_id }}-{{ option.name | handle }}-{{ forloop.index0 }}"
-                  class="color-swatch{% if swatch_image != blank %} with-image{% endif %} cursor-pointer block relative{% if image_ratio %} aspect-{{ image_ratio }} mobile:aspect-{{ image_ratio_mobile }}{% unless image_fill %} aspect-contain{% endunless %}{% endif %}"
+                  class="color-swatch{% if swatch_image != blank or rovic_swatch_style != blank %} with-image{% endif %} cursor-pointer block relative{% if image_ratio %} aspect-{{ image_ratio }} mobile:aspect-{{ image_ratio_mobile }}{% unless image_fill %} aspect-contain{% endunless %}{% endif %}"
                   title="{{ value | escape }}"
-                  style="--swatch-background: {{ swatch_fallback }};{% if swatch_fallback_override == false and swatch_image != blank %}--swatch-background-image: url({{ swatch_image }});{% endif %}"
+                  style="{{ rovic_swatch_style }}--swatch-background: {{ swatch_fallback }};{% if rovic_swatch_style == blank and swatch_fallback_override == false and swatch_image != blank %}--swatch-background-image: url({{ swatch_image }});{% endif %}"
                 >
                   <span class="sr-only">{{ value | escape }}</span>
                   {%- unless context == 'bundle' -%}

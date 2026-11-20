@@ -29,6 +29,13 @@
     {%- if request.path contains '/collections/accessories' or results.handle == 'parts' -%}
       {%- render 'accessory-category-filter' -%}
     {%- endif -%}
+    {%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
+      <details class="details active" open data-cart-color-filter>
+        <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer"><span class="text-base-xl font-medium">Colour</span>{%- render 'icon', icon: 'chevron-up' -%}</summary>
+        <div class="details__content" data-cart-color-buttons></div>
+      </details>
+      <input type="hidden" name="cart_color" data-cart-color-param value="">
+    {%- endif -%}
     <div class="details" data-filter data-index="{{ context }}-page" hidden>
       <input type="hidden" name="page" value="" />
 
@@ -63,6 +70,9 @@
     {%- if enable_filtering -%}
       {%- for filter in results.filters -%}
         {%- assign wheel_label = filter.label | downcase | strip -%}
+        {%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
+          {%- if wheel_label == 'color' or wheel_label == 'colour' or wheel_label == '颜色' or wheel_label == '顏色' or filter.param_name contains 'filter.v.option.color' or filter.param_name contains 'filter.v.option.colour' -%}{%- continue -%}{%- endif -%}
+        {%- endif -%}
         {%- if wheel_label == 'wheel setup' or filter.param_name contains 'custom.wheel_setup' -%}
           {%- continue -%}
         {%- endif -%}

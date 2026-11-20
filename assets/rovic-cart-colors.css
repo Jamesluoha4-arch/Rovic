@@ -1,0 +1,6 @@
+[data-cart-color-collection] [hidden] { display: none !important; }
+[data-cart-color-buttons] { display: grid; gap: 4px; padding-block: 8px; }
+.rovic-colour-filter-button { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; min-height: 44px; padding: 6px 4px; text-align: start; font-size: 14px; border: 1px solid transparent; border-radius: 6px; }
+.rovic-colour-filter-button .color-swatch { display: block; width: 24px; height: 24px; min-width: 24px; border-radius: 3px; background: var(--swatch-background-image, var(--swatch-background, #ddd)); border: 1px solid #999; }
+.rovic-colour-filter-button[aria-pressed="true"] { border-color: currentColor; background: #f3f3f3; }
+.rovic-colour-filter-button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
