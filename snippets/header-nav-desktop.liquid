@@ -32,7 +32,7 @@
     assign is_parts_page = true
   endif
   assign push_carts_url = routes.collections_url | append: '/all-push-carts'
-  assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts'
+  assign disc_golf_carts_url = routes.collections_url | append: '/disc-golf-carts'
   assign accessories_url = routes.collections_url | append: '/accessories'
   assign parts_url = routes.collections_url | append: '/parts'
   assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy'
@@ -58,7 +58,7 @@
       endif
       if link.title == 'Push Carts'
         assign nav_active = false
-        if collection.handle == 'all-push-carts' or collection.handle == 'junior-push-carts'
+        if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts'
           assign nav_active = true
         endif
       endif

@@ -16,7 +16,7 @@
     <div class="details__content">
       {%- if block.settings.heading == 'Shop' -%}
         {%- assign push_carts_url = routes.collections_url | append: '/all-push-carts' -%}
-        {%- assign disc_golf_carts_url = routes.collections_url | append: '/junior-push-carts' -%}
+        {%- assign disc_golf_carts_url = routes.collections_url | append: '/disc-golf-carts' -%}
         {%- assign accessories_url = routes.collections_url | append: '/accessories' -%}
         {%- assign parts_url = accessories_url | append: '?view=parts' -%}
         {%- assign privacy_policy_url = shop.privacy_policy.url | default: '/policies/privacy-policy' -%}
