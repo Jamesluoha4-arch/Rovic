@@ -1,6 +1,6 @@
 {%- assign groups = 'Fixed,Swivel' | split: ',' -%}
-<details class="details" data-filter data-index="{{ context }}-{{ filter.param_name }}" open>
-  <summary class="details__summary flex items-center justify-between gap-2"><span class="text-base-xl font-medium">Wheel Setup</span>{%- render 'icon', icon: 'chevron-down' -%}</summary>
+<details class="details active" is="accordion-details" data-filter data-index="{{ context }}-{{ filter.param_name }}" open>
+  <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer"><span class="text-base-xl font-medium">Wheel Setup</span>{%- render 'icon', icon: 'chevron-up' -%}</summary>
   <div class="details__content"><ul class="list grid gap-3" role="list">
   {%- for group in groups -%}
     {%- liquid

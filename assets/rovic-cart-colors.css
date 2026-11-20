@@ -5,9 +5,9 @@
 .rovic-colour-filter-button[aria-pressed="true"] { border-color: currentColor; background: #f3f3f3; }
 .rovic-colour-filter-button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
-/* Remove the enclosing sidebar frame; keep individual control focus indicators. */
-[data-cart-color-collection] :is(#FacetFiltersContainer, .facets__scroll, .facet-form) {
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-}
+/* Scope the theme swatch decorations to each chip, never the filter panel. */
+.rovic-colour-filter-button { position: relative; cursor: pointer; transition: background-color .2s, border-color .2s; }
+.rovic-colour-filter-button .color-swatch { position: relative; pointer-events: none; }
+.rovic-colour-filter-button .color-swatch::before,
+.rovic-colour-filter-button .color-swatch::after { pointer-events: none; }
+@media (hover: hover) { .rovic-colour-filter-button:hover { background-color: #f3f3f3; } }

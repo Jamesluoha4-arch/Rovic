@@ -37,7 +37,7 @@
         button.setAttribute('aria-pressed', String(selected.has(id)));
         button.className = 'rovic-colour-filter-button';
         const swatch = document.createElement('span');
-        swatch.className = 'color-swatch with-image'; swatch.style.cssText = entry.style;
+        swatch.className = 'color-swatch with-image relative'; swatch.style.cssText = entry.style;
         swatch.setAttribute('aria-hidden','true');
         const label = document.createElement('span'); label.textContent = entry.value.replace(/\s+/g,' ');
         const count = document.createElement('span'); count.className = 'text-opacity'; count.textContent = `(${entry.count})`;

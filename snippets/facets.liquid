@@ -226,8 +226,12 @@
                 assign max_value = filter.max_value.value | default: filter.range_max | divided_by: 100.0
                 assign range_max = filter.range_max | divided_by: 100.0 | ceil
                 assign step_value = max_value | minus: min_value | divided_by: 100.0 | ceil | at_least: 1
-                assign lower_bound_progress = min_value | divided_by: range_max | times: 100.0
-                assign higher_bound_progress = max_value | divided_by: range_max | times: 100.0
+                assign lower_bound_progress = 0
+                assign higher_bound_progress = 100
+                if range_max > 0
+                  assign lower_bound_progress = min_value | divided_by: range_max | times: 100.0
+                  assign higher_bound_progress = max_value | divided_by: range_max | times: 100.0
+                endif
               -%}
               <details class="details{% unless collapsed %} active{% endunless %}" is="accordion-details"{% unless collapsed %} open{% endunless %} data-filter data-index="{{ filter_id }}">
                 <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
@@ -293,7 +297,7 @@
       {%- endfor -%}
     {%- endif -%}
     {%- if collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts' -%}
-      <details class="details active" open data-cart-color-filter>
+      <details class="details active" is="accordion-details" open data-cart-color-filter>
         <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer"><span class="text-base-xl font-medium">Colour</span>{%- render 'icon', icon: 'chevron-up' -%}</summary>
         <div class="details__content" data-cart-color-buttons></div>
       </details>
