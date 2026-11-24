@@ -126,7 +126,7 @@
         "enable_filtering": true,
         "filter_type": "sidebar",
         "filter_collapsed": false,
-        "filter_color_swatches": true,
+        "filter_color_swatches": false,
         "enable_sorting": false,
         "show_on_model": false,
         "buttons_style": "secondary",
