@@ -50,6 +50,55 @@
     return task;
   };
 
+  const renderPartsPagination = (grid, matches) => {
+    const size = Number(grid.dataset.partsPageSize);
+    if (!size) return;
+    const total = Math.ceil(matches.length / size);
+    const url = new URL(window.location.href);
+    const requested = Math.floor(Number(url.searchParams.get('page'))) || 1;
+    const current = Math.max(1, Math.min(requested, total || 1));
+    if (requested !== current) {
+      if (current === 1) url.searchParams.delete('page');
+      else url.searchParams.set('page', current);
+      history.replaceState({}, '', url);
+    }
+    matches.forEach((card, index) => { card.hidden = index < (current - 1) * size || index >= current * size; });
+    let nav = grid.closest('#ProductGridContainer').querySelector('[data-parts-pagination]');
+    if (!nav) return;
+    nav.replaceChildren();
+    nav.hidden = total <= 1;
+    const add = (page, text, label) => {
+      const link = document.createElement('a');
+      const target = new URL(window.location.href);
+      target.searchParams.delete('section_id');
+      if (page === 1) target.searchParams.delete('page');
+      else target.searchParams.set('page', page);
+      target.hash = 'ProductGridContainer';
+      link.href = target.pathname + target.search + target.hash;
+      link.textContent = text;
+      link.setAttribute('aria-label', label);
+      link.dataset.partsPage = page;
+      if (page === current && text === String(page)) link.setAttribute('aria-current', 'page');
+      nav.append(link);
+    };
+    add(1, '«', 'First page');
+    if (current > 1) add(current - 1, '‹', 'Previous page');
+    const pages = new Set([1, total]);
+    for (let page = Math.max(1, current - 2); page <= Math.min(total, current + 2); page += 1) pages.add(page);
+    let previous = 0;
+    [...pages].sort((a, b) => a - b).forEach(page => {
+      if (page > previous + 1) {
+        const gap = document.createElement('span');
+        gap.textContent = '…';
+        nav.append(gap);
+      }
+      add(page, String(page), 'Page ' + page);
+      previous = page;
+    });
+    if (current < total) add(current + 1, '›', 'Next page');
+    add(total, '»', 'Last page');
+  };
+
   let revision = 0;
   const applyCategory = async () => {
     const run = ++revision;
@@ -85,11 +134,22 @@
     if (emptyState) emptyState.hidden = count !== 0;
     const grid = document.querySelector('#ProductGridContainer motion-list');
     if (grid) grid.hidden = count === 0;
+    if (partsGrid) renderPartsPagination(partsGrid, cards.filter(card => !card.hidden));
     syncControls(category);
     updateCounts(count);
   };
 
   document.addEventListener('click', (event) => {
+    const pageLink = event.target.closest('[data-parts-page]');
+    if (pageLink && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && event.button === 0) {
+      event.preventDefault();
+      history.pushState({}, '', pageLink.href);
+      applyCategory().then(() => {
+        document.getElementById('ProductGridContainer')?.scrollIntoView({ block: 'start' });
+        document.querySelector('[data-parts-pagination] a[aria-current="page"]')?.focus({ preventScroll: true });
+      });
+      return;
+    }
     const button = event.target.closest('[data-accessory-category-button]');
     if (!button) return;
 

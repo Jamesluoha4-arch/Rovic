@@ -27,6 +27,9 @@
   if collection.handle == 'accessories' or collection.handle == 'parts' or collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts'
     assign products_per_page = 250
   endif
+  if collection.handle == 'parts'
+    assign products_per_page = 12
+  endif
   assign filter_count = 0
   for filter in collection.filters
     if filter.type == 'price_range'
@@ -247,7 +250,7 @@
           {%- endif -%}
 
           {%- if collection.all_products_count > 0 -%}
-            <motion-list {% if collection.handle == 'parts' or collection.handle == 'accessories' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
+            <motion-list {% if collection.handle == 'parts' or collection.handle == 'accessories' %}data-parts-grid {% if collection.handle == 'parts' %}data-parts-page-size="12"{% endif %} data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
               {%- assign rovic_show_demo = false -%}
               {%- if collection.handle == 'all-push-carts' and filter_count == 0 and paginate.current_page == paginate.pages -%}
@@ -370,7 +373,9 @@
               </div>
             {%- endif -%}
             {%- liquid
-              if paginate.pages > 1
+              if collection.handle == 'parts'
+                render 'rovic-parts-pagination', paginate: paginate
+              elsif paginate.pages > 1
                 render 'pagination', paginate: paginate, mode: section.settings.pagination
               endif
             -%}

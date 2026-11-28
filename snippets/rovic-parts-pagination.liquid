@@ -1,0 +1,24 @@
+<style>
+  .rovic-parts-pagination { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; margin-top: 32px; }
+  .rovic-parts-pagination[hidden] { display: none; }
+  .rovic-parts-pagination a, .rovic-parts-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 50%; font-size: 15px; }
+  .rovic-parts-pagination a { border: 1px solid #ddd; color: #171717; background: #fff; text-decoration: none; }
+  .rovic-parts-pagination a:hover, .rovic-parts-pagination [aria-current="page"] { background: #171717; color: #fff; border-color: #171717; }
+  .rovic-parts-pagination a:focus-visible { outline: 2px solid #171717; outline-offset: 3px; }
+  #ProductGridContainer:has([data-parts-page-size]) { scroll-margin-top: 110px; }
+</style>
+<nav class="rovic-parts-pagination" data-parts-pagination aria-label="Parts pagination"{% if paginate.pages <= 1 %} hidden{% endif %}>
+  {%- assign first_page = paginate.parts | first -%}
+  {%- assign last_page = paginate.parts | last -%}
+  {%- if paginate.previous -%}<a href="{{ first_page.url | default: collection.url }}#ProductGridContainer" aria-label="First page">«</a>{%- else -%}<span aria-label="First page" aria-disabled="true">«</span>{%- endif -%}
+  {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}#ProductGridContainer" aria-label="Previous page">‹</a>{%- endif -%}
+  {%- for part in paginate.parts -%}
+    {%- if part.is_link -%}
+      <a href="{{ part.url }}#ProductGridContainer" aria-label="Page {{ part.title }}">{{ part.title }}</a>
+    {%- elsif part.title == paginate.current_page -%}
+      <span aria-current="page">{{ part.title }}</span>
+    {%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+  {%- endfor -%}
+  {%- if paginate.next -%}<a href="{{ paginate.next.url }}#ProductGridContainer" aria-label="Next page">›</a>{%- endif -%}
+  {%- if paginate.next -%}<a href="{{ last_page.url }}#ProductGridContainer" aria-label="Last page">»</a>{%- else -%}<span aria-label="Last page" aria-disabled="true">»</span>{%- endif -%}
+</nav>
