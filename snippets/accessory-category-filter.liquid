@@ -7,7 +7,7 @@
     {%- elsif template.suffix == 'parts' -%}
       {%- assign accessory_categories = 'all:All,bag:Bag,wheel:Wheel,umbrella:Umbrella,seat:Seat' | split: ',' -%}
     {%- else -%}
-      {%- assign accessory_categories = 'all:All,bag:Bag,umbrella:Umbrella,cover:Cover,brush:Brush,bottle:Bottle' | split: ',' -%}
+      {%- assign accessory_categories = 'all:All,bag:Bag,umbrella:Umbrella,cover:Cover,brush:Brush,bottle:Bottle,wheel:Wheel,seat:Seat,other:Other' | split: ',' -%}
     {%- endif -%}
     {%- for item in accessory_categories -%}
       {%- assign category = item | split: ':' -%}

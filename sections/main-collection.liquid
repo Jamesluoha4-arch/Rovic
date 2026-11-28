@@ -24,7 +24,7 @@
 
 {%- liquid
   assign products_per_page = section.settings.products_per_page
-  if collection.handle == 'parts' or collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts'
+  if collection.handle == 'accessories' or collection.handle == 'parts' or collection.handle == 'all-push-carts' or collection.handle == 'disc-golf-carts' or collection.handle == 'disc-golf' or collection.handle == 'junior-push-carts'
     assign products_per_page = 250
   endif
   assign filter_count = 0
@@ -247,7 +247,7 @@
           {%- endif -%}
 
           {%- if collection.all_products_count > 0 -%}
-            <motion-list {% if collection.handle == 'parts' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
+            <motion-list {% if collection.handle == 'parts' or collection.handle == 'accessories' %}data-parts-grid data-section-id="{{ section.id }}" data-pages="{{ paginate.pages }}" data-page="{{ paginate.current_page }}"{% endif %} class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
               {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
               {%- assign rovic_show_demo = false -%}
               {%- if collection.handle == 'all-push-carts' and filter_count == 0 and paginate.current_page == paginate.pages -%}
@@ -294,19 +294,6 @@
                   endif
                   if collection.handle == 'accessories'
                     assign accessory_title = product.title | downcase
-                    assign is_rovic_part = false
-                    if accessory_title == 'replacement wheel set' or accessory_title == 'replacement bag straps' or accessory_title == 'adjustable umbrella holder' or accessory_title == 'rv2l extended seat' or accessory_title == 'rv1 series extended seat'
-                      assign is_rovic_part = true
-                    endif
-
-                    if template.suffix == 'parts'
-                      unless is_rovic_part
-                        continue
-                      endunless
-                    elsif is_rovic_part
-                      continue
-                    endif
-
                     if accessory_title contains 'storage bag' or accessory_title contains 'bag straps'
                       assign accessory_category = 'bag'
                     elsif accessory_title contains 'replacement wheel set'
@@ -322,7 +309,7 @@
                     elsif accessory_title contains 'bottle'
                       assign accessory_category = 'bottle'
                     else
-                      continue
+                      assign accessory_category = 'other'
                     endif
                   endif
 

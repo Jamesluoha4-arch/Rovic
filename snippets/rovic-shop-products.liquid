@@ -1,28 +1,9 @@
 <div class="section section--padding"><div class="page-width"><h1 class="sr-only">Shop</h1>
-{%- assign shop_groups = 'all-push-carts,accessories' | split: ',' -%}
 {%- capture card_sizes -%}(max-width: 639px) calc(100vw / {{ section.settings.columns_mobile }}), calc(min({{ settings.page_width }}px, 100vw) / {{ section.settings.columns }}){%- endcapture -%}
-{%- assign seen_ids = '|' -%}
+{%- paginate collections.all.products by 48 -%}
 <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative" style="margin-bottom:var(--grid-gap,24px)">
-{%- for handle in shop_groups -%}
-  {%- assign shop_collection = collections[handle] -%}
-  {%- paginate shop_collection.products by 250 -%}
-  {%- for product in shop_collection.products -%}
+  {%- for product in collections.all.products -%}
     {%- liquid
-      assign is_part = false
-      for membership in product.collections
-        if membership.handle == 'parts'
-          assign is_part = true
-        endif
-      endfor
-      assign title = product.title | downcase
-      if title == 'replacement wheel set' or title == 'replacement bag straps' or title == 'adjustable umbrella holder' or title == 'rv2l extended seat' or title == 'rv1 series extended seat'
-        assign is_part = true
-      endif
-      assign token = product.id | prepend: '|' | append: '|'
-      if is_part or seen_ids contains token
-        continue
-      endif
-      assign seen_ids = seen_ids | append: product.id | append: '|'
       assign lazy_load = true
       if forloop.index <= 2
         assign lazy_load = false
@@ -54,8 +35,7 @@
                   show_on_model: show_on_model
                 -%}
   {%- endfor -%}
+</motion-list>
   {%- if paginate.pages > 1 -%}{%- render 'pagination', paginate: paginate, mode: 'default' -%}{%- endif -%}
   {%- endpaginate -%}
-{%- endfor -%}
-</motion-list>
 </div></div>

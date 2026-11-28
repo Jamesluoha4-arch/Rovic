@@ -35,10 +35,10 @@
         url.searchParams.set('section_id', grid.dataset.sectionId);
         url.searchParams.set('page', page);
         const response = await fetch(url);
-        if (!response.ok) throw new Error('Unable to load Parts');
+        if (!response.ok) throw new Error('Unable to load products');
         const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
         const nextGrid = doc.querySelector('[data-parts-grid]');
-        if (!nextGrid) throw new Error('Missing Parts grid');
+        if (!nextGrid) throw new Error('Missing product grid');
         batches.push([...nextGrid.children]);
       }
       if (!grid.isConnected) return;
@@ -65,7 +65,7 @@
           message.setAttribute('role', 'alert');
           partsGrid.before(message);
         }
-        message.textContent = 'Unable to load all parts. Please select a category to try again.';
+        message.textContent = 'Unable to load all products. Please select a category to try again.';
         return;
       } finally { partsGrid.removeAttribute('aria-busy'); }
       if (run !== revision || !partsGrid.isConnected) return;
